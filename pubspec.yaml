@@ -32,22 +32,47 @@ dependencies:
   dio: ^5.5.0+1
   # json转model类生成工具  https://pub.dev/packages/json_annotation
   json_annotation: ^4.9.0
+  # 状态管理工具  https://pub.dev/packages/get_storage
+  get_storage: ^2.1.1
+  # 安全性储存，数据会存储在手机的内存中  https://pub.dev/packages/flutter_secure_storage
+  flutter_secure_storage: ^9.2.2
+  # Flutter 的 Toast 库  https://pub.dev/packages/bot_toast
+  bot_toast: ^4.1.3
+  # 一个纯dart开发包，可以打印出完整的json格式数据并带有打印位置信息 https://pub.dev/packages/flutter_printer
+  # flutter_printer: ^2.0.3
+  # 路径管理，用于获取主机平台文件系统上的常用位置，例如临时目录和应用程序数据目录  https://pub.dev/packages/path_provider
+  path_provider: ^2.1.4
+  # 在运行时从 .env 文件加载配置，该文件可在整个应用程序中使用  https://pub-web.flutter-io.cn/packages/flutter_dotenv
+  flutter_dotenv: ^5.1.0
+  # 控制台信息打印组件  https://pub-web.flutter-io.cn/packages/logger
+  logger: ^2.4.0
+  # 提供跨平台（iOS、Android）API 来请求权限并检查其状态。您还可以打开设备的应用程序设置，以便用户授予权限。
+  # https://pub-web.flutter-io.cn/packages/permission_handler
+  permission_handler: ^11.3.1
+  # Flutter初始化容器大小  https://pub.dev/packages/flutter_screenutil
+  flutter_screenutil: ^5.9.0
+  # swipe 组件  https://pub.dev/packages/carousel_slider
+  carousel_slider: ^4.2.1
+  # 跑马灯  https://pub.dev/packages/marquee
+  marquee: ^2.2.3
+  # 获取设备信息
+  device_info_plus: ^10.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
+  # 此包包含一组推荐的 Flutter 应用程序、包和插件的 lint，以鼓励良好的编码实践。 analysis_options.yaml
   flutter_lints: ^3.0.0
+  # json_annotation的构建工具  build_runner 包提供了使用 Dart 代码生成文件的具体方法。 文件始终直接在磁盘上生成，并且重建是增量式的
+  build_runner: ^2.4.11
+  # json_annotation的标记工具 当构建器找到用 package:json_annotation 中定义的类注释的成员时，它们会生成代码。
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter packages.
+# 以下部分专门针对 Flutter 包.
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -55,27 +80,26 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  # 将assets添加到您的应用程序, like this:
+  assets:
+    - .env.fat
+    - .env.prod
+    - .env.uat
 
-  # An image asset can refer to one or more resolution-specific "variants", see
+  # 图像资源可以引用一个或多个特定于分辨率的 "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
-  # For details regarding adding assets from package dependencies, see
+  # 有关从包依赖项添加assets的详细信息, see
   # https://flutter.dev/assets-and-images/#from-packages
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+  # 请在此处添加字体部分
+  # 此列表中的每个条目都应该有一个“family”键带有字体系列名称，“fonts”键带有列出字体的资源和其他描述符
+  # For example:
   # fonts:
-  #   - family: Schyler
+  #   - family: TestFont
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  #       - asset: fonts/TestFont-Regular.ttf
+  #       - asset: fonts/TestFont-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
@@ -83,5 +107,4 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  # 有关包依赖项中的字体的详细信息, see https://flutter.dev/custom-fonts/#from-packages
