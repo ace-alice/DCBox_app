@@ -84,7 +84,6 @@ flutter:
   assets:
     - .env.fat
     - .env.prod
-    - .env.uat
 
   # 图像资源可以引用一个或多个特定于分辨率的 "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
