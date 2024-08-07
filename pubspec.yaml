@@ -35,7 +35,7 @@ dependencies:
   # 状态管理工具  https://pub.dev/packages/get_storage
   get_storage: ^2.1.1
   # 安全性储存，数据会存储在手机的内存中  https://pub.dev/packages/flutter_secure_storage
-  flutter_secure_storage: ^9.2.2
+  #  flutter_secure_storage: ^9.2.2
   # Flutter 的 Toast 库  https://pub.dev/packages/bot_toast
   bot_toast: ^4.1.3
   # 一个纯dart开发包，可以打印出完整的json格式数据并带有打印位置信息 https://pub.dev/packages/flutter_printer
@@ -57,6 +57,8 @@ dependencies:
   marquee: ^2.2.3
   # 获取设备信息
   device_info_plus: ^10.1.1
+  # 修改程序的桌面图标  https://pub-web.flutter-io.cn/packages/flutter_launcher_icons
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -84,6 +86,7 @@ flutter:
   assets:
     - .env.fat
     - .env.prod
+    - assets/icons/startup-1024x1024.png
 
   # 图像资源可以引用一个或多个特定于分辨率的 "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

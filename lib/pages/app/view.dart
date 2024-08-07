@@ -1,3 +1,4 @@
+import 'package:dc_box_app/common/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,9 @@ class AppPage extends StatelessWidget {
     final controller = Get.find<AppController>();
     final state = Get.find<AppController>().state;
 
-    return Container();
+    return const Text(
+      'app',
+      style: TextStyle(color: AppColor.border80FFFFFF),
+    );
   }
 }
