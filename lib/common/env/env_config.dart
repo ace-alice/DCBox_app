@@ -1,10 +1,12 @@
 import 'package:dc_box_app/common/env/env_interface.dart';
 import 'package:dc_box_app/common/utils/app_logger.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:get/get.dart';
 
 class EnvConfig implements EnvInterface {
-  final AppLogger _appLogger = Get.find<AppLogger>();
+  final AppLogger _appLogger;
+
+  EnvConfig({required AppLogger appLogger}) : _appLogger = appLogger;
+
   @override
   // TODO: implement envData
   Map<EnvParams, dynamic> envData = {
@@ -20,7 +22,6 @@ class EnvConfig implements EnvInterface {
   Future onInit() async {
     // TODO: implement onInit
     const envTypeStr = String.fromEnvironment('ENV_TYPE');
-    _appLogger.warn('envTypeStr message $envTypeStr');
 
     if (envTypeStr == EnvType.fat.name) {
       envType = EnvType.fat;

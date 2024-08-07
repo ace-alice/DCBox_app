@@ -2,11 +2,9 @@ import 'package:logger/logger.dart';
 
 class AppLogger {
   final Logger logger = Logger(
-    printer: PrettyPrinter(),
-  );
-
-  final Logger loggerNoStack = Logger(
-    printer: PrettyPrinter(methodCount: 0),
+    printer: PrettyPrinter(
+      lineLength: 140,
+    ),
   );
 
   void debugger(

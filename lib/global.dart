@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 class Global {
   Future init() async {
     Get.put(AppLogger());
-    EnvConfig envConfig = Get.put(EnvConfig());
+    EnvConfig envConfig = Get.put(EnvConfig(
+      appLogger: Get.find(),
+    ));
     await envConfig.onInit();
   }
 }
