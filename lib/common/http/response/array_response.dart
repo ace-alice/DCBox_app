@@ -1,0 +1,1 @@
+class ArrayResponse<T> {}

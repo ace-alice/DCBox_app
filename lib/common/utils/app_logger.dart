@@ -7,6 +7,13 @@ class AppLogger {
     ),
   );
 
+  final Logger simpleLogger = Logger(
+    printer: PrettyPrinter(
+      methodCount: 0,
+      lineLength: 140,
+    ),
+  );
+
   void debugger(
     dynamic message, {
     DateTime? time,

@@ -59,6 +59,8 @@ dependencies:
   device_info_plus: ^10.1.1
   # 修改程序的桌面图标  https://pub-web.flutter-io.cn/packages/flutter_launcher_icons
   flutter_launcher_icons: ^0.13.1
+  # 加解密  https://pub-web.flutter-io.cn/packages/encrypt
+  encrypt: ^5.0.3
 
 dev_dependencies:
   flutter_test:
