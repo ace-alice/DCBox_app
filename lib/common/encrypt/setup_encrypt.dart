@@ -24,21 +24,30 @@ class SetupEncrypt {
 
   bool hasExpired() {
     String? serviceAesKey = _storage.read(StorageKey.serviceAesKey);
-    DateTime? lastTime = _storage.read(StorageKey.lastAesTime);
-    DateTime nowTime = DateTime.now();
-    if (lastTime != null && serviceAesKey != null && serviceAesKey.isNotEmpty) {
-      int days = nowTime.difference(lastTime).inDays;
-      return days > 30;
+    String? lastTime = _storage.read(StorageKey.lastAesTime);
+    _appLogger.warn('serviceAesKey  $serviceAesKey');
+    _appLogger.warn('lastTime  $lastTime');
+    if (serviceAesKey == null || !serviceAesKey.isNotEmpty) {
+      return true;
     }
-    return true;
+    if (lastTime == null) {
+      return true;
+    }
+    DateTime nowTime = DateTime.now();
+    int days = nowTime.difference(DateTime.parse(lastTime)).inDays;
+    _appLogger.warn('days > 30  ${days > 30}');
+    return days > 30;
   }
 
   Future<bool> onInit() async {
-    if (!hasExpired()) {
-      await Future.delayed(const Duration(seconds: 2), () {});
+    if (hasExpired()) {
+      _appLogger.warn('start  ${DateTime.now().toIso8601String()}');
+      await Future.delayed(const Duration(seconds: 10));
+      _appLogger.warn('end  ${DateTime.now().toIso8601String()}');
       await _storage.write(StorageKey.serviceAesKey, 'serviceAesKey');
+      await _storage.write(
+          StorageKey.lastAesTime, DateTime.now().toIso8601String());
       _appLogger.warn(StorageKey.serviceAesKey);
-      // await _storage.write(StorageKey.lastAesTime, DateTime.now());
     }
     return true;
   }

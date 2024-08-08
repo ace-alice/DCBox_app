@@ -2,6 +2,7 @@ import 'package:dc_box_app/common/encrypt/setup_encrypt.dart';
 import 'package:dc_box_app/common/router/app_routes.dart';
 import 'package:get/get.dart';
 
+import '../../common/utils/app_logger.dart';
 import 'state.dart';
 
 class WelcomeController extends GetxController {
@@ -9,16 +10,19 @@ class WelcomeController extends GetxController {
 
   final SetupEncrypt _setupEncrypt;
 
+  final AppLogger _appLogger = Get.find<AppLogger>();
+
   WelcomeController({
     required SetupEncrypt setupEncrypt,
   }) : _setupEncrypt = setupEncrypt;
 
   @override
-  void onReady() {
+  onInit() {
     // TODO: implement onReady
-    super.onReady();
-    _setupEncrypt.onInit().then((bool value) {
-      if (value) {
+    super.onInit();
+    _setupEncrypt.onInit().then((isFinish) {
+      if (isFinish) {
+        _appLogger.warn('isFinish  ${DateTime.now().toIso8601String()}');
         Get.toNamed(AppRoutes.app);
       }
     });
