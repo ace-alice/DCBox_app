@@ -1,24 +1,36 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:dc_box_app/common/encrypt/setup_encrypt.dart';
 import 'package:dc_box_app/common/utils/app_logger.dart';
 import 'package:dc_box_app/common/utils/storage_key.dart';
-import 'package:encrypt/encrypt.dart'; // import 'package:flutter/cupertino.dart';
+import 'package:encrypt/encrypt.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class EncryptManager {
   final AppLogger _appLogger = Get.find<AppLogger>();
 
-  final String _serviceAesKey;
+  late final String _serviceAesKey;
 
   final GetStorage _storage;
 
-  EncryptManager(GetStorage getStorage)
-      : _storage = getStorage,
+  final SetupEncrypt _setupEncrypt;
+
+  EncryptManager({
+    required GetStorage getStorage,
+    required SetupEncrypt setupEncrypt,
+  })  : _setupEncrypt = setupEncrypt,
+        _storage = getStorage,
         _serviceAesKey = getStorage.read(StorageKey.serviceAesKey);
 
-  onInit() {}
+  onInit() {
+    _setupEncrypt.listenAesKey((value) {
+      if (value != null && value.isNotEmpty) {
+        _serviceAesKey = value;
+      }
+    });
+  }
 
   dynamic decrypt({
     required Uint8List responseBody,
