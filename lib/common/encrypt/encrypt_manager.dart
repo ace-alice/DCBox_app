@@ -1,19 +1,18 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:dc_box_app/common/encrypt/setup_encrypt.dart';
-import 'package:dc_box_app/common/utils/app_logger.dart';
-import 'package:dc_box_app/common/utils/storage_key.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
+import '../../common/utils/app_logger.dart';
+import '../../common/utils/storage_key.dart';
+import './setup_encrypt.dart';
 
 class EncryptManager {
   final AppLogger _appLogger = Get.find<AppLogger>();
 
   late final String _serviceAesKey;
-
-  final GetStorage _storage;
 
   final SetupEncrypt _setupEncrypt;
 
@@ -21,8 +20,7 @@ class EncryptManager {
     required GetStorage getStorage,
     required SetupEncrypt setupEncrypt,
   })  : _setupEncrypt = setupEncrypt,
-        _storage = getStorage,
-        _serviceAesKey = getStorage.read(StorageKey.serviceAesKey);
+        _serviceAesKey = getStorage.read(StorageKey.serviceAesKey) ?? '';
 
   onInit() {
     _setupEncrypt.listenAesKey((value) {
@@ -30,6 +28,7 @@ class EncryptManager {
         _serviceAesKey = value;
       }
     });
+    _appLogger.info('_serviceAesKey: $_serviceAesKey');
   }
 
   dynamic decrypt({

@@ -1,9 +1,12 @@
-import 'package:dc_box_app/common/utils/app_logger.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' as getx;
 
+import '../../../common/utils/app_logger.dart';
+import '../../encrypt/encrypt_manager.dart';
+
 class RequestInterceptor extends Interceptor {
   final AppLogger _appLogger = getx.Get.find<AppLogger>();
+  final EncryptManager _encryptManager = getx.Get.find<EncryptManager>();
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {

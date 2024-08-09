@@ -1,6 +1,7 @@
-import 'package:dc_box_app/common/env/env_interface.dart';
-import 'package:dc_box_app/common/utils/app_logger.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import '../../common/utils/app_logger.dart';
+import './env_interface.dart';
 
 class EnvConfig implements EnvInterface {
   final AppLogger _appLogger;
@@ -46,6 +47,10 @@ class EnvConfig implements EnvInterface {
         fallback: envData[EnvParams.merchantUrl]);
     _appLogger.warn('当前环境 ${envType.name}; 当前环境值 ${envData.toString()}');
   }
+
+  String get getBaseApiUrl => envData[EnvParams.baseApiUrl];
+
+  String get getMerchantUrl => envData[EnvParams.merchantUrl];
 
   @override
   getEnvDataByParam(EnvParams envParam) {

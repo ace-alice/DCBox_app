@@ -1,8 +1,8 @@
-import 'package:dc_box_app/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import './global.dart';
 import 'common/router/app_pages.dart';
 import 'common/utils/app_color.dart';
 

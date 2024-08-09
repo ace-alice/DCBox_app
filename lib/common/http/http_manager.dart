@@ -1,26 +1,25 @@
-import 'package:dc_box_app/common/http/interceptors/error_interceptor.dart';
-import 'package:dc_box_app/common/http/interceptors/request_interceptor.dart';
-import 'package:dc_box_app/common/http/interceptors/response_interceptor.dart';
 import 'package:dio/dio.dart';
+import 'package:get/get.dart' as getx;
 
-class HttpManager {
-  static HttpManager? _instance = HttpManager._internal();
+import '../../common/env/env_config.dart';
+import '../../common/http/interceptors/error_interceptor.dart';
+import '../../common/http/interceptors/request_interceptor.dart';
+import '../../common/http/interceptors/response_interceptor.dart';
+import '../../common/utils/app_config.dart';
 
+abstract class HttpManager {
   late Dio _dio;
 
-  static HttpManager getInstance() {
-    _instance ??= HttpManager._internal();
-    return _instance!;
-  }
+  final EnvConfig _envConfig = getx.Get.find<EnvConfig>();
 
-  HttpManager._internal() {
+  init() {
     // 配置BaseOptions
     BaseOptions options = BaseOptions(
-        baseUrl: "",
+        baseUrl: _envConfig.getBaseApiUrl,
         //连接超时
-        connectTimeout: const Duration(seconds: 30),
+        connectTimeout: AppConfig.connectTimeout,
         //接收超时
-        receiveTimeout: const Duration(seconds: 30),
+        receiveTimeout: AppConfig.receiveTimeout,
         //内容类型
         contentType: 'application/json;Charset=UTF-8',
         //响应数据类型：Json
@@ -31,19 +30,26 @@ class HttpManager {
     _dio.interceptors.add(ErrorInterceptor());
   }
 
+  String get path;
+
+  BaseMethod get method => BaseMethod.post;
+
+  Future<dynamic> getFormData();
+
+  Future<Map<String, dynamic>> getParams();
+
   ///网络请求
-  Future<T> request<T>(
-    String path, {
-    BaseMethod method = BaseMethod.get,
-    Map<String, dynamic>? params,
-    data,
-    Options? options,
-  }) async {
-    options ??= Options(method: method.name);
+  Future<T> request<T>() async {
     try {
       Response response;
-      response = await _dio.request(path,
-          data: data, queryParameters: params, options: options);
+      final formData = await getFormData();
+      final params = await getParams();
+      response = await _dio.request(
+        path,
+        data: formData,
+        queryParameters: params,
+        options: Options(method: method.name),
+      );
       return response.data;
     } on DioException catch (e) {
       rethrow;

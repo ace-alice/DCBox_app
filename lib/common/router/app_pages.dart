@@ -1,12 +1,13 @@
-import 'package:dc_box_app/common/router/app_routes.dart';
-import 'package:dc_box_app/pages/app/index.dart';
-import 'package:dc_box_app/pages/home/index.dart';
-import 'package:dc_box_app/pages/order_detail/index.dart';
-import 'package:dc_box_app/pages/order_list/index.dart';
-import 'package:dc_box_app/pages/trade/index.dart';
-import 'package:dc_box_app/pages/unknown/index.dart';
-import 'package:dc_box_app/pages/welcome/index.dart';
 import 'package:get/route_manager.dart';
+
+import '../../common/router/app_routes.dart';
+import '../../pages/app/index.dart';
+import '../../pages/home/index.dart';
+import '../../pages/order_detail/index.dart';
+import '../../pages/order_list/index.dart';
+import '../../pages/trade/index.dart';
+import '../../pages/unknown/index.dart';
+import '../../pages/welcome/index.dart';
 
 class AppPages {
   // 首屏路由

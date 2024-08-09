@@ -18,9 +18,11 @@ enum EnvType {
 enum EnvParams {
   baseApiUrl,
   merchantUrl,
+  encryptSwitch,
 }
 
 enum EnvQuery {
   BASE_API_URL,
   MERCHANT_URL,
+  ENCRYPT_SWITCH,
 }

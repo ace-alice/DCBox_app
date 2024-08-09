@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dc_box_app/common/encrypt/encrypt_manager.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' as getx;
 
@@ -7,6 +8,7 @@ import '../../utils/app_logger.dart';
 
 class ResponseInterceptor extends Interceptor {
   final AppLogger _appLogger = getx.Get.find<AppLogger>();
+  final EncryptManager _encryptManager = getx.Get.find<EncryptManager>();
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
@@ -19,11 +21,12 @@ class ResponseInterceptor extends Interceptor {
     response.headers.forEach((key, value) {
       buffer.write('|    $key  $value\n');
     });
-    final data = response.data;
+    final data =
+        _encryptManager.decrypt(responseBody: response.data, isShowLog: true);
     if (data != null) {
       if (data is Map) {
-        buffer.write('| - Data：  ${response.data.toString()}\n');
-        String dataJson = jsonEncode(response.data);
+        buffer.write('| - Data：  ${data.toString()}\n');
+        String dataJson = jsonEncode(data);
         buffer.write('| - Json：  $dataJson\n');
       } else if (data is FormData) {
         final formDataMap = {}
