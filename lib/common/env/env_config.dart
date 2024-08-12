@@ -12,7 +12,8 @@ class EnvConfig implements EnvInterface {
   // TODO: implement envData
   Map<EnvParams, dynamic> envData = {
     EnvParams.baseApiUrl: 'http://public-capital-elephbit-api-fat.k8s-fat.com',
-    EnvParams.merchantUrl: 'http://nat.mob.com'
+    EnvParams.merchantUrl: 'http://nat.mob.com',
+    EnvParams.encryptSwitch: true,
   };
 
   @override
@@ -45,12 +46,16 @@ class EnvConfig implements EnvInterface {
         fallback: envData[EnvParams.baseApiUrl]);
     envData[EnvParams.merchantUrl] = dotenv.get(EnvQuery.MERCHANT_URL.name,
         fallback: envData[EnvParams.merchantUrl]);
+    envData[EnvParams.encryptSwitch] = dotenv.get(EnvQuery.ENCRYPT_SWITCH.name,
+        fallback: envData[EnvParams.encryptSwitch]);
     _appLogger.warn('当前环境 ${envType.name}; 当前环境值 ${envData.toString()}');
   }
 
   String get getBaseApiUrl => envData[EnvParams.baseApiUrl];
 
   String get getMerchantUrl => envData[EnvParams.merchantUrl];
+
+  bool get encryptSwitch => bool.parse(envData[EnvParams.encryptSwitch]);
 
   @override
   getEnvDataByParam(EnvParams envParam) {

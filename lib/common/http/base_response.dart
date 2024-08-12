@@ -26,7 +26,7 @@ class HeadType {
   final String code;
 
   // 错误信息
-  final dynamic fieldErrs;
+  final String? fieldErrs;
 
   // 状态信息
   final String message;

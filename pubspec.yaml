@@ -61,6 +61,12 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   # 加解密  https://pub-web.flutter-io.cn/packages/encrypt
   encrypt: ^5.0.3
+  # 设备id  https://pub.dev/packages/platform_device_id
+  platform_device_id: ^1.0.1
+  # 生成uuid  https://pub.dev/packages/uuid
+  uuid: ^4.4.2
+  # 包名资讯  https://pub.dev/packages/package_info_plus
+  package_info_plus: ^8.0.2
 
 dev_dependencies:
   flutter_test:

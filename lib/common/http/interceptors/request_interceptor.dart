@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' as getx;
 
 import '../../../common/utils/app_logger.dart';
 import '../../encrypt/encrypt_manager.dart';
+import '../../env/env_config.dart';
 
 class RequestInterceptor extends Interceptor {
   final AppLogger _appLogger = getx.Get.find<AppLogger>();
   final EncryptManager _encryptManager = getx.Get.find<EncryptManager>();
+  final EnvConfig _envConfig = getx.Get.find<EnvConfig>();
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -29,7 +33,13 @@ class RequestInterceptor extends Interceptor {
         buffer.write("| - Body：  ${data.toString()}\n");
       }
     }
+
     _appLogger.info(buffer);
+
+    if (_envConfig.encryptSwitch) {
+      options.data =
+          _encryptManager.encrypt(apiBody: json.encode(options.data));
+    }
     return handler.next(options);
   }
 }

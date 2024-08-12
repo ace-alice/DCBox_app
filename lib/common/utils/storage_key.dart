@@ -4,4 +4,10 @@ class StorageKey {
 
   /// 最后创建AesKey的时间标识
   static const lastAesTime = 'lastAesTimeAtStorage';
+
+  /// deviceId 标识
+  static const deviceId = 'deviceId';
+
+  /// lang 标识
+  static const lang = 'lang';
 }
