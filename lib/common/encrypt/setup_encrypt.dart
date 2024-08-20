@@ -13,6 +13,7 @@ class SetupEncrypt {
 
   SetupEncrypt(GetStorage getStorage) : _storage = getStorage;
 
+  /// 监听AseKey的变化
   VoidCallback listenAesKey(void Function(String?) callBack) {
     return _storage.listenKey(StorageKey.serviceAesKey, (value) {
       if (value == null) {
@@ -22,6 +23,7 @@ class SetupEncrypt {
     });
   }
 
+  /// 判断AseKey是否存在或者过期
   bool hasExpired() {
     String? serviceAesKey = _storage.read(StorageKey.serviceAesKey);
     String? lastTime = _storage.read(StorageKey.lastAesTime);
@@ -37,10 +39,12 @@ class SetupEncrypt {
     return days > 30;
   }
 
+  /// 获取ase码
   Future initAseKey() async {
     return Future.delayed(const Duration(seconds: 10));
   }
 
+  /// 初始化AseKey
   Future<bool> onInit() async {
     if (hasExpired()) {
       await initAseKey();

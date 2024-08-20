@@ -1,7 +1,7 @@
-import 'package:dc_box_app/common/core/device_manager/device_manager_impl.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import './common/core/device_manager/device_manager_impl.dart';
 import './common/env/env_config.dart';
 import './common/utils/app_logger.dart';
 import 'common/core/lang_manager/lang_manager.dart';

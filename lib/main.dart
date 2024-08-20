@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final AppPages _appPages = Get.put(AppPages());
-  final LangManager _langManager = Get.find<LangManagerImpl>();
+  final LangManager _langManager = Get.put(LangManagerImpl());
 
   // This widget is the root of your application.
   @override

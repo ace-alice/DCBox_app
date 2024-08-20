@@ -38,6 +38,10 @@ class LangManagerImpl implements LangManager {
         _lang = LangType.zh;
         _storage.write(StorageKey.lang, _lang.name);
       }
+    } else {
+      if (lang == LangType.en.name) {
+        _lang = LangType.en;
+      }
     }
   }
 }

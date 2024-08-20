@@ -23,18 +23,11 @@ class WelcomeController extends GetxController {
 
   @override
   onInit() async {
-    // TODO: implement onReady
     super.onInit();
     final bool isFinish = await _setupEncrypt.onInit();
     if (isFinish) {
       _encryptManager.onInit();
       Get.toNamed(AppRoutes.app);
     }
-  }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
   }
 }

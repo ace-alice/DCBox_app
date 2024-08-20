@@ -46,8 +46,9 @@ class EnvConfig implements EnvInterface {
         fallback: envData[EnvParams.baseApiUrl]);
     envData[EnvParams.merchantUrl] = dotenv.get(EnvQuery.MERCHANT_URL.name,
         fallback: envData[EnvParams.merchantUrl]);
-    envData[EnvParams.encryptSwitch] = dotenv.get(EnvQuery.ENCRYPT_SWITCH.name,
-        fallback: envData[EnvParams.encryptSwitch]);
+    envData[EnvParams.encryptSwitch] = bool.parse(dotenv.get(
+        EnvQuery.ENCRYPT_SWITCH.name,
+        fallback: envData[EnvParams.encryptSwitch].toString()));
     _appLogger.warn('当前环境 ${envType.name}; 当前环境值 ${envData.toString()}');
   }
 
