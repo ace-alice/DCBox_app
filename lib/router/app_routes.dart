@@ -6,4 +6,8 @@ class AppRoutes {
   static const browser = '/browser';
   static const service = '/service';
   static const scan = '/scan';
+  static const app = '/app';
+  static const home = '/home';
+  static const trade = '/trade';
+  static const order = '/order';
 }

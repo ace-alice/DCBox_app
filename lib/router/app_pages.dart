@@ -1,9 +1,13 @@
+import 'package:dc_box_app/pages/home/index.dart';
+import 'package:dc_box_app/pages/order/index.dart';
+import 'package:dc_box_app/pages/trade/index.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../../../common/storage_key.dart';
 import '../middleware/request_camera_and_photos_permission.dart';
+import '../pages/app/index.dart';
 import '../pages/browser/index.dart';
 import '../pages/guide/index.dart';
 import '../pages/qia_qia_service/index.dart';
@@ -20,7 +24,7 @@ class AppPages {
         if (hasGuide == null) {
           return element.name == AppRoutes.guide;
         } else {
-          return element.name == AppRoutes.welcome;
+          return element.name == AppRoutes.app;
         }
       });
 
@@ -46,6 +50,30 @@ class AppPages {
       binding: WelcomeBinding(),
       title: 'unknown',
       popGesture: false,
+    ),
+    GetPage(
+      name: AppRoutes.app,
+      page: () => const AppPage(),
+      binding: AppBinding(),
+      title: 'app',
+    ),
+    GetPage(
+      name: AppRoutes.home,
+      page: () => const HomePage(),
+      binding: HomeBinding(),
+      title: 'home',
+    ),
+    GetPage(
+      name: AppRoutes.trade,
+      page: () => const TradePage(),
+      binding: TradeBinding(),
+      title: 'trade',
+    ),
+    GetPage(
+      name: AppRoutes.order,
+      page: () => const OrderPage(),
+      binding: OrderBinding(),
+      title: 'order',
     ),
     GetPage(
       name: AppRoutes.welcome,
