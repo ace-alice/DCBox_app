@@ -1,73 +1,73 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../generated/app_image/app_image.dart';
 import 'controller.dart';
+import 'widgets/loading.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.find<WelcomeController>();
-    final state = Get.find<WelcomeController>().state;
+  State<WelcomePage> createState() => _WelcomePageState();
+}
 
-    return Container(
-      width: 375.w,
-      height: 812.h,
-      color: Colors.white,
+class _WelcomePageState extends State<WelcomePage> {
+  final controller = Get.find<WelcomeController>();
+  final state = Bind.find<WelcomeController>().state;
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
       child: Stack(
-        fit: StackFit.expand,
         children: [
+          Positioned.fill(
+            child: AppImage.welcome.background(fit: BoxFit.fitWidth),
+          ),
           Positioned(
-            left: 7.w,
-            top: 15.h,
-            child: AppImage.welcome.splashTop(
-              width: 360.w,
-              height: 126.h,
+            top: 100.h,
+            width: 375.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 240.w,
+                  child: AppImage.welcome.logo(fit: BoxFit.fitWidth),
+                ),
+              ],
             ),
           ),
           Positioned(
-            left: 7.w,
-            bottom: 15.h,
-            child: AppImage.welcome.splashBot(
-              width: 360.w,
-              height: 197.h,
+            bottom: 0,
+            width: 375.w,
+            child: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10.h),
+                    child: SizedBox(
+                      width: 254.w,
+                      child: AppImage.welcome.title(fit: BoxFit.fitWidth),
+                    ),
+                  ),
+                  LoadingWidget(),
+                ],
+              ),
             ),
-          ),
-          Positioned(
-            left: 74.w,
-            top: 70.h,
-            child: AppImage.welcome.title(
-              width: 227.w,
-              height: 70.h,
-            ),
-          ),
-          Positioned(
-            left: 59.w,
-            top: 187.h,
-            child: AppImage.welcome.illustration(
-              width: 256.w,
-              height: 275.h,
-            ),
-          ),
-          Positioned(
-            left: 162.w,
-            bottom: 140.h,
-            child: AppImage.welcome.logo(
-              width: 48.w,
-              height: 56.h,
-            ),
-          ),
-          Positioned(
-            left: 178.w,
-            bottom: 100.h,
-            child: const CupertinoActivityIndicator(),
           ),
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    Bind.delete<WelcomeController>();
+    super.dispose();
   }
 }

@@ -1,4 +1,4 @@
 library welcome;
 
-export './binding.dart';
-export './view.dart';
+export 'binding.dart';
+export 'view.dart';

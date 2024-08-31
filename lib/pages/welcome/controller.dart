@@ -1,33 +1,39 @@
-import 'package:dc_box_app/common/encrypt/encrypt_manager.dart';
-import 'package:dc_box_app/common/encrypt/setup_encrypt.dart';
-import 'package:dc_box_app/common/router/app_routes.dart';
 import 'package:get/get.dart';
 
-import '../../common/utils/app_logger.dart';
+import '../../core/env_manager/env_manager.dart';
+import '../../core/permission_manager/permission_manager.dart';
+import '../../router/app_routes.dart';
 import 'state.dart';
 
 class WelcomeController extends GetxController {
+  final EnvManager _envManager;
+  final PermissionManager _permissionManager;
+
+  WelcomeController(
+      {required EnvManager envManager,
+      required PermissionManager permissionManager})
+      : _envManager = envManager,
+        _permissionManager = permissionManager;
+
   final WelcomeState state = WelcomeState();
 
-  final SetupEncrypt _setupEncrypt;
-
-  final EncryptManager _encryptManager;
-
-  final AppLogger _appLogger = Get.find<AppLogger>();
-
-  WelcomeController({
-    required SetupEncrypt setupEncrypt,
-    required EncryptManager encryptManager,
-  })  : _setupEncrypt = setupEncrypt,
-        _encryptManager = encryptManager;
+  Future getWebDomain() async {
+    bool status = await _envManager.init();
+    if (status) {
+      state.loadingStatus.value = LoadStatus.success;
+    } else {
+      state.loadingStatus.value = LoadStatus.fail;
+    }
+  }
 
   @override
-  onInit() async {
-    super.onInit();
-    final bool isFinish = await _setupEncrypt.onInit();
-    if (isFinish) {
-      _encryptManager.onInit();
-      Get.toNamed(AppRoutes.app);
-    }
+  void onReady() {
+    super.onReady();
+    ever(state.loadingStatus, (value) {
+      if (value == LoadStatus.success) {
+        Get.toNamed(AppRoutes.browser);
+      }
+    });
+    getWebDomain();
   }
 }

@@ -36,7 +36,6 @@ def snack_converter_pascal_case(text: str) -> str:
 fetchImageCode = '''
 
 mixin FetchImage {
-  final AppLogger _appLogger = Get.find<AppLogger>();
   Widget _getWidget(
     String name, {
     BoxFit fit = BoxFit.contain,
@@ -49,12 +48,10 @@ mixin FetchImage {
       fallbackHeight: height ?? 0,
     );
     if (map == null) {
-      _appLogger.debugger('$runtimeType not found');
       return placeholder;
     }
     final base64Image = map['${name}Image'];
     if (base64Image == null) {
-      _appLogger.debugger('$runtimeType $name not found');
       return placeholder;
     }
     try {
@@ -67,7 +64,6 @@ mixin FetchImage {
         gaplessPlayback: true,
       );
     } catch (e) {
-      _appLogger.debugger(e.toString());
       return placeholder;
     }
   }
@@ -75,18 +71,15 @@ mixin FetchImage {
   Uint8List? _getImageData(String name) {
     final map = imageJson[runtimeType.toString()];
     if (map == null) {
-      _appLogger.debugger('$runtimeType not found');
       return null;
     }
     final base64Image = map['${name}Image'];
     if (base64Image == null) {
-      _appLogger.debugger('$runtimeType $name not found');
       return null;
     }
     try {
       return base64.decode(base64Image);
     } catch (e) {
-      _appLogger.debugger(e.toString());
       return null;
     }
   }
@@ -110,7 +103,6 @@ mixin FetchImage {
         gaplessPlayback: true,
       );
     } catch (e) {
-      _appLogger.debugger(e.toString());
       return null;
     }
   }
@@ -166,7 +158,6 @@ def gen_banner(data):
 def gen_app_image(map):
     data = open(app_image_path + 'app_image.dart', 'w+')
     data.write('import \'package:flutter/material.dart\';')
-    data.write('import \'../../common/utils/index.dart\';')
     data.write('import \'package:get/get.dart\';')
     data.write('import \'dart:convert\';')
     data.write('import \'dart:typed_data\';')

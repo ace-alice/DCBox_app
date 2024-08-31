@@ -1,4 +1,29 @@
-import 'package:flutter/material.dart';import '../../common/utils/index.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final home = Home();static final welcome = Welcome();static final banners = Banners();}class Home with FetchImage {
+import 'package:flutter/material.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final guide = Guide();static final home = Home();static final scan = Scan();static final welcome = Welcome();static final banners = Banners();static final icons = Icons();}class Guide with FetchImage {
+Widget guideCenter3({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('guideCenter3', fit:fit, width:width, height:height,);
+}Image? guideCenter3Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('guideCenter3', fit:fit, width:width, height:height,);
+}Uint8List? guideCenter3ImageData() {
+return _getImageData('guideCenter3',);
+}Widget guideCenter2({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('guideCenter2', fit:fit, width:width, height:height,);
+}Image? guideCenter2Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('guideCenter2', fit:fit, width:width, height:height,);
+}Uint8List? guideCenter2ImageData() {
+return _getImageData('guideCenter2',);
+}Widget guideCenter1({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('guideCenter1', fit:fit, width:width, height:height,);
+}Image? guideCenter1Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('guideCenter1', fit:fit, width:width, height:height,);
+}Uint8List? guideCenter1ImageData() {
+return _getImageData('guideCenter1',);
+}Widget guideBg({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('guideBg', fit:fit, width:width, height:height,);
+}Image? guideBgImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('guideBg', fit:fit, width:width, height:height,);
+}Uint8List? guideBgImageData() {
+return _getImageData('guideBg',);
+}}class Home with FetchImage {
 Widget icCustomerService({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('icCustomerService', fit:fit, width:width, height:height,);
 }Image? icCustomerServiceImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
@@ -77,6 +102,13 @@ return _getWidget('iconHomeRefresh', fit:fit, width:width, height:height,);
 return _getImage('iconHomeRefresh', fit:fit, width:width, height:height,);
 }Uint8List? iconHomeRefreshImageData() {
 return _getImageData('iconHomeRefresh',);
+}}class Scan with FetchImage {
+Widget icPhoto({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icPhoto', fit:fit, width:width, height:height,);
+}Image? icPhotoImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icPhoto', fit:fit, width:width, height:height,);
+}Uint8List? icPhotoImageData() {
+return _getImageData('icPhoto',);
 }}class Welcome with FetchImage {
 Widget title({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('title', fit:fit, width:width, height:height,);
@@ -139,10 +171,16 @@ return _getWidget('bgBanner1', fit:fit, width:width, height:height,);
 return _getImage('bgBanner1', fit:fit, width:width, height:height,);
 }Uint8List? bgBanner1ImageData() {
 return _getImageData('bgBanner1',);
+}}class Icons with FetchImage {
+Widget service({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('service', fit:fit, width:width, height:height,);
+}Image? serviceImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('service', fit:fit, width:width, height:height,);
+}Uint8List? serviceImageData() {
+return _getImageData('service',);
 }}
 
 mixin FetchImage {
-  final AppLogger _appLogger = Get.find<AppLogger>();
   Widget _getWidget(
     String name, {
     BoxFit fit = BoxFit.contain,
@@ -155,12 +193,10 @@ mixin FetchImage {
       fallbackHeight: height ?? 0,
     );
     if (map == null) {
-      _appLogger.debugger('$runtimeType not found');
       return placeholder;
     }
     final base64Image = map['${name}Image'];
     if (base64Image == null) {
-      _appLogger.debugger('$runtimeType $name not found');
       return placeholder;
     }
     try {
@@ -173,7 +209,6 @@ mixin FetchImage {
         gaplessPlayback: true,
       );
     } catch (e) {
-      _appLogger.debugger(e.toString());
       return placeholder;
     }
   }
@@ -181,18 +216,15 @@ mixin FetchImage {
   Uint8List? _getImageData(String name) {
     final map = imageJson[runtimeType.toString()];
     if (map == null) {
-      _appLogger.debugger('$runtimeType not found');
       return null;
     }
     final base64Image = map['${name}Image'];
     if (base64Image == null) {
-      _appLogger.debugger('$runtimeType $name not found');
       return null;
     }
     try {
       return base64.decode(base64Image);
     } catch (e) {
-      _appLogger.debugger(e.toString());
       return null;
     }
   }
@@ -216,7 +248,6 @@ mixin FetchImage {
         gaplessPlayback: true,
       );
     } catch (e) {
-      _appLogger.debugger(e.toString());
       return null;
     }
   }
