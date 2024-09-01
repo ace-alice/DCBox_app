@@ -11,6 +11,6 @@ class TradePage extends StatelessWidget {
     final controller = Get.put(TradeController());
     final state = Bind.find<TradeController>().state;
 
-    return const Text('home');
+    return const Text('trade');
   }
 }

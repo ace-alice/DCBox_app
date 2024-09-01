@@ -1,6 +1,7 @@
 import 'package:dc_box_app/pages/home/index.dart';
 import 'package:dc_box_app/pages/order/index.dart';
 import 'package:dc_box_app/pages/trade/index.dart';
+import 'package:get/get_navigation/src/routes/default_route.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:get_storage/get_storage.dart';
@@ -58,24 +59,6 @@ class AppPages {
       title: 'app',
     ),
     GetPage(
-      name: AppRoutes.home,
-      page: () => const HomePage(),
-      binding: HomeBinding(),
-      title: 'home',
-    ),
-    GetPage(
-      name: AppRoutes.trade,
-      page: () => const TradePage(),
-      binding: TradeBinding(),
-      title: 'trade',
-    ),
-    GetPage(
-      name: AppRoutes.order,
-      page: () => const OrderPage(),
-      binding: OrderBinding(),
-      title: 'order',
-    ),
-    GetPage(
       name: AppRoutes.welcome,
       page: () => const WelcomePage(),
       binding: WelcomeBinding(),
@@ -111,4 +94,23 @@ class AppPages {
       middlewares: [RequestCameraAndPhotosPermission()],
     ),
   ];
+
+  static GetPage homePage = GetPage(
+    name: AppRoutes.home,
+    page: () => const HomePage(),
+    binding: HomeBinding(),
+    title: 'home',
+  );
+
+  static GetPageRoute tradePage = GetPageRoute(
+    page: () => const TradePage(),
+    binding: TradeBinding(),
+    title: 'trade',
+  );
+
+  static GetPageRoute orderPage = GetPageRoute(
+    page: () => const OrderPage(),
+    binding: OrderBinding(),
+    title: 'order',
+  );
 }
