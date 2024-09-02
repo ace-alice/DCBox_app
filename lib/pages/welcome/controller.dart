@@ -17,7 +17,7 @@ class WelcomeController extends GetxController {
 
   final WelcomeState state = WelcomeState();
 
-  Future getWebDomain() async {
+  Future getApiDomain() async {
     bool status = await _envManager.init();
     if (status) {
       state.loadingStatus.value = LoadStatus.success;
@@ -27,13 +27,13 @@ class WelcomeController extends GetxController {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
     ever(state.loadingStatus, (value) {
       if (value == LoadStatus.success) {
-        Get.toNamed(AppRoutes.browser);
+        Get.toNamed(AppRoutes.app);
       }
     });
-    getWebDomain();
+    await getApiDomain();
   }
 }

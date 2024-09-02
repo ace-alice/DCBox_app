@@ -12,8 +12,12 @@ class AppController extends GetxController {
   }
 
   bottomNavigationBarOnTap(int index) async {
+    if (state.bottomActive) {
+      return;
+    }
+    state.bottomActive = true;
     if (index == 1) {
-      await Future.delayed(const Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 1));
       state.tradeHasInit.value = true;
     }
     pageIndex = index;
@@ -22,5 +26,11 @@ class AppController extends GetxController {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
+    state.bottomActive = false;
+    if (index != 1) {
+      Future.delayed(const Duration(milliseconds: 300), () {
+        state.tradeHasInit.value = false;
+      });
+    }
   }
 }

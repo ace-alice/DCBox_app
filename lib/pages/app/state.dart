@@ -5,6 +5,8 @@ class AppState {
 
   RxBool tradeHasInit = false.obs;
 
+  bool bottomActive = false;
+
   get pageTitle {
     switch (pageIndex.value) {
       case 0:

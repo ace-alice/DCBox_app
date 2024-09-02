@@ -7,7 +7,4 @@ class AppRoutes {
   static const service = '/service';
   static const scan = '/scan';
   static const app = '/app';
-  static const home = '/app/home';
-  static const trade = '/app/trade';
-  static const order = '/app/order';
 }

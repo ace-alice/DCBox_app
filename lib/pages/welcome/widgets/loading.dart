@@ -25,7 +25,7 @@ class LoadingWidget extends GetView {
           case LoadStatus.fail:
             return SizedBox(
               child: TextButton(
-                onPressed: welcomeController.getWebDomain,
+                onPressed: welcomeController.getApiDomain,
                 child: const Text(
                   '重试',
                   style: TextStyle(fontSize: 16),
