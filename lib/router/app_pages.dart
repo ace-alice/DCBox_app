@@ -1,8 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
-import 'package:get_storage/get_storage.dart';
 
-import '../../../common/storage_key.dart';
 import '../middleware/request_camera_and_photos_permission.dart';
 import '../pages/app/index.dart';
 import '../pages/browser/index.dart';
@@ -16,13 +14,14 @@ import 'app_routes.dart';
 class AppPages {
   // 首屏路由
   static GetPage get firstPage => routes.firstWhere((element) {
-        GetStorage getStorage = GetStorage();
-        final hasGuide = getStorage.read(StorageKey.hasGuide);
-        if (hasGuide == null) {
-          return element.name == AppRoutes.guide;
-        } else {
-          return element.name == AppRoutes.app;
-        }
+        return element.name == AppRoutes.welcome;
+        // GetStorage getStorage = GetStorage();
+        // final hasGuide = getStorage.read(StorageKey.hasGuide);
+        // if (hasGuide == null) {
+        //   return element.name == AppRoutes.guide;
+        // } else {
+        //   return element.name == AppRoutes.welcome;
+        // }
       });
 
   // browser路由

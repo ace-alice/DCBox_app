@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:dc_box_app/common/app_color.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -20,49 +21,51 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: AppImage.welcome.background(fit: BoxFit.fitWidth),
-          ),
-          Positioned(
-            top: 100.h,
-            width: 375.w,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 240.w,
-                  child: AppImage.welcome.logo(fit: BoxFit.fitWidth),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            width: 375.w,
-            child: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+        onWillPop: () async {
+          return false;
+        },
+        child: Scaffold(
+          backgroundColor: AppColor.textFFFFFF,
+          body: Stack(
+            children: [
+              Positioned(
+                top: 40.h,
+                left: 0,
+                right: 0,
+                child: AppImage.welcome.splashTop(),
+              ),
+              Positioned(
+                bottom: 40.h,
+                left: 0,
+                right: 0,
+                child: AppImage.welcome.splashBot(),
+              ),
+              Positioned(
+                bottom: 40.h,
+                left: 0,
+                right: 0,
+                child: AppImage.welcome.splashBot(),
+              ),
+              Column(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10.h),
-                    child: SizedBox(
-                      width: 254.w,
-                      child: AppImage.welcome.title(fit: BoxFit.fitWidth),
-                    ),
-                  ),
+                  const SizedBox(width: double.infinity),
+                  const Spacer(flex: 20),
+                  // GestureDetector(
+                  //   onTap: controller.changeEnvironment,
+                  //   child: AppImage.welcome.title(width: 230.w),
+                  // ),
+                  SizedBox(height: 74.w),
+                  AppImage.welcome.illustration(width: 260.w),
+                  SizedBox(height: 60.w),
+                  AppImage.welcome.logo(height: 70.w),
+                  SizedBox(height: 10.w),
                   LoadingWidget(),
+                  const Spacer(flex: 14),
                 ],
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 
   @override

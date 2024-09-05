@@ -15,29 +15,32 @@ class LoadingWidget extends GetView {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: 30.h),
-      child: Obx(() {
-        switch (welcomeController.state.loadingStatus.value) {
-          case LoadStatus.loading:
-            return const SizedBox(
-              height: 48,
-              child: CupertinoActivityIndicator(),
-            );
-          case LoadStatus.fail:
-            return SizedBox(
-              child: TextButton(
-                onPressed: welcomeController.getApiDomain,
-                child: const Text(
-                  '重试',
-                  style: TextStyle(fontSize: 16),
+      child: SizedBox(
+        height: 60.h,
+        child: Obx(() {
+          switch (welcomeController.state.loadingStatus.value) {
+            case LoadStatus.loading:
+              return const SizedBox(
+                height: 48,
+                child: CupertinoActivityIndicator(),
+              );
+            case LoadStatus.fail:
+              return SizedBox(
+                child: TextButton(
+                  onPressed: welcomeController.getApiDomain,
+                  child: const Text(
+                    '重试',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
-              ),
-            );
-          case LoadStatus.success:
-            return const SizedBox.shrink();
-          default:
-            return const SizedBox.shrink();
-        }
-      }),
+              );
+            case LoadStatus.success:
+              return const SizedBox.shrink();
+            default:
+              return const SizedBox.shrink();
+          }
+        }),
+      ),
     );
   }
 }
