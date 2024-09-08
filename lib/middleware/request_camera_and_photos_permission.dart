@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../core/permission_manager/controller.dart';
-import '../core/permission_manager/permission_manager.dart';
+import '../core/permission_manager/index.dart';
 import '../router/app_routes.dart';
 
 class RequestCameraAndPhotosPermission extends GetMiddleware {
