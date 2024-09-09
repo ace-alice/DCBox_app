@@ -172,12 +172,48 @@ return _getImage('bgBanner1', fit:fit, width:width, height:height,);
 }Uint8List? bgBanner1ImageData() {
 return _getImageData('bgBanner1',);
 }}class Icons with FetchImage {
-Widget service({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+Widget transaction({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('transaction', fit:fit, width:width, height:height,);
+}Image? transactionImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('transaction', fit:fit, width:width, height:height,);
+}Uint8List? transactionImageData() {
+return _getImageData('transaction',);
+}Widget order({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('order', fit:fit, width:width, height:height,);
+}Image? orderImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('order', fit:fit, width:width, height:height,);
+}Uint8List? orderImageData() {
+return _getImageData('order',);
+}Widget service({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('service', fit:fit, width:width, height:height,);
 }Image? serviceImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getImage('service', fit:fit, width:width, height:height,);
 }Uint8List? serviceImageData() {
 return _getImageData('service',);
+}Widget home({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('home', fit:fit, width:width, height:height,);
+}Image? homeImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('home', fit:fit, width:width, height:height,);
+}Uint8List? homeImageData() {
+return _getImageData('home',);
+}Widget orderSelected({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('orderSelected', fit:fit, width:width, height:height,);
+}Image? orderSelectedImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('orderSelected', fit:fit, width:width, height:height,);
+}Uint8List? orderSelectedImageData() {
+return _getImageData('orderSelected',);
+}Widget transactionSelected({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('transactionSelected', fit:fit, width:width, height:height,);
+}Image? transactionSelectedImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('transactionSelected', fit:fit, width:width, height:height,);
+}Uint8List? transactionSelectedImageData() {
+return _getImageData('transactionSelected',);
+}Widget homeSelected({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('homeSelected', fit:fit, width:width, height:height,);
+}Image? homeSelectedImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('homeSelected', fit:fit, width:width, height:height,);
+}Uint8List? homeSelectedImageData() {
+return _getImageData('homeSelected',);
 }}
 
 mixin FetchImage {

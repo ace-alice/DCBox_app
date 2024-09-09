@@ -37,6 +37,7 @@ class AppPages {
       page: () => const AppPage(),
       binding: AppBinding(),
       title: 'app',
+      popGesture: false,
     ),
     GetPage(
       name: AppRoutes.welcome,

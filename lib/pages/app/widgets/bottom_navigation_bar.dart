@@ -1,3 +1,4 @@
+import 'package:dc_box_app/generated/app_image/app_image.dart';
 import 'package:dc_box_app/pages/app/controller.dart';
 import 'package:dc_box_app/pages/app/state.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ Widget bottomNavigationBarWidget(AppController controller, AppState state) {
   return Obx(() {
     return BottomNavigationBar(
       currentIndex: state.pageIndex.value,
-      backgroundColor: AppColor.backdrop4C6D778B,
+      backgroundColor: AppColor.backdrop222222,
       selectedItemColor: AppColor.brand62A2B0,
       unselectedItemColor: AppColor.textFFFFFF,
       selectedFontSize: 12.0,
@@ -17,17 +18,23 @@ Widget bottomNavigationBarWidget(AppController controller, AppState state) {
       onTap: (int index) {
         controller.bottomNavigationBarOnTap(index);
       },
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.add),
+          icon: state.pageIndex.value == 0
+              ? AppImage.icons.homeSelected(width: 21, height: 21)
+              : AppImage.icons.home(width: 21, height: 21),
           label: '首页',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.ac_unit),
+          icon: state.pageIndex.value == 1
+              ? AppImage.icons.transactionSelected(width: 21, height: 21)
+              : AppImage.icons.transaction(width: 21, height: 21),
           label: '交易',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.access_alarm_rounded),
+          icon: state.pageIndex.value == 2
+              ? AppImage.icons.orderSelected(width: 21, height: 21)
+              : AppImage.icons.order(width: 21, height: 21),
           label: '订单',
         ),
       ],

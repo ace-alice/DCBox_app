@@ -11,6 +11,6 @@ AppBar appBarWidget(AppController controller, AppState state) {
           state.pageTitle,
           style: const TextStyle(color: AppColor.textFFFFFF, fontSize: 20),
         )),
-    backgroundColor: AppColor.backdrop4C6D778B,
+    backgroundColor: AppColor.backdrop222222,
   );
 }

@@ -73,6 +73,8 @@ dependencies:
   mobile_scanner: ^5.2.1
   # 生物辨識  https://pub.dev/packages/local_auth
   local_auth: ^2.3.0
+  # swipe 组件  https://pub.dev/packages/carousel_slider
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
