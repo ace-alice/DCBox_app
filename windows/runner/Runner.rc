@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "dc_box_app" "\0"
+            VALUE "CompanyName", "com.flying" "\0"
+            VALUE "FileDescription", "DCBox" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "dc_box_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.flying. All rights reserved." "\0"
             VALUE "OriginalFilename", "dc_box_app.exe" "\0"
-            VALUE "ProductName", "dc_box_app" "\0"
+            VALUE "ProductName", "DCBox" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
