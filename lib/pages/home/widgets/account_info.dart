@@ -83,7 +83,7 @@ Widget accountInfo() {
 
 Widget tradeEnter(Widget image, String text, String route) {
   return SizedBox(
-    width: 80,
+    width: 70,
     child: Column(
       children: [
         Container(

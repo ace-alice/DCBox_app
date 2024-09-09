@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
     final state = Bind.find<HomeController>().state;
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
       child: Column(
         children: [
           bannerCarousel(),
