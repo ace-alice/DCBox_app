@@ -57,7 +57,7 @@ Widget accountInfo() {
           height: 1,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(1),
-            color: const Color.fromRGBO(153, 153, 153, 0.5),
+            color: const Color.fromRGBO(51, 51, 51, 0.5),
           ),
         ),
         Container(

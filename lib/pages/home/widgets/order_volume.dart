@@ -16,7 +16,11 @@ Widget orderVolume() {
         const Expanded(
           child: Column(
             children: [
-              Text('24H成交量(U)'),
+              Text(
+                '24H成交量(U)',
+                style: TextStyle(
+                    color: AppColor.text9A9AA0, fontSize: 14, height: 1.25),
+              ),
               SizedBox(height: 10),
               Text(
                 'data',
@@ -37,7 +41,11 @@ Widget orderVolume() {
         const Expanded(
           child: Column(
             children: [
-              Text('24H成单量'),
+              Text(
+                '24H成单量',
+                style: TextStyle(
+                    color: AppColor.text9A9AA0, fontSize: 14, height: 1.25),
+              ),
               SizedBox(height: 10),
               Text(
                 'data',

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final guide = Guide();static final home = Home();static final scan = Scan();static final welcome = Welcome();static final banners = Banners();static final icons = Icons();}class Guide with FetchImage {
+import 'package:flutter/material.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final guide = Guide();static final home = Home();static final scan = Scan();static final welcome = Welcome();static final banners = Banners();static final common = Common();static final icons = Icons();}class Guide with FetchImage {
 Widget guideCenter3({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('guideCenter3', fit:fit, width:width, height:height,);
 }Image? guideCenter3Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
@@ -171,6 +171,145 @@ return _getWidget('bgBanner1', fit:fit, width:width, height:height,);
 return _getImage('bgBanner1', fit:fit, width:width, height:height,);
 }Uint8List? bgBanner1ImageData() {
 return _getImageData('bgBanner1',);
+}}class Common with FetchImage {
+Widget icDeleteWhite({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icDeleteWhite', fit:fit, width:width, height:height,);
+}Image? icDeleteWhiteImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icDeleteWhite', fit:fit, width:width, height:height,);
+}Uint8List? icDeleteWhiteImageData() {
+return _getImageData('icDeleteWhite',);
+}Widget fileUnderReview({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('fileUnderReview', fit:fit, width:width, height:height,);
+}Image? fileUnderReviewImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('fileUnderReview', fit:fit, width:width, height:height,);
+}Uint8List? fileUnderReviewImageData() {
+return _getImageData('fileUnderReview',);
+}Widget icRefresh({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icRefresh', fit:fit, width:width, height:height,);
+}Image? icRefreshImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icRefresh', fit:fit, width:width, height:height,);
+}Uint8List? icRefreshImageData() {
+return _getImageData('icRefresh',);
+}Widget icSelectd({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icSelectd', fit:fit, width:width, height:height,);
+}Image? icSelectdImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icSelectd', fit:fit, width:width, height:height,);
+}Uint8List? icSelectdImageData() {
+return _getImageData('icSelectd',);
+}Widget icUserAvatar({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icUserAvatar', fit:fit, width:width, height:height,);
+}Image? icUserAvatarImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icUserAvatar', fit:fit, width:width, height:height,);
+}Uint8List? icUserAvatarImageData() {
+return _getImageData('icUserAvatar',);
+}Widget icPhoto({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icPhoto', fit:fit, width:width, height:height,);
+}Image? icPhotoImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icPhoto', fit:fit, width:width, height:height,);
+}Uint8List? icPhotoImageData() {
+return _getImageData('icPhoto',);
+}Widget takePhotoButton({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('takePhotoButton', fit:fit, width:width, height:height,);
+}Image? takePhotoButtonImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('takePhotoButton', fit:fit, width:width, height:height,);
+}Uint8List? takePhotoButtonImageData() {
+return _getImageData('takePhotoButton',);
+}Widget icError({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icError', fit:fit, width:width, height:height,);
+}Image? icErrorImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icError', fit:fit, width:width, height:height,);
+}Uint8List? icErrorImageData() {
+return _getImageData('icError',);
+}Widget icSuccess({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icSuccess', fit:fit, width:width, height:height,);
+}Image? icSuccessImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icSuccess', fit:fit, width:width, height:height,);
+}Uint8List? icSuccessImageData() {
+return _getImageData('icSuccess',);
+}Widget icEyeOpen({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icEyeOpen', fit:fit, width:width, height:height,);
+}Image? icEyeOpenImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icEyeOpen', fit:fit, width:width, height:height,);
+}Uint8List? icEyeOpenImageData() {
+return _getImageData('icEyeOpen',);
+}Widget face({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('face', fit:fit, width:width, height:height,);
+}Image? faceImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('face', fit:fit, width:width, height:height,);
+}Uint8List? faceImageData() {
+return _getImageData('face',);
+}Widget icArrowDouble({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icArrowDouble', fit:fit, width:width, height:height,);
+}Image? icArrowDoubleImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icArrowDouble', fit:fit, width:width, height:height,);
+}Uint8List? icArrowDoubleImageData() {
+return _getImageData('icArrowDouble',);
+}Widget search({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('search', fit:fit, width:width, height:height,);
+}Image? searchImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('search', fit:fit, width:width, height:height,);
+}Uint8List? searchImageData() {
+return _getImageData('search',);
+}Widget fingerprint({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('fingerprint', fit:fit, width:width, height:height,);
+}Image? fingerprintImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('fingerprint', fit:fit, width:width, height:height,);
+}Uint8List? fingerprintImageData() {
+return _getImageData('fingerprint',);
+}Widget icEdit({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icEdit', fit:fit, width:width, height:height,);
+}Image? icEditImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icEdit', fit:fit, width:width, height:height,);
+}Uint8List? icEditImageData() {
+return _getImageData('icEdit',);
+}Widget icEyeClose({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icEyeClose', fit:fit, width:width, height:height,);
+}Image? icEyeCloseImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icEyeClose', fit:fit, width:width, height:height,);
+}Uint8List? icEyeCloseImageData() {
+return _getImageData('icEyeClose',);
+}Widget logo({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('logo', fit:fit, width:width, height:height,);
+}Image? logoImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('logo', fit:fit, width:width, height:height,);
+}Uint8List? logoImageData() {
+return _getImageData('logo',);
+}Widget icEmptyData({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icEmptyData', fit:fit, width:width, height:height,);
+}Image? icEmptyDataImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icEmptyData', fit:fit, width:width, height:height,);
+}Uint8List? icEmptyDataImageData() {
+return _getImageData('icEmptyData',);
+}Widget icCopy({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icCopy', fit:fit, width:width, height:height,);
+}Image? icCopyImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icCopy', fit:fit, width:width, height:height,);
+}Uint8List? icCopyImageData() {
+return _getImageData('icCopy',);
+}Widget copyBlue({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('copyBlue', fit:fit, width:width, height:height,);
+}Image? copyBlueImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('copyBlue', fit:fit, width:width, height:height,);
+}Uint8List? copyBlueImageData() {
+return _getImageData('copyBlue',);
+}Widget googleAuthLogo({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('googleAuthLogo', fit:fit, width:width, height:height,);
+}Image? googleAuthLogoImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('googleAuthLogo', fit:fit, width:width, height:height,);
+}Uint8List? googleAuthLogoImageData() {
+return _getImageData('googleAuthLogo',);
+}Widget copy({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('copy', fit:fit, width:width, height:height,);
+}Image? copyImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('copy', fit:fit, width:width, height:height,);
+}Uint8List? copyImageData() {
+return _getImageData('copy',);
+}Widget close({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('close', fit:fit, width:width, height:height,);
+}Image? closeImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('close', fit:fit, width:width, height:height,);
+}Uint8List? closeImageData() {
+return _getImageData('close',);
 }}class Icons with FetchImage {
 Widget transaction({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('transaction', fit:fit, width:width, height:height,);

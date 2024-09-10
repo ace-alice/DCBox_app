@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../middleware/request_camera_and_photos_permission.dart';
 import '../pages/app/index.dart';
 import '../pages/browser/index.dart';
+import '../pages/login/index.dart';
 import '../pages/qia_qia_service/index.dart';
 import '../pages/qr_code_scan/index.dart';
 import '../pages/welcome/index.dart';
@@ -30,6 +31,13 @@ class AppPages {
       page: () => const WelcomePage(),
       binding: WelcomeBinding(),
       title: 'unknown',
+      popGesture: false,
+    ),
+    GetPage(
+      name: AppRoutes.login,
+      page: () => const LoginPage(),
+      binding: LoginBinding(),
+      title: 'app',
       popGesture: false,
     ),
     GetPage(

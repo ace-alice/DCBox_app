@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final LangManager _langManager = Get.put(LangManagerImpl());
+
+  final botToastBuilder = BotToastInit();
 
   // This widget is the root of your application.
   @override
@@ -77,6 +80,16 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
             // 其他本地化委托
           ],
+          builder: (context, child) {
+            child = botToastBuilder(context, child);
+            return child;
+          },
+          routingCallback: (routing) {
+            // 在路由切换时隐藏键盘
+            if (routing?.current != null) {
+              FocusScope.of(Get.context!).unfocus();
+            }
+          },
         );
       },
     );

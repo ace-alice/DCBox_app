@@ -500,7 +500,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flying.p91upgrate;
-				PRODUCT_DISPLAY_NAME = "小金库";
+				PRODUCT_DISPLAY_NAME = "DCBox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = p91_hector_upgrate_prod;
@@ -690,7 +690,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flying.p91upgrate;
-				PRODUCT_DISPLAY_NAME = "小金库";
+				PRODUCT_DISPLAY_NAME = "DCBox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = p91_hector_upgrate_dev;
@@ -720,7 +720,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flying.p91upgrate;
-				PRODUCT_DISPLAY_NAME = "小金库";
+				PRODUCT_DISPLAY_NAME = "DCBox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = p91_hector_upgrate_prod;
