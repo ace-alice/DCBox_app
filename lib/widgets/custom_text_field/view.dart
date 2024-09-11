@@ -26,6 +26,11 @@ class CustomTextFieldComponent extends StatelessWidget {
   /// 输入类型
   final TextInputType? keyboardType;
 
+  /// 右侧组件
+  final Widget? prefixWidget;
+
+  final ValueChanged<String>? onChanged;
+
   CustomTextFieldComponent(
       {super.key,
       this.labelText,
@@ -33,7 +38,9 @@ class CustomTextFieldComponent extends StatelessWidget {
       this.initialValue,
       this.fieldController,
       this.isPassWord,
-      this.keyboardType}) {
+      this.keyboardType,
+      this.prefixWidget,
+      this.onChanged}) {
     if (isPassWord != null) {
       controller.state.obscureText.value = isPassWord!;
     }
@@ -69,17 +76,22 @@ class CustomTextFieldComponent extends StatelessWidget {
                 hintText: hintText ?? '',
                 // 提示文字
                 focusColor: AppColor.text999999,
-                suffixIcon: GestureDetector(
-                    onTap: () {
-                      controller.state.obscureText.value =
-                          !controller.state.obscureText.value;
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: controller.state.obscureText.value
-                          ? AppImage.common.icEyeClose(width: 16, height: 16)
-                          : AppImage.common.icEyeOpen(width: 16, height: 16),
-                    )),
+                prefixIcon: prefixWidget ?? prefixWidget,
+                suffixIcon: isPassWord != null && isPassWord!
+                    ? GestureDetector(
+                        onTap: () {
+                          controller.state.obscureText.value =
+                              !controller.state.obscureText.value;
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: controller.state.obscureText.value
+                              ? AppImage.common
+                                  .icEyeClose(width: 16, height: 16)
+                              : AppImage.common
+                                  .icEyeOpen(width: 16, height: 16),
+                        ))
+                    : const SizedBox.shrink(),
                 suffixIconConstraints: const BoxConstraints(maxHeight: 16),
                 hintStyle:
                     const TextStyle(color: AppColor.text999999, fontSize: 13),
@@ -93,7 +105,7 @@ class CustomTextFieldComponent extends StatelessWidget {
                 ),
               ),
               onChanged: (text) {
-                print('输入的文本: $text'); // 监听输入变化
+                onChanged!(text); // 监听输入变化
               },
             ),
           )

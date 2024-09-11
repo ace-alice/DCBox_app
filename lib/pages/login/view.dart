@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../network/api/get_country_list.dart';
 import '../../widgets/custom_text_field/view.dart';
+import '../../widgets/select_country_code/view.dart';
 import 'controller.dart';
 import 'widgets/login_app_bar.dart';
 import 'widgets/login_title.dart';
@@ -27,6 +29,11 @@ class LoginPage extends StatelessWidget {
                 labelText: '手机号码',
                 hintText: '请输入手机号码',
                 isPassWord: true,
+                prefixWidget: SelectCountryCodeComponent(
+                  onChanged: (CountryCodeResponse countryCode) {
+                    controller.state.countryCode.value = countryCode;
+                  },
+                ),
               ),
             ],
           ),

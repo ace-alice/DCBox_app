@@ -5,7 +5,7 @@ class EnvConfig {
   static bool get encryptSwitch {
     switch (envType) {
       case EnvType.fat:
-        return false;
+        return true;
       case EnvType.uat:
       case EnvType.stg:
       case EnvType.prod:

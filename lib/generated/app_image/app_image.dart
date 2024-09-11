@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final guide = Guide();static final home = Home();static final scan = Scan();static final welcome = Welcome();static final banners = Banners();static final common = Common();static final icons = Icons();}class Guide with FetchImage {
+import 'package:flutter/material.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final guide = Guide();static final tabs = Tabs();static final home = Home();static final scan = Scan();static final welcome = Welcome();static final banners = Banners();static final common = Common();static final country = Country();}class Guide with FetchImage {
 Widget guideCenter3({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('guideCenter3', fit:fit, width:width, height:height,);
 }Image? guideCenter3Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
@@ -23,6 +23,49 @@ return _getWidget('guideBg', fit:fit, width:width, height:height,);
 return _getImage('guideBg', fit:fit, width:width, height:height,);
 }Uint8List? guideBgImageData() {
 return _getImageData('guideBg',);
+}}class Tabs with FetchImage {
+Widget transaction({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('transaction', fit:fit, width:width, height:height,);
+}Image? transactionImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('transaction', fit:fit, width:width, height:height,);
+}Uint8List? transactionImageData() {
+return _getImageData('transaction',);
+}Widget order({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('order', fit:fit, width:width, height:height,);
+}Image? orderImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('order', fit:fit, width:width, height:height,);
+}Uint8List? orderImageData() {
+return _getImageData('order',);
+}Widget service({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('service', fit:fit, width:width, height:height,);
+}Image? serviceImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('service', fit:fit, width:width, height:height,);
+}Uint8List? serviceImageData() {
+return _getImageData('service',);
+}Widget home({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('home', fit:fit, width:width, height:height,);
+}Image? homeImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('home', fit:fit, width:width, height:height,);
+}Uint8List? homeImageData() {
+return _getImageData('home',);
+}Widget orderSelected({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('orderSelected', fit:fit, width:width, height:height,);
+}Image? orderSelectedImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('orderSelected', fit:fit, width:width, height:height,);
+}Uint8List? orderSelectedImageData() {
+return _getImageData('orderSelected',);
+}Widget transactionSelected({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('transactionSelected', fit:fit, width:width, height:height,);
+}Image? transactionSelectedImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('transactionSelected', fit:fit, width:width, height:height,);
+}Uint8List? transactionSelectedImageData() {
+return _getImageData('transactionSelected',);
+}Widget homeSelected({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('homeSelected', fit:fit, width:width, height:height,);
+}Image? homeSelectedImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('homeSelected', fit:fit, width:width, height:height,);
+}Uint8List? homeSelectedImageData() {
+return _getImageData('homeSelected',);
 }}class Home with FetchImage {
 Widget icCustomerService({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('icCustomerService', fit:fit, width:width, height:height,);
@@ -310,49 +353,131 @@ return _getWidget('close', fit:fit, width:width, height:height,);
 return _getImage('close', fit:fit, width:width, height:height,);
 }Uint8List? closeImageData() {
 return _getImageData('close',);
-}}class Icons with FetchImage {
-Widget transaction({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getWidget('transaction', fit:fit, width:width, height:height,);
-}Image? transactionImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getImage('transaction', fit:fit, width:width, height:height,);
-}Uint8List? transactionImageData() {
-return _getImageData('transaction',);
-}Widget order({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getWidget('order', fit:fit, width:width, height:height,);
-}Image? orderImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getImage('order', fit:fit, width:width, height:height,);
-}Uint8List? orderImageData() {
-return _getImageData('order',);
-}Widget service({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getWidget('service', fit:fit, width:width, height:height,);
-}Image? serviceImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getImage('service', fit:fit, width:width, height:height,);
-}Uint8List? serviceImageData() {
-return _getImageData('service',);
-}Widget home({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getWidget('home', fit:fit, width:width, height:height,);
-}Image? homeImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getImage('home', fit:fit, width:width, height:height,);
-}Uint8List? homeImageData() {
-return _getImageData('home',);
-}Widget orderSelected({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getWidget('orderSelected', fit:fit, width:width, height:height,);
-}Image? orderSelectedImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getImage('orderSelected', fit:fit, width:width, height:height,);
-}Uint8List? orderSelectedImageData() {
-return _getImageData('orderSelected',);
-}Widget transactionSelected({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getWidget('transactionSelected', fit:fit, width:width, height:height,);
-}Image? transactionSelectedImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getImage('transactionSelected', fit:fit, width:width, height:height,);
-}Uint8List? transactionSelectedImageData() {
-return _getImageData('transactionSelected',);
-}Widget homeSelected({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getWidget('homeSelected', fit:fit, width:width, height:height,);
-}Image? homeSelectedImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
-return _getImage('homeSelected', fit:fit, width:width, height:height,);
-}Uint8List? homeSelectedImageData() {
-return _getImageData('homeSelected',);
+}}class Country with FetchImage {
+Widget getImageWith({required String name,BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+final pascalCase = _snackCaseConverterToCamelCase(name);
+return _getWidget(pascalCase, fit:fit, width:width, height:height,);
+}
+Widget ic63({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic63', fit:fit, width:width, height:height,);
+}Image? ic63Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic63', fit:fit, width:width, height:height,);
+}Uint8List? ic63ImageData() {
+return _getImageData('ic63',);
+}Widget ic60({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic60', fit:fit, width:width, height:height,);
+}Image? ic60Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic60', fit:fit, width:width, height:height,);
+}Uint8List? ic60ImageData() {
+return _getImageData('ic60',);
+}Widget ic372({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic372', fit:fit, width:width, height:height,);
+}Image? ic372Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic372', fit:fit, width:width, height:height,);
+}Uint8List? ic372ImageData() {
+return _getImageData('ic372',);
+}Widget ic49({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic49', fit:fit, width:width, height:height,);
+}Image? ic49Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic49', fit:fit, width:width, height:height,);
+}Uint8List? ic49ImageData() {
+return _getImageData('ic49',);
+}Widget ic65({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic65', fit:fit, width:width, height:height,);
+}Image? ic65Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic65', fit:fit, width:width, height:height,);
+}Uint8List? ic65ImageData() {
+return _getImageData('ic65',);
+}Widget ic66({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic66', fit:fit, width:width, height:height,);
+}Image? ic66Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic66', fit:fit, width:width, height:height,);
+}Uint8List? ic66ImageData() {
+return _getImageData('ic66',);
+}Widget ic886({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic886', fit:fit, width:width, height:height,);
+}Image? ic886Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic886', fit:fit, width:width, height:height,);
+}Uint8List? ic886ImageData() {
+return _getImageData('ic886',);
+}Widget ic853({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic853', fit:fit, width:width, height:height,);
+}Image? ic853Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic853', fit:fit, width:width, height:height,);
+}Uint8List? ic853ImageData() {
+return _getImageData('ic853',);
+}Widget ic852({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic852', fit:fit, width:width, height:height,);
+}Image? ic852Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic852', fit:fit, width:width, height:height,);
+}Uint8List? ic852ImageData() {
+return _getImageData('ic852',);
+}Widget ic856({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic856', fit:fit, width:width, height:height,);
+}Image? ic856Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic856', fit:fit, width:width, height:height,);
+}Uint8List? ic856ImageData() {
+return _getImageData('ic856',);
+}Widget ic880({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic880', fit:fit, width:width, height:height,);
+}Image? ic880Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic880', fit:fit, width:width, height:height,);
+}Uint8List? ic880ImageData() {
+return _getImageData('ic880',);
+}Widget ic855({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic855', fit:fit, width:width, height:height,);
+}Image? ic855Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic855', fit:fit, width:width, height:height,);
+}Uint8List? ic855ImageData() {
+return _getImageData('ic855',);
+}Widget ic33({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic33', fit:fit, width:width, height:height,);
+}Image? ic33Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic33', fit:fit, width:width, height:height,);
+}Uint8List? ic33ImageData() {
+return _getImageData('ic33',);
+}Widget ic1({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic1', fit:fit, width:width, height:height,);
+}Image? ic1Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic1', fit:fit, width:width, height:height,);
+}Uint8List? ic1ImageData() {
+return _getImageData('ic1',);
+}Widget ic81({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic81', fit:fit, width:width, height:height,);
+}Image? ic81Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic81', fit:fit, width:width, height:height,);
+}Uint8List? ic81ImageData() {
+return _getImageData('ic81',);
+}Widget ic971({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic971', fit:fit, width:width, height:height,);
+}Image? ic971Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic971', fit:fit, width:width, height:height,);
+}Uint8List? ic971ImageData() {
+return _getImageData('ic971',);
+}Widget ic82({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic82', fit:fit, width:width, height:height,);
+}Image? ic82Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic82', fit:fit, width:width, height:height,);
+}Uint8List? ic82ImageData() {
+return _getImageData('ic82',);
+}Widget ic44({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic44', fit:fit, width:width, height:height,);
+}Image? ic44Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic44', fit:fit, width:width, height:height,);
+}Uint8List? ic44ImageData() {
+return _getImageData('ic44',);
+}Widget ic86({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic86', fit:fit, width:width, height:height,);
+}Image? ic86Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic86', fit:fit, width:width, height:height,);
+}Uint8List? ic86ImageData() {
+return _getImageData('ic86',);
+}Widget ic92({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('ic92', fit:fit, width:width, height:height,);
+}Image? ic92Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('ic92', fit:fit, width:width, height:height,);
+}Uint8List? ic92ImageData() {
+return _getImageData('ic92',);
 }}
 
 mixin FetchImage {

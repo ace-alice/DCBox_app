@@ -9,7 +9,7 @@ Widget loading(RxDouble progress, RxBool isLoading) {
   Widget getLoadingIcon() {
     switch (Get.currentRoute) {
       case AppRoutes.service:
-        return app_image.AppImage.icons.service(fit: BoxFit.fitWidth);
+        return app_image.AppImage.tabs.service(fit: BoxFit.fitWidth);
       default:
         return app_image.AppImage.welcome.logo(fit: BoxFit.fitWidth);
     }

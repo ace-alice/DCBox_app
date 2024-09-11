@@ -15,6 +15,7 @@ AppBar loginAppBar() {
         child: GestureDetector(
           onTap: () {
             Get.toNamed(AppRoutes.app);
+            Get.removeRoute(AppRoutes.login);
           },
           child: const Icon(
             Icons.close,

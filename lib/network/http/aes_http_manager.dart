@@ -16,7 +16,7 @@ import 'interceptors/request_interceptor.dart';
 import 'interceptors/response_interceptor.dart';
 
 abstract class AesHttpManager<T extends AppResponse, K extends BaseResData> {
-  bool get isNotAes => false;
+  bool get isNotAes => true;
 
   final DeviceManager _deviceManager;
 

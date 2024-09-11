@@ -17,10 +17,6 @@ import 'interceptors/request_interceptor.dart';
 import 'interceptors/response_interceptor.dart';
 
 abstract class HttpManager<T extends AppResponse, K extends BaseResData> {
-  bool get isNotAes => true;
-
-  Dio _dio = Dio();
-
   final EnvState _envState;
 
   final DeviceManager _deviceManager;
@@ -35,7 +31,7 @@ abstract class HttpManager<T extends AppResponse, K extends BaseResData> {
         _deviceManager = deviceManager,
         _langManager = langManager;
 
-  init(K data) async {
+  init() async {
     // 配置BaseOptions
     BaseOptions options = BaseOptions(
       baseUrl: _envState.apiDomain,
@@ -56,16 +52,14 @@ abstract class HttpManager<T extends AppResponse, K extends BaseResData> {
         'language': _langManager.lang,
       },
     );
-    initData = data;
-    _dio = Dio(options);
-    _dio.interceptors.add(RequestInterceptor(isNotAes: isNotAes));
-    _dio.interceptors.add(ResponseInterceptor(isNotAes: isNotAes));
-    _dio.interceptors.add(ErrorInterceptor());
+    Dio dio = Dio(options);
+    dio.interceptors.add(RequestInterceptor(isNotAes: true));
+    dio.interceptors.add(ResponseInterceptor(isNotAes: true));
+    dio.interceptors.add(ErrorInterceptor());
+    return dio;
   }
 
   String get path => '';
-
-  BaseResData initData = BaseResData();
 
   BaseMethod get method => BaseMethod.post;
 
@@ -92,13 +86,14 @@ abstract class HttpManager<T extends AppResponse, K extends BaseResData> {
   T jsonBodyDecoder(dynamic data);
 
   ///网络请求
-  Future<T> request() async {
+  Future<T> request(K data) async {
     try {
       Response response;
-      final formData = await BaseFormData(_deviceManager, _langManager)
-          .getFormData(initData);
+      final formData =
+          await BaseFormData(_deviceManager, _langManager).getFormData(data);
       final params = await getParams();
-      response = await _dio.request(
+      Dio dio = await init();
+      response = await dio.request(
         path,
         data: formData,
         queryParameters: params,

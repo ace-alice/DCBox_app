@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../core/country_manager/setup.dart';
 import '../middleware/request_camera_and_photos_permission.dart';
 import '../pages/app/index.dart';
 import '../pages/browser/index.dart';
@@ -36,14 +37,14 @@ class AppPages {
     GetPage(
       name: AppRoutes.login,
       page: () => const LoginPage(),
-      binding: LoginBinding(),
+      bindings: [LoginBinding()],
       title: 'app',
       popGesture: false,
     ),
     GetPage(
       name: AppRoutes.app,
       page: () => const AppPage(),
-      binding: AppBinding(),
+      bindings: [CountryManagerBinding(), AppBinding()],
       title: 'app',
       popGesture: false,
     ),

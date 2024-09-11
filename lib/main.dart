@@ -10,6 +10,7 @@ import 'common/app_color.dart';
 import 'common/app_font.dart';
 import 'core/lang_manager/data/index.dart';
 import 'core/lang_manager/index.dart';
+import 'router/app_router_observer.dart';
 
 void main() {
   Global().init().then((e) => runApp(MyApp()));
@@ -84,12 +85,7 @@ class MyApp extends StatelessWidget {
             child = botToastBuilder(context, child);
             return child;
           },
-          routingCallback: (routing) {
-            // 在路由切换时隐藏键盘
-            if (routing?.current != null) {
-              FocusScope.of(Get.context!).unfocus();
-            }
-          },
+          navigatorObservers: [AppRouterObserver()],
         );
       },
     );

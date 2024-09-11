@@ -4,7 +4,6 @@ import 'dart:typed_data';
 import 'package:encrypt/encrypt.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../../common/app_logger.dart';
 import '../../common/storage_key.dart';
 
 class EncryptUtils {
@@ -25,9 +24,6 @@ class EncryptUtils {
       iv: iv,
     );
     final jsonDecodeJson = jsonDecode(decryptString);
-    if (isShowLog) {
-      logger.d('jsonDecodeJson = $jsonDecodeJson');
-    }
     return jsonDecodeJson;
   }
 

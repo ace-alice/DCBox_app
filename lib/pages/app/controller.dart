@@ -1,11 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../core/country_manager/country_manager.dart';
 import 'state.dart';
 
 class AppController extends GetxController {
   final AppState state = AppState();
   PageController pageController = PageController();
+
+  final CountryManager _countryManager;
+
+  AppController({required CountryManager countryManager})
+      : _countryManager = countryManager;
 
   set pageIndex(int index) {
     state.pageIndex.value = index;
@@ -32,5 +38,10 @@ class AppController extends GetxController {
         state.tradeHasInit.value = false;
       });
     }
+  }
+
+  @override
+  void onReady() {
+    _countryManager.init();
   }
 }

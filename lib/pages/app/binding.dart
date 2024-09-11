@@ -9,7 +9,7 @@ class AppBinding extends Binding {
   @override
   List<Bind> dependencies() {
     return [
-      Bind.lazyPut(() => AppController()),
+      Bind.lazyPut(() => AppController(countryManager: Bind.find())),
       ...HomeBinding().dependencies(),
       ...TradeBinding().dependencies(),
       ...OrderBinding().dependencies(),
