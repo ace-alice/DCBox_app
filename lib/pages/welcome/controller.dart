@@ -1,3 +1,5 @@
+import 'package:dc_box_app/core/currency_list_manager/currency_list_manager.dart';
+import 'package:dc_box_app/core/summary_trans_manager/index.dart';
 import 'package:get/get.dart';
 
 import '../../core/env_manager/env_manager.dart';
@@ -9,16 +11,28 @@ class WelcomeController extends GetxController {
   final EnvManager _envManager;
   final PermissionManager _permissionManager;
 
+  final SummaryTransManager _summaryTransManager;
+
+  final CurrencyListManager _currencyListManager;
+
   WelcomeController(
       {required EnvManager envManager,
-      required PermissionManager permissionManager})
+      required PermissionManager permissionManager,
+      required SummaryTransManager summaryTransManager,
+      required CurrencyListManager currencyListManager})
       : _envManager = envManager,
-        _permissionManager = permissionManager;
+        _permissionManager = permissionManager,
+        _summaryTransManager = summaryTransManager,
+        _currencyListManager = currencyListManager;
 
   final WelcomeState state = WelcomeState();
 
   Future getApiDomain() async {
     bool status = await _envManager.init();
+    // await Future.wait(
+    //     [_summaryTransManager.init(), _currencyListManager.init()]);
+    _summaryTransManager.init();
+    _currencyListManager.init();
     if (status) {
       state.loadingStatus.value = LoadStatus.success;
     } else {

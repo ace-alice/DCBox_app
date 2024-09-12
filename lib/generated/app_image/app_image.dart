@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final guide = Guide();static final tabs = Tabs();static final home = Home();static final scan = Scan();static final welcome = Welcome();static final banners = Banners();static final common = Common();static final country = Country();}class Guide with FetchImage {
+import 'package:flutter/material.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final guide = Guide();static final tabs = Tabs();static final home = Home();static final scan = Scan();static final welcome = Welcome();static final banners = Banners();static final common = Common();static final currency = Currency();static final country = Country();}class Guide with FetchImage {
 Widget guideCenter3({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('guideCenter3', fit:fit, width:width, height:height,);
 }Image? guideCenter3Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
@@ -353,6 +353,53 @@ return _getWidget('close', fit:fit, width:width, height:height,);
 return _getImage('close', fit:fit, width:width, height:height,);
 }Uint8List? closeImageData() {
 return _getImageData('close',);
+}}class Currency with FetchImage {
+Widget getImageWith({required String name,BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+final pascalCase = _snakeCaseConverterToPascalCase(name.toLowerCase());
+return _getWidget('ic$pascalCase', fit:fit, width:width, height:height,);
+}
+Widget icUsdt({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icUsdt', fit:fit, width:width, height:height,);
+}Image? icUsdtImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icUsdt', fit:fit, width:width, height:height,);
+}Uint8List? icUsdtImageData() {
+return _getImageData('icUsdt',);
+}Widget icUsdc({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icUsdc', fit:fit, width:width, height:height,);
+}Image? icUsdcImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icUsdc', fit:fit, width:width, height:height,);
+}Uint8List? icUsdcImageData() {
+return _getImageData('icUsdc',);
+}Widget icEth({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icEth', fit:fit, width:width, height:height,);
+}Image? icEthImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icEth', fit:fit, width:width, height:height,);
+}Uint8List? icEthImageData() {
+return _getImageData('icEth',);
+}Widget icBnb({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icBnb', fit:fit, width:width, height:height,);
+}Image? icBnbImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icBnb', fit:fit, width:width, height:height,);
+}Uint8List? icBnbImageData() {
+return _getImageData('icBnb',);
+}Widget icDoge({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icDoge', fit:fit, width:width, height:height,);
+}Image? icDogeImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icDoge', fit:fit, width:width, height:height,);
+}Uint8List? icDogeImageData() {
+return _getImageData('icDoge',);
+}Widget icBtc({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icBtc', fit:fit, width:width, height:height,);
+}Image? icBtcImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icBtc', fit:fit, width:width, height:height,);
+}Uint8List? icBtcImageData() {
+return _getImageData('icBtc',);
+}Widget icTrx({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icTrx', fit:fit, width:width, height:height,);
+}Image? icTrxImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icTrx', fit:fit, width:width, height:height,);
+}Uint8List? icTrxImageData() {
+return _getImageData('icTrx',);
 }}class Country with FetchImage {
 Widget getImageWith({required String name,BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 final pascalCase = _snackCaseConverterToCamelCase(name);

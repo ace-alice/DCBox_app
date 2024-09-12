@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../core/summary_trans_manager/index.dart';
 
 Widget orderVolume() {
+  SummaryTransState summaryTransState = Get.put(SummaryTransState());
   return Container(
     margin: const EdgeInsets.only(top: 12),
     padding: const EdgeInsets.symmetric(vertical: 24),
@@ -13,20 +16,22 @@ Widget orderVolume() {
     ),
     child: Row(
       children: [
-        const Expanded(
+        Expanded(
           child: Column(
             children: [
-              Text(
+              const Text(
                 '24H成交量(U)',
                 style: TextStyle(
                     color: AppColor.text9A9AA0, fontSize: 14, height: 1.25),
               ),
-              SizedBox(height: 10),
-              Text(
-                'data',
-                style: TextStyle(
-                    color: AppColor.textFFFFFF, fontSize: 18, height: 1.25),
-              )
+              const SizedBox(height: 10),
+              Obx(
+                () => Text(
+                  '${summaryTransState.summaryTrans.value.tranAmount}',
+                  style: const TextStyle(
+                      color: AppColor.textFFFFFF, fontSize: 18, height: 1.25),
+                ),
+              ),
             ],
           ),
         ),
@@ -38,20 +43,22 @@ Widget orderVolume() {
             color: const Color.fromRGBO(56, 56, 56, 1),
           ),
         ),
-        const Expanded(
+        Expanded(
           child: Column(
             children: [
-              Text(
+              const Text(
                 '24H成单量',
                 style: TextStyle(
                     color: AppColor.text9A9AA0, fontSize: 14, height: 1.25),
               ),
-              SizedBox(height: 10),
-              Text(
-                'data',
-                style: TextStyle(
-                    color: AppColor.textFFFFFF, fontSize: 18, height: 1.25),
-              )
+              const SizedBox(height: 10),
+              Obx(
+                () => Text(
+                  '${summaryTransState.summaryTrans.value.tranCount}',
+                  style: const TextStyle(
+                      color: AppColor.textFFFFFF, fontSize: 18, height: 1.25),
+                ),
+              ),
             ],
           ),
         ),

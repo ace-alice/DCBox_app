@@ -33,10 +33,10 @@ class TotalBalance {
   TotalBalance({required this.balanceByCNY, required this.balanceByUSDT});
 
   String get cny {
-    return '$balanceByCNY';
+    return '≈ ¥ $balanceByCNY';
   }
 
   String get usdt {
-    return '\$ $balanceByUSDT';
+    return '$balanceByUSDT';
   }
 }

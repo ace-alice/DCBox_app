@@ -17,7 +17,7 @@ class ResponseInterceptor extends Interceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     StringBuffer buffer = StringBuffer();
     buffer.write('|--- Response O(∩_∩)O ---\n');
-    buffer.write('| \n');
+    buffer.write('| - url : ${response.realUri} \n');
     buffer.write('| - Code：   ${response.statusCode}\n');
     buffer.write('| - CodeMsg：${response.statusMessage}\n');
     buffer.write('| - Header：\n');

@@ -6,4 +6,6 @@ abstract class DeviceManager {
   Future<String> get releaseType;
 
   Future<String> get getDeviceNme;
+
+  Future<String> getVersion();
 }

@@ -1,4 +1,3 @@
-import 'package:dc_box_app/common/app_logger.dart';
 import 'package:get/get.dart';
 
 import '../../network/api/get_country_list.dart';
@@ -16,7 +15,6 @@ class CountryManagerImpl implements CountryManager {
   @override
   Future init() async {
     try {
-      logger.d('message ${countryState.list.value.toString()}');
       if (countryState.list.value.isEmpty) {
         CountryListResponse response =
             await _getCountryListHttp.request(CountryListResData());

@@ -59,6 +59,14 @@ class DeviceManagerImpl implements DeviceManager {
                     'TrKey.unknown.tr'
                 : (await deviceInfo.deviceInfo).data.toString();
   }
+
+  @override
+  Future<String> getVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    // 获取版本号
+    String version = packageInfo.version;
+    return version;
+  }
 }
 
 const _releaseTypeApk = 'apk';

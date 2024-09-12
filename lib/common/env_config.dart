@@ -17,7 +17,7 @@ class EnvConfig {
     switch (envType) {
       case EnvType.fat:
         return [
-          'http://public-capital-lucky-gateway-fat.k8s-fat.com/',
+          'http://public-capital-elephbit-proxy-fat.k8s-fat.com/',
         ];
       case EnvType.uat:
         return [
@@ -37,6 +37,9 @@ class EnvConfig {
         ];
     }
   }
+
+  /// token过期时间 以分钟为单位
+  static int tokenExpiredMarket = 30;
 }
 
 enum EnvType {

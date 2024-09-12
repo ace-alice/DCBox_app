@@ -1,9 +1,9 @@
-import 'package:dc_box_app/core/user_manager/state.dart';
-import 'package:dc_box_app/router/app_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../core/country_manager/country_manager.dart';
+import '../../core/user_manager/state.dart';
+import '../../router/app_routes.dart';
 import 'state.dart';
 
 class AppController extends GetxController {

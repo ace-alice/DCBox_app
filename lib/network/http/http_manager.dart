@@ -46,10 +46,10 @@ abstract class HttpManager<T extends AppResponse, K extends BaseResData> {
       headers: {
         'qid': const Uuid().v4(),
         's1': await _deviceManager.deviceId,
+        'version': await _deviceManager.getVersion(),
+        'language': _langManager.lang,
         'fromType': await _deviceManager.releaseType,
         'content-type': 'application/json',
-        // 'version': AppInfo().appVersion,
-        'language': _langManager.lang,
       },
     );
     Dio dio = Dio(options);
