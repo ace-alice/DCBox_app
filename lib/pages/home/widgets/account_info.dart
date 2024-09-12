@@ -1,10 +1,15 @@
-import 'package:dc_box_app/generated/app_image/app_image.dart';
-import 'package:dc_box_app/router/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../core/user_manager/index.dart';
+import '../../../generated/app_image/app_image.dart';
+import '../../../router/app_routes.dart';
+import '../../../widgets/rotation_animation/view.dart';
 
 Widget accountInfo() {
+  UserState userState = Get.put(UserState());
+  UserManager userManager = Get.put(UserManagerImpl());
   return Container(
     margin: const EdgeInsets.only(top: 12),
     padding: const EdgeInsets.all(16),
@@ -27,26 +32,36 @@ Widget accountInfo() {
                   '总资产(USDT)',
                   style: TextStyle(color: AppColor.text9A9AA0),
                 ),
-                IconButton(
-                    onPressed: () {},
-                    icon: AppImage.home.iconHomeRefresh(height: 16))
+                RotationAnimationComponent(
+                  loading: userState.loading,
+                  child: IconButton(
+                    onPressed: () {
+                      userManager.init();
+                    },
+                    icon: AppImage.home.iconHomeRefresh(height: 16),
+                  ),
+                ),
               ],
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              '--',
-              style: TextStyle(
-                  color: AppColor.textFFFFFF, fontSize: 35, height: 1.25),
+            Obx(
+              () => Text(
+                userState.totalBalance.value.usdt,
+                style: const TextStyle(
+                    color: AppColor.textFFFFFF, fontSize: 35, height: 1.25),
+              ),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              '--',
-              style: TextStyle(
-                  color: AppColor.text9A9AA0, fontSize: 13, height: 1.25),
+            Obx(
+              () => Text(
+                userState.totalBalance.value.cny,
+                style: const TextStyle(
+                    color: AppColor.text9A9AA0, fontSize: 13, height: 1.25),
+              ),
             ),
             const SizedBox(
               height: 20,

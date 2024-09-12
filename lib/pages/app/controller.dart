@@ -1,3 +1,5 @@
+import 'package:dc_box_app/core/user_manager/state.dart';
+import 'package:dc_box_app/router/app_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -9,9 +11,12 @@ class AppController extends GetxController {
   PageController pageController = PageController();
 
   final CountryManager _countryManager;
+  final UserState _userState;
 
-  AppController({required CountryManager countryManager})
-      : _countryManager = countryManager;
+  AppController(
+      {required CountryManager countryManager, required UserState userState})
+      : _countryManager = countryManager,
+        _userState = userState;
 
   set pageIndex(int index) {
     state.pageIndex.value = index;
@@ -22,6 +27,13 @@ class AppController extends GetxController {
       return;
     }
     state.bottomActive = true;
+    if (index != 0) {
+      if (_userState.token.isEmpty) {
+        Get.toNamed(AppRoutes.login);
+        state.bottomActive = false;
+        return;
+      }
+    }
     if (index == 1) {
       await Future.delayed(const Duration(seconds: 1));
       state.tradeHasInit.value = true;

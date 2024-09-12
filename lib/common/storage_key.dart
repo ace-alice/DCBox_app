@@ -14,4 +14,8 @@ class StorageKey {
   static const hasGuide = 'hasGuide';
 
   static const isUseBiometric = 'isUseBiometric';
+
+  static const token = 'token';
+
+  static const tokenExpired = 'tokenExpired';
 }

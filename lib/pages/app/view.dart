@@ -14,7 +14,8 @@ class AppPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AppController(countryManager: Get.find()));
+    final controller = Get.put(
+        AppController(countryManager: Get.find(), userState: Get.find()));
     final state = Bind.find<AppController>().state;
 
     return Scaffold(
@@ -24,7 +25,7 @@ class AppPage extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         scrollBehavior: const ScrollBehavior(),
         children: [
-          const KeepAliveWidget(
+          KeepAliveWidget(
             child: HomePage(),
           ),
           Obx(() {
