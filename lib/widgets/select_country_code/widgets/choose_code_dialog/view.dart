@@ -3,6 +3,7 @@ import 'package:dc_box_app/generated/app_image/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/text_form_field_option.dart';
 import '../../../../network/api/get_country_list.dart';
 import '../../../custom_text_field/view.dart';
 import 'controller.dart';
@@ -31,14 +32,16 @@ class ChooseCodeDialogComponent extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: CustomTextFieldComponent(
-                hintText: '搜索',
                 prefixWidget: Padding(
                   padding: const EdgeInsets.only(left: 16, right: 6),
                   child: AppImage.common.search(width: 14),
                 ),
-                onChanged: (text) {
-                  controller.searchText.value = text;
-                },
+                textFormFieldOption: TextFormFieldOption(
+                  hintText: '搜索',
+                  onChanged: (text) {
+                    controller.searchText.value = text;
+                  },
+                ),
               ),
             ),
             Expanded(
