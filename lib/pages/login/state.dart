@@ -29,6 +29,7 @@ class LoginState {
     passwordState = TextFormFieldOption(
       labelText: '密码',
       hintText: '请输入密码',
+      keyboardType: TextInputType.visiblePassword,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return '请输入密码';
@@ -45,7 +46,7 @@ class LoginState {
       labelText: '手机号码',
       hintText: '请输入手机号码',
       nextFocusNode: passwordState.focusNode,
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.phone,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return '请输入手机号';
@@ -67,6 +68,7 @@ class LoginState {
       labelText: '邮箱',
       hintText: '请输入邮箱',
       nextFocusNode: passwordState.focusNode,
+      keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return '请输入邮箱地址';
