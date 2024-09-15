@@ -1,13 +1,14 @@
-import 'package:dc_box_app/pages/app/widgets/app_bar.dart';
-import 'package:dc_box_app/pages/home/index.dart';
-import 'package:dc_box_app/pages/order/index.dart';
-import 'package:dc_box_app/pages/trade/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../widgets/keep_alive/view.dart';
+import '../home/index.dart';
+import '../order/index.dart';
+import '../trade/index.dart';
 import 'controller.dart';
+import 'widgets/app_bar.dart';
 import 'widgets/bottom_navigation_bar.dart';
+import 'widgets/notice_bar.dart';
 
 class AppPage extends StatelessWidget {
   const AppPage({super.key});
@@ -19,6 +20,10 @@ class AppPage extends StatelessWidget {
       userState: Get.find(),
     ));
     final state = Bind.find<AppController>().state;
+
+    Future.delayed(const Duration(milliseconds: 1), () {
+      showNoticeBar(context);
+    });
 
     return Scaffold(
       appBar: appBarWidget(controller, state),

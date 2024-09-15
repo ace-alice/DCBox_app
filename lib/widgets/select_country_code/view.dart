@@ -22,10 +22,11 @@ class SelectCountryCodeComponent extends StatelessWidget {
           builder: (BuildContext context) {
             return Dialog.fullscreen(
               child: ChooseCodeDialogComponent(
-                  onChanged: (CountryCodeResponse countryCode) {
-                controller.countryCode.value = countryCode;
-                onChanged(countryCode);
-              }),
+                onChanged: (CountryCodeResponse countryCode) {
+                  controller.countryCode.value = countryCode;
+                  onChanged(countryCode);
+                },
+              ),
             );
           },
         );

@@ -1,6 +1,6 @@
 ///环境配置
 class EnvConfig {
-  static const EnvType envType = EnvType.fat;
+  static const EnvType envType = EnvType.prod;
 
   static bool get encryptSwitch {
     switch (envType) {
@@ -21,19 +21,18 @@ class EnvConfig {
         ];
       case EnvType.uat:
         return [
-          'https://uatproxy.capluckywlt.com/',
-          'https://uatproxy.caplw.com/',
+          'https://uatproxy.capeleph.com/',
         ];
       case EnvType.stg:
         return [
-          'https://stg-proxy.capluckywlt.com/',
-          'https://stg-proxy.caplw.com/',
+          'https://stg-proxy.capeleph.com/',
+          'https://stg-proxy.elephbit.com/',
         ];
       case EnvType.prod:
         return [
-          'https://proxy.capluckywlt.com/',
-          'https://proxy.caplw.com/',
-          'https://34.92.108.46:8498/',
+          'https://35.215.148.46:55502/',
+          'https://proxy.capeleph.com/',
+          'https://proxy.elephbit.com/',
         ];
     }
   }
