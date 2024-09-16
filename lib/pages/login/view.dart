@@ -1,4 +1,3 @@
-import 'package:dc_box_app/widgets/slider_verify/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +7,7 @@ import '../../router/app_routes.dart';
 import '../../widgets/custom_tabs/view.dart';
 import '../../widgets/custom_text_field/view.dart';
 import '../../widgets/select_country_code/view.dart';
+import '../../widgets/slider_verify/view.dart';
 import '../../widgets/submit_button/view.dart';
 import 'controller.dart';
 import 'widgets/login_app_bar.dart';

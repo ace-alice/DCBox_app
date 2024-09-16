@@ -48,6 +48,7 @@ class _SliderVerifyWidgetState extends State<SliderVerifyWidget> {
   @override
   Widget build(BuildContext context) {
     controller.showDialog = () async {
+      await controller.getSliderModel();
       await showDialog(
         context: context,
         barrierDismissible: false,
@@ -56,7 +57,7 @@ class _SliderVerifyWidgetState extends State<SliderVerifyWidget> {
           return Obx(() {
             return Scaffold(
               backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
-              body: Container(
+              body: SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: Column(
@@ -104,7 +105,24 @@ class _SliderVerifyWidgetState extends State<SliderVerifyWidget> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8)),
                             ),
-                            child: AppImage.banners.bgBanner1(height: 112),
+                            child: Stack(
+                              alignment: Alignment.centerLeft,
+                              children: [
+                                AppImage.common.slideDemo(height: 112),
+                                Positioned(
+                                  top: 26,
+                                  left: controller.slideValue.value,
+                                  child: Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.brand62A2B0,
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(height: 5),
                           Stack(
@@ -124,8 +142,9 @@ class _SliderVerifyWidgetState extends State<SliderVerifyWidget> {
                                       const Text(
                                         '向右拖动滑块完成拼图验证',
                                         style: TextStyle(
-                                            color: AppColor.text182140,
-                                            fontSize: 14),
+                                          color: AppColor.text182140,
+                                          fontSize: 14,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -148,6 +167,8 @@ class _SliderVerifyWidgetState extends State<SliderVerifyWidget> {
                                     ),
                                     child: Slider(
                                       value: controller.slideValue.value,
+                                      min: 0,
+                                      max: 250,
                                       onChanged: (value) {
                                         controller.slideValue.value = value;
                                       },
@@ -161,9 +182,11 @@ class _SliderVerifyWidgetState extends State<SliderVerifyWidget> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               RotationAnimationComponent(
-                                loading: true.obs,
+                                loading: controller.loading,
                                 child: GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    controller.getSliderModel();
+                                  },
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10),
