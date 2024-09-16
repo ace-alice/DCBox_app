@@ -36,6 +36,8 @@ class _RotationAnimationState extends State<RotationAnimationComponent>
       vsync: this,
     ); // 默认开始时重复播放动画
 
+    widget.loading.value ? _start() : _done();
+
     ever(widget.loading, (bool val) {
       val ? _start() : _done();
     });

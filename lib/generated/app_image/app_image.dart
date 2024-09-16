@@ -221,6 +221,12 @@ return _getWidget('icDeleteWhite', fit:fit, width:width, height:height,);
 return _getImage('icDeleteWhite', fit:fit, width:width, height:height,);
 }Uint8List? icDeleteWhiteImageData() {
 return _getImageData('icDeleteWhite',);
+}Widget slideBtn({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('slideBtn', fit:fit, width:width, height:height,);
+}Image? slideBtnImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('slideBtn', fit:fit, width:width, height:height,);
+}Uint8List? slideBtnImageData() {
+return _getImageData('slideBtn',);
 }Widget fileUnderReview({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('fileUnderReview', fit:fit, width:width, height:height,);
 }Image? fileUnderReviewImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
@@ -251,6 +257,12 @@ return _getWidget('icPhoto', fit:fit, width:width, height:height,);
 return _getImage('icPhoto', fit:fit, width:width, height:height,);
 }Uint8List? icPhotoImageData() {
 return _getImageData('icPhoto',);
+}Widget slideDemo({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('slideDemo', fit:fit, width:width, height:height,);
+}Image? slideDemoImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('slideDemo', fit:fit, width:width, height:height,);
+}Uint8List? slideDemoImageData() {
+return _getImageData('slideDemo',);
 }Widget takePhotoButton({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('takePhotoButton', fit:fit, width:width, height:height,);
 }Image? takePhotoButtonImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
@@ -305,6 +317,12 @@ return _getWidget('icEdit', fit:fit, width:width, height:height,);
 return _getImage('icEdit', fit:fit, width:width, height:height,);
 }Uint8List? icEditImageData() {
 return _getImageData('icEdit',);
+}Widget slideBg({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('slideBg', fit:fit, width:width, height:height,);
+}Image? slideBgImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('slideBg', fit:fit, width:width, height:height,);
+}Uint8List? slideBgImageData() {
+return _getImageData('slideBg',);
 }Widget icEyeClose({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('icEyeClose', fit:fit, width:width, height:height,);
 }Image? icEyeCloseImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {

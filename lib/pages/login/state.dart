@@ -1,9 +1,11 @@
+import 'package:dc_box_app/common/zip_types.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 
 import '../../common/text_form_field_option.dart';
 import '../../network/api/get_country_list.dart';
+import '../../widgets/slider_verify/controller.dart';
 
 class LoginState {
   Rx<CountryCodeResponse> countryCode =
@@ -23,6 +25,9 @@ class LoginState {
 
   List<RxBool> parameterValidResult =
       ParameterType.values.map<RxBool>((p) => false.obs).toList();
+
+  SliderVerifyController sliderVerifyController =
+      SliderVerifyController(zipType: ZipType.LOGIN);
 
   LoginState() {
     ///Initialize variables

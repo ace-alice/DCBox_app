@@ -1,3 +1,4 @@
+import 'package:dc_box_app/widgets/slider_verify/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -59,11 +60,17 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                SubmitButtonComponent(
-                  onPressed: controller.submit,
-                  text: '登录',
-                  disabled: state.disabled,
-                  loading: state.loading,
+                SliderVerifyWidget(
+                  controller: state.sliderVerifyController,
+                  child: SubmitButtonComponent(
+                    onPressed: () {
+                      state.sliderVerifyController.showDialog();
+                      controller.submit();
+                    },
+                    text: '登录',
+                    disabled: state.disabled,
+                    loading: state.loading,
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
