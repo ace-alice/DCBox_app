@@ -71,6 +71,7 @@ class _CustomTabsState extends State<CustomTabs> with TickerProviderStateMixin {
                 height: widget.height,
                 child: TabBarView(
                   controller: _tabController,
+                  physics: const NeverScrollableScrollPhysics(),
                   children: widget.tabBarViews!,
                 ),
               )

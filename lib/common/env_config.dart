@@ -1,6 +1,6 @@
 ///环境配置
 class EnvConfig {
-  static const EnvType envType = EnvType.prod;
+  static const EnvType envType = EnvType.fat;
 
   static bool get encryptSwitch {
     switch (envType) {

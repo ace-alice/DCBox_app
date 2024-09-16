@@ -8,4 +8,5 @@ class AppRoutes {
   static const scan = '/scan';
   static const app = '/app';
   static const login = '/login';
+  static const register = '/register';
 }

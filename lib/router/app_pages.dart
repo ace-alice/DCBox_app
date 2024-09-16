@@ -1,3 +1,4 @@
+import 'package:dc_box_app/pages/register/index.dart';
 import 'package:get/get.dart';
 
 import '../core/country_manager/setup.dart';
@@ -38,7 +39,14 @@ class AppPages {
       name: AppRoutes.login,
       page: () => const LoginPage(),
       bindings: [LoginBinding()],
-      title: 'app',
+      title: 'login',
+      popGesture: false,
+    ),
+    GetPage(
+      name: AppRoutes.register,
+      page: () => const RegisterPage(),
+      bindings: [RegisterBinding()],
+      title: 'register',
       popGesture: false,
     ),
     GetPage(
