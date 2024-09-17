@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../common/app_color.dart';
 import '../../network/api/get_country_list.dart';
+import '../../network/models/verify_slide_model.dart';
 import '../../router/app_routes.dart';
 import '../../widgets/custom_tabs/view.dart';
 import '../../widgets/custom_text_field/view.dart';
@@ -62,9 +63,9 @@ class LoginPage extends StatelessWidget {
                 ),
                 SliderVerifyWidget(
                   controller: state.sliderVerifyController,
+                  returnResult: (VerifySlideModel result) {},
                   child: SubmitButtonComponent(
                     onPressed: () {
-                      state.sliderVerifyController.showDialog();
                       controller.submit();
                     },
                     text: '登录',

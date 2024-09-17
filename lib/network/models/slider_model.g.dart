@@ -7,8 +7,8 @@ part of 'slider_model.dart';
 // **************************************************************************
 
 SliderModel _$SliderModelFromJson(Map<String, dynamic> json) => SliderModel(
-      x: (json['x'] as num?)?.toInt() ?? 0,
-      y: (json['y'] as num?)?.toInt() ?? 0,
+      x: (json['x'] as num?)?.toDouble() ?? 0,
+      y: (json['y'] as num?)?.toDouble() ?? 0,
       originImage: json['originImage'] as String? ?? '',
       shadeImage: json['shadeImage'] as String? ?? '',
       cutoutImage: json['cutoutImage'] as String? ?? '',

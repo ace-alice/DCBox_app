@@ -5,9 +5,9 @@ part 'slider_model.g.dart';
 @JsonSerializable()
 class SliderModel {
   @JsonKey(defaultValue: 0)
-  final int x;
+  final double x;
   @JsonKey(defaultValue: 0)
-  final int y;
+  final double y;
   @JsonKey(defaultValue: '')
   final String originImage;
   @JsonKey(defaultValue: '')

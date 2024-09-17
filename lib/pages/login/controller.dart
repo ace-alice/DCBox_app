@@ -1,5 +1,4 @@
 import 'package:dc_box_app/common/app_logger.dart';
-import 'package:dc_box_app/common/app_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +12,7 @@ class LoginController extends GetxController {
   submit() {
     if (formKey.currentState?.validate() ?? false) {
       // Form is valid, proceed with form submission
-      AppToast.simple('submit', () {});
+      state.sliderVerifyController.showDialog();
     }
   }
 
