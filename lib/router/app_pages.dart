@@ -1,4 +1,5 @@
 import 'package:dc_box_app/pages/register/index.dart';
+import 'package:dc_box_app/pages/verify/index.dart';
 import 'package:get/get.dart';
 
 import '../core/country_manager/setup.dart';
@@ -40,6 +41,13 @@ class AppPages {
       page: () => const LoginPage(),
       bindings: [LoginBinding()],
       title: 'login',
+      popGesture: false,
+    ),
+    GetPage(
+      name: AppRoutes.verify,
+      page: () => const VerifyPage(),
+      bindings: [VerifyBinding()],
+      title: 'verify',
       popGesture: false,
     ),
     GetPage(

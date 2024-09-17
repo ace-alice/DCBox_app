@@ -1,4 +1,4 @@
-import 'package:dc_box_app/common/zip_types.dart';
+import 'package:dc_box_app/common/biz_types.dart';
 
 import '../http/base_res_data.dart';
 import '../http/base_response.dart';
@@ -38,12 +38,12 @@ class GenerateSliderResponse extends AppResponse {
 }
 
 class GenerateSliderResData extends BaseResData {
-  final ZipType zipType;
+  final BizType bizType;
 
-  GenerateSliderResData({required this.zipType});
+  GenerateSliderResData({required this.bizType});
 
   @override
   Map<String, dynamic> toMap() {
-    return {'bizType': zipType.name};
+    return {'bizType': bizType.name};
   }
 }

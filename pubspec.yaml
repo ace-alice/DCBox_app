@@ -75,6 +75,10 @@ dependencies:
   local_auth: ^2.3.0
   # swipe 组件  https://pub.dev/packages/carousel_slider
   carousel_slider: ^5.0.0
+  # Dart 的加密算法  https://pub.dev/packages/crypto
+  crypto: ^3.0.5
+  # 验证码输入框  https://pub.dev/packages/crypto
+  pin_code_fields: ^8.0.1
 
 dev_dependencies:
   flutter_test:

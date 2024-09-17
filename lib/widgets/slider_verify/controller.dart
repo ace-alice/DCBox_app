@@ -5,7 +5,7 @@ import 'package:dc_box_app/network/models/verify_slide_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import '../../common/zip_types.dart';
+import '../../common/biz_types.dart';
 import '../../core/device_manager/index.dart';
 import '../../core/env_manager/state.dart';
 import '../../core/lang_manager/index.dart';
@@ -26,13 +26,13 @@ class SliderVerifyController extends GetxController {
     envState: Get.find<EnvState>(),
   );
 
-  final ZipType zipType;
+  final BizType bizType;
 
   late Function showDialog;
 
   late Function(VerifySlideModel result) closeDialog;
 
-  SliderVerifyController({required this.zipType});
+  SliderVerifyController({required this.bizType});
 
   RxDouble slideValue = 0.0.obs;
 
@@ -53,7 +53,7 @@ class SliderVerifyController extends GetxController {
     loading.value = true;
     try {
       GenerateSliderResponse response = await _generateSliderHttp
-          .request(GenerateSliderResData(zipType: zipType));
+          .request(GenerateSliderResData(bizType: bizType));
       slideModel.value = response.model;
       sliderProps.value = SliderProps(
         originImage: Image.memory(
@@ -86,8 +86,13 @@ class SliderVerifyController extends GetxController {
           y: slideModel.value.y,
         ),
       );
-      closeDialog(response.result);
+      if (response.result.success) {
+        closeDialog(response.result);
+      } else {
+        getSliderModel();
+      }
     } catch (e) {
+      getSliderModel();
       rethrow;
     } finally {}
   }

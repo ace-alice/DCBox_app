@@ -1,4 +1,4 @@
-enum ZipType {
+enum BizType {
   /// 登录
   LOGIN,
 

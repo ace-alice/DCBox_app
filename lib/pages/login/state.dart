@@ -1,4 +1,4 @@
-import 'package:dc_box_app/common/zip_types.dart';
+import 'package:dc_box_app/common/biz_types.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
@@ -27,7 +27,7 @@ class LoginState {
       ParameterType.values.map<RxBool>((p) => false.obs).toList();
 
   SliderVerifyController sliderVerifyController =
-      SliderVerifyController(zipType: ZipType.LOGIN);
+      SliderVerifyController(bizType: BizType.LOGIN);
 
   LoginState() {
     ///Initialize variables

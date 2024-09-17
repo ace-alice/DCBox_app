@@ -19,7 +19,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
+    final controller = Get.put(LoginController(
+        preLoginHttp: Get.find(), getVerifyTypesHttp: Get.find()));
     final state = Bind.find<LoginController>().state;
 
     return Scaffold(
@@ -63,7 +64,9 @@ class LoginPage extends StatelessWidget {
                 ),
                 SliderVerifyWidget(
                   controller: state.sliderVerifyController,
-                  returnResult: (VerifySlideModel result) {},
+                  returnResult: (VerifySlideModel result) {
+                    controller.preLogin(result);
+                  },
                   child: SubmitButtonComponent(
                     onPressed: () {
                       controller.submit();

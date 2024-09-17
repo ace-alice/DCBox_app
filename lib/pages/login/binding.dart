@@ -1,9 +1,11 @@
-import 'package:dc_box_app/network/api/generate_slider.dart';
+import 'package:dc_box_app/network/api/get_verify_types.dart';
 import 'package:get/get.dart';
 
 import '../../core/device_manager/index.dart';
 import '../../core/env_manager/state.dart';
 import '../../core/lang_manager/index.dart';
+import '../../network/api/generate_slider.dart';
+import '../../network/api/pre_login.dart';
 import '../../network/api/verify_slider.dart';
 import 'controller.dart';
 
@@ -14,6 +16,13 @@ class LoginBinding extends Binding {
       Bind.lazyPut<EnvState>(() => EnvState()),
       Bind.lazyPut<LangManager>(() => LangManagerImpl()),
       Bind.lazyPut<DeviceManager>(() => DeviceManagerImpl()),
+      Bind.lazyPut<PreLoginHttp>(
+        () => PreLoginHttp(
+          deviceManager: Bind.find(),
+          langManager: Bind.find(),
+          envState: Bind.find(),
+        ),
+      ),
       Bind.lazyPut<GenerateSliderHttp>(
         () => GenerateSliderHttp(
           deviceManager: Bind.find(),
@@ -28,7 +37,15 @@ class LoginBinding extends Binding {
           envState: Bind.find(),
         ),
       ),
-      Bind.lazyPut(() => LoginController())
+      Bind.lazyPut<GetVerifyTypesHttp>(
+        () => GetVerifyTypesHttp(
+          deviceManager: Bind.find(),
+          langManager: Bind.find(),
+          envState: Bind.find(),
+        ),
+      ),
+      Bind.lazyPut(() => LoginController(
+          preLoginHttp: Bind.find(), getVerifyTypesHttp: Bind.find()))
     ];
   }
 }
