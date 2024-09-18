@@ -11,7 +11,7 @@ Widget accountInfo() {
   UserState userState = Get.put(UserState());
   UserManager userManager = Get.find<UserManager>();
   return Container(
-    margin: const EdgeInsets.only(top: 12),
+    // margin: const EdgeInsets.only(top: 12),
     padding: const EdgeInsets.all(16),
     width: double.infinity,
     decoration: BoxDecoration(

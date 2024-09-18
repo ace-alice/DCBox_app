@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../core/env_manager/env_manager.dart';
 import '../../core/permission_manager/permission_manager.dart';
+import '../../core/user_manager/index.dart';
 import '../../router/app_routes.dart';
 import 'state.dart';
 
@@ -15,24 +16,27 @@ class WelcomeController extends GetxController {
 
   final CurrencyListManager _currencyListManager;
 
-  WelcomeController(
-      {required EnvManager envManager,
-      required PermissionManager permissionManager,
-      required SummaryTransManager summaryTransManager,
-      required CurrencyListManager currencyListManager})
-      : _envManager = envManager,
+  final UserManager _userManager;
+
+  WelcomeController({
+    required EnvManager envManager,
+    required PermissionManager permissionManager,
+    required SummaryTransManager summaryTransManager,
+    required CurrencyListManager currencyListManager,
+    required UserManager userManager,
+  })  : _envManager = envManager,
         _permissionManager = permissionManager,
         _summaryTransManager = summaryTransManager,
-        _currencyListManager = currencyListManager;
+        _currencyListManager = currencyListManager,
+        _userManager = userManager;
 
   final WelcomeState state = WelcomeState();
 
   Future getApiDomain() async {
     bool status = await _envManager.init();
-    // await Future.wait(
-    //     [_summaryTransManager.init(), _currencyListManager.init()]);
     _summaryTransManager.init();
     _currencyListManager.init();
+    await _userManager.init();
     if (status) {
       state.loadingStatus.value = LoadStatus.success;
     } else {

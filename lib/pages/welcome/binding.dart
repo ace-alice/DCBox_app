@@ -1,3 +1,4 @@
+import 'package:dc_box_app/core/user_manager/index.dart';
 import 'package:get/get.dart';
 
 import '../../core/currency_list_manager/index.dart';
@@ -20,31 +21,32 @@ class WelcomeBinding extends Binding {
   @override
   List<Bind> dependencies() {
     return [
+      ...UserManagerBinding().dependencies(),
       Bind.lazyPut<EnvState>(() => EnvState()),
       Bind.lazyPut<PermissionManager>(() => PermissionManagerImpl()),
       Bind.lazyPut<LangManager>(() => LangManagerImpl()),
       Bind.lazyPut<DeviceManager>(() => DeviceManagerImpl()),
       Bind.lazyPut<EncryptManager>(() => EncryptManagerImpl(
-          getRsaPublicKey: Get.find(), getAesPrivateKey: Get.find())),
+          getRsaPublicKey: Bind.find(), getAesPrivateKey: Bind.find())),
       Bind.lazyPut<EnvManager>(
-          () => EnvManagerImpl(encryptManager: Get.find())),
-      Bind.lazyPut<GetAesPrivateKey>(() =>
-          GetAesPrivateKey(deviceManager: Get.find(), langManager: Get.find())),
-      Bind.lazyPut<GetRsaPublicKey>(() =>
-          GetRsaPublicKey(deviceManager: Get.find(), langManager: Get.find())),
+          () => EnvManagerImpl(encryptManager: Bind.find())),
+      Bind.lazyPut<GetAesPrivateKey>(() => GetAesPrivateKey(
+          deviceManager: Bind.find(), langManager: Bind.find())),
+      Bind.lazyPut<GetRsaPublicKey>(() => GetRsaPublicKey(
+          deviceManager: Bind.find(), langManager: Bind.find())),
       Bind.lazyPut<SummaryTransHttp>(() => SummaryTransHttp(
-          deviceManager: Get.find(),
-          langManager: Get.find(),
-          envState: Get.find())),
+          deviceManager: Bind.find(),
+          langManager: Bind.find(),
+          envState: Bind.find())),
       Bind.lazyPut<SummaryTransManager>(
-          () => SummaryTransManagerImpl(summaryTransHttp: Get.find())),
+          () => SummaryTransManagerImpl(summaryTransHttp: Bind.find())),
       Bind.lazyPut<EncryptManager>(() => EncryptManagerImpl(
-            getRsaPublicKey: Get.find(),
-            getAesPrivateKey: Get.find(),
+            getRsaPublicKey: Bind.find(),
+            getAesPrivateKey: Bind.find(),
           )),
       Bind.lazyPut<EnvManager>(
         () => EnvManagerImpl(
-          encryptManager: Get.find(),
+          encryptManager: Bind.find(),
         ),
       ),
       Bind.lazyPut<GetCurrencyListHttp>(() => GetCurrencyListHttp(
@@ -55,10 +57,11 @@ class WelcomeBinding extends Binding {
           () => CurrencyListManagerImpl(getCurrencyListHttp: Bind.find())),
       Bind.lazyPut(
         () => WelcomeController(
-          envManager: Get.find(),
-          permissionManager: Get.find(),
-          summaryTransManager: Get.find(),
-          currencyListManager: Get.find(),
+          envManager: Bind.find(),
+          permissionManager: Bind.find(),
+          summaryTransManager: Bind.find(),
+          currencyListManager: Bind.find(),
+          userManager: Bind.find(),
         ),
       )
     ];

@@ -7,8 +7,9 @@ import '../../../common/app_color.dart';
 
 // AssetImage('assets/images/home/home_remind_login.png')
 Widget enterCard() {
-  return SizedBox(
+  return Container(
     height: 100,
+    margin: const EdgeInsets.only(bottom: 12),
     child: DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0), //10像素圆角
