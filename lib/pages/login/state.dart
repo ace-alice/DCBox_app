@@ -4,12 +4,12 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 
 import '../../common/text_form_field_option.dart';
-import '../../network/api/get_country_list.dart';
+import '../../widgets/select_country_code/controller.dart';
 import '../../widgets/slider_verify/controller.dart';
 
 class LoginState {
-  Rx<CountryCodeResponse> countryCode =
-      CountryCodeResponse(name: '中国', code: '86').obs;
+  SelectCountryCodeController selectCountryCodeController =
+      SelectCountryCodeController();
 
   late TextFormFieldOption phoneState;
 
@@ -22,9 +22,6 @@ class LoginState {
   RxBool loading = false.obs;
 
   RxBool disabled = true.obs;
-
-  List<RxBool> parameterValidResult =
-      ParameterType.values.map<RxBool>((p) => false.obs).toList();
 
   SliderVerifyController sliderVerifyController =
       SliderVerifyController(bizType: BizType.LOGIN);
@@ -42,9 +39,6 @@ class LoginState {
         return null;
       },
       isPassWord: true,
-      onFieldSubmitted: (value, result) {
-        parameterValidResult[ParameterType.password.index].value = result;
-      },
     );
 
     phoneState = TextFormFieldOption(
@@ -64,9 +58,6 @@ class LoginState {
         }
         return null;
       },
-      onFieldSubmitted: (value, result) {
-        parameterValidResult[ParameterType.phone.index].value = result;
-      },
     );
 
     emailState = TextFormFieldOption(
@@ -74,6 +65,7 @@ class LoginState {
       hintText: '请输入邮箱',
       nextFocusNode: passwordState.focusNode,
       keyboardType: TextInputType.emailAddress,
+      initialValue: 'gkhectortest@gmail.com',
       validator: (value) {
         if (value == null || value.isEmpty) {
           return '请输入邮箱地址';
@@ -85,9 +77,6 @@ class LoginState {
           return '请输入有效的邮箱地址';
         }
         return null;
-      },
-      onFieldSubmitted: (value, result) {
-        parameterValidResult[ParameterType.email.index].value = result;
       },
     );
   }

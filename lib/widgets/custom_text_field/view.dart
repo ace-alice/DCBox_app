@@ -23,13 +23,9 @@ class CustomTextFieldComponent extends StatelessWidget {
       () {
         if (!textFormFieldOption.focusNode.hasFocus) {
           // 当用户按下 "下一步" 键时，焦点移动到下一个输入框
-          bool pass = true;
           if (textFormFieldOption.validator != null) {
-            pass = textFormFieldOption.formFieldKey.currentState!.validate();
-          }
-          if (textFormFieldOption.onFieldSubmitted != null) {
-            textFormFieldOption.onFieldSubmitted!(
-                textFormFieldOption.controller.text, pass);
+            textFormFieldOption.validValue.value =
+                textFormFieldOption.formFieldKey.currentState!.validate();
           }
         }
       },
@@ -38,6 +34,12 @@ class CustomTextFieldComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (textFormFieldOption.initialValue != null) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        textFormFieldOption.validValue.value =
+            textFormFieldOption.formFieldKey.currentState!.validate();
+      });
+    }
     return Obx(() {
       return SizedBox(
         height: textFormFieldOption.validator == null ? 80 : 120,
@@ -63,7 +65,7 @@ class CustomTextFieldComponent extends StatelessWidget {
                 keyboardType:
                     textFormFieldOption.keyboardType ?? TextInputType.text,
                 controller: textFormFieldOption.controller,
-                initialValue: textFormFieldOption.initialValue,
+                // initialValue: textFormFieldOption.initialValue,
                 obscureText: controller.state.obscureText.value,
                 focusNode: textFormFieldOption.focusNode,
                 autovalidateMode: AutovalidateMode.disabled,
@@ -113,12 +115,8 @@ class CustomTextFieldComponent extends StatelessWidget {
                     FocusScope.of(context)
                         .requestFocus(textFormFieldOption.nextFocusNode);
                   }
-                  if (textFormFieldOption.validator != null) {
-                    pass = textFormFieldOption.formFieldKey.currentState!
-                        .validate();
-                  }
                   if (textFormFieldOption.onFieldSubmitted != null) {
-                    textFormFieldOption.onFieldSubmitted!(value, pass);
+                    textFormFieldOption.onFieldSubmitted!(value);
                   }
                 },
                 onChanged: (text) {

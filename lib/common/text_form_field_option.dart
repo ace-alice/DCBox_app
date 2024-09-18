@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 class TextFormFieldOption {
   final GlobalKey<FormFieldState> formFieldKey = GlobalKey<FormFieldState>();
@@ -27,7 +28,9 @@ class TextFormFieldOption {
 
   final ValueChanged<String>? onChanged;
 
-  Function(String, bool)? onFieldSubmitted;
+  RxBool validValue = true.obs;
+
+  Function(String)? onFieldSubmitted;
 
   TextFormFieldOption({
     this.validator,
@@ -39,5 +42,14 @@ class TextFormFieldOption {
     this.onChanged,
     this.nextFocusNode,
     this.onFieldSubmitted,
-  });
+  }) {
+    if (validator != null) {
+      validValue.value = false;
+    }
+    if (initialValue != null) {
+      Future.delayed(const Duration(seconds: 1), () {
+        controller.text = initialValue!;
+      });
+    }
+  }
 }

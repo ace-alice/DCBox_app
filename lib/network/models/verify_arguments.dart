@@ -16,6 +16,9 @@ class VerifyArguments {
   final int verifyType;
   @JsonKey(defaultValue: '')
   final String captchaVerifyId;
+  @JsonKey(defaultValue: 'LOGIN')
+  final String bizType;
+  final String? token;
 
   const VerifyArguments({
     required this.verifyTypes,
@@ -24,6 +27,8 @@ class VerifyArguments {
     required this.email,
     required this.verifyType,
     required this.captchaVerifyId,
+    required this.bizType,
+    this.token,
   });
 
   factory VerifyArguments.fromJson(Map<String, dynamic> json) =>

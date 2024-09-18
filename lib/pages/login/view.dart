@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common/app_color.dart';
-import '../../network/api/get_country_list.dart';
 import '../../network/models/verify_slide_model.dart';
 import '../../router/app_routes.dart';
 import '../../widgets/custom_tabs/view.dart';
@@ -44,9 +43,7 @@ class LoginPage extends StatelessWidget {
                     tabBarViews: [
                       CustomTextFieldComponent(
                         prefixWidget: SelectCountryCodeComponent(
-                          onChanged: (CountryCodeResponse countryCode) {
-                            controller.state.countryCode.value = countryCode;
-                          },
+                          controller: state.selectCountryCodeController,
                         ),
                         textFormFieldOption: state.phoneState,
                       ),

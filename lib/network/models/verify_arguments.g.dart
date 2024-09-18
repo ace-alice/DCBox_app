@@ -17,6 +17,8 @@ VerifyArguments _$VerifyArgumentsFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String? ?? '',
       verifyType: (json['verifyType'] as num?)?.toInt() ?? 0,
       captchaVerifyId: json['captchaVerifyId'] as String? ?? '',
+      bizType: json['bizType'] as String? ?? '',
+      token: json['token'] as dynamic ?? null,
     );
 
 Map<String, dynamic> _$VerifyArgumentsToJson(VerifyArguments instance) =>
@@ -27,4 +29,6 @@ Map<String, dynamic> _$VerifyArgumentsToJson(VerifyArguments instance) =>
       'email': instance.email,
       'verifyType': instance.verifyType,
       'captchaVerifyId': instance.captchaVerifyId,
+      'bizType': instance.bizType,
+      'token': instance.token,
     };

@@ -7,11 +7,9 @@ import 'controller.dart';
 import 'widgets/choose_code_dialog/view.dart';
 
 class SelectCountryCodeComponent extends StatelessWidget {
-  final controller = SelectCountryCodeController();
+  final SelectCountryCodeController controller;
 
-  SelectCountryCodeComponent({super.key, required this.onChanged});
-
-  final Function(CountryCodeResponse countryCode) onChanged;
+  SelectCountryCodeComponent({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,6 @@ class SelectCountryCodeComponent extends StatelessWidget {
               child: ChooseCodeDialogComponent(
                 onChanged: (CountryCodeResponse countryCode) {
                   controller.countryCode.value = countryCode;
-                  onChanged(countryCode);
                 },
               ),
             );

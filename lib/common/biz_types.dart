@@ -107,3 +107,11 @@ enum BizType {
   /// 信用卡解挂
   CREDITCARD_UNLOST,
 }
+
+class BizTypeConfig {
+  static BizType getTypeByName(String name) {
+    return BizType.values.firstWhere((BizType type) {
+      return type.name == name;
+    });
+  }
+}

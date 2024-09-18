@@ -1,13 +1,13 @@
+import 'package:dc_box_app/widgets/select_country_code/controller.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 
 import '../../common/text_form_field_option.dart';
-import '../../network/api/get_country_list.dart';
 
 class RegisterState {
-  Rx<CountryCodeResponse> countryCode =
-      CountryCodeResponse(name: '中国', code: '86').obs;
+  SelectCountryCodeController selectCountryCodeController =
+      SelectCountryCodeController();
 
   late TextFormFieldOption phoneState;
 
@@ -41,9 +41,6 @@ class RegisterState {
         }
         return null;
       },
-      onFieldSubmitted: (value, result) {
-        parameterValidResult[ParameterType.phone.index].value = result;
-      },
     );
 
     emailState = TextFormFieldOption(
@@ -61,9 +58,6 @@ class RegisterState {
           return '请输入有效的邮箱地址';
         }
         return null;
-      },
-      onFieldSubmitted: (value, result) {
-        parameterValidResult[ParameterType.email.index].value = result;
       },
     );
   }

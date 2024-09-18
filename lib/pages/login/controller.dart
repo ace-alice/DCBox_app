@@ -1,15 +1,14 @@
 import 'dart:convert';
 
-import 'package:dc_box_app/common/app_logger.dart';
-import 'package:dc_box_app/common/biz_types.dart';
-import 'package:dc_box_app/extensions/string_md5.dart';
-import 'package:dc_box_app/network/api/pre_login.dart';
-import 'package:dc_box_app/router/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/biz_types.dart';
+import '../../extensions/string_md5.dart';
 import '../../network/api/get_verify_types.dart';
+import '../../network/api/pre_login.dart';
 import '../../network/models/verify_slide_model.dart';
+import '../../router/app_routes.dart';
 import 'state.dart';
 
 class LoginController extends GetxController {
@@ -45,7 +44,8 @@ class LoginController extends GetxController {
         PreLoginResponse loginResponse = await _preLoginHttp.request(
           PreLoginResData(
             phone: state.phoneState.controller.text,
-            countryCode: state.countryCode.value.code,
+            countryCode:
+                state.selectCountryCodeController.countryCode.value.code,
             email: state.emailState.controller.text,
             loginType: state.tabType.value == TabType.phone ? 1 : 2,
             password: state.passwordState.controller.text.toMd5,
@@ -67,10 +67,13 @@ class LoginController extends GetxController {
                 {
                   'verifyTypes': typesResponse.model.verifyTypes,
                   'phone': state.phoneState.controller.text,
-                  'countryCode': state.countryCode.value.code,
+                  'countryCode':
+                      state.selectCountryCodeController.countryCode.value.code,
                   'email': state.emailState.controller.text,
                   'verifyType': state.tabType.value == TabType.phone ? 1 : 2,
                   'captchaVerifyId': result.captchaVerifyId,
+                  'bizType': BizType.LOGIN.name,
+                  'token': loginResponse.result.token
                 },
               ),
             );
@@ -87,21 +90,24 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    everAll(state.parameterValidResult, (resultList) {
+    everAll([
+      state.tabType,
+      state.passwordState.validValue,
+      state.phoneState.validValue,
+      state.emailState.validValue,
+    ], (resultList) {
       if (state.tabType.value == TabType.phone) {
-        state.disabled.value =
-            !state.parameterValidResult[ParameterType.phone.index].value ||
-                !state.parameterValidResult[ParameterType.password.index].value;
+        state.disabled.value = !state.passwordState.validValue.value ||
+            !state.phoneState.validValue.value;
       }
       if (state.tabType.value == TabType.email) {
-        state.disabled.value =
-            !state.parameterValidResult[ParameterType.email.index].value ||
-                !state.parameterValidResult[ParameterType.password.index].value;
+        state.disabled.value = !state.passwordState.validValue.value ||
+            !state.emailState.validValue.value;
       }
-      logger.w('state.disabled=>${state.disabled.value}');
     });
     ever(state.tabType, (value) {
       state.passwordState.formFieldKey.currentState!.reset();
+      state.passwordState.validValue.value = false;
     });
   }
 }

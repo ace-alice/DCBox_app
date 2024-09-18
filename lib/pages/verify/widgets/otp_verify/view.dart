@@ -1,23 +1,25 @@
-import 'package:dc_box_app/common/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../../../../common/app_color.dart';
 import 'controller.dart';
 
-class SendVerifyCodeComponent extends StatelessWidget {
-  SendVerifyCodeController controller;
+class OtpVerifyComponent extends StatelessWidget {
+  final OtpVerifyController controller;
 
   final RxBool disabled;
 
-  Function(bool result) returnResult;
+  final Function(bool result) returnResult;
 
-  SendVerifyCodeComponent({
+  final bool hasLine;
+
+  OtpVerifyComponent({
     super.key,
     required this.controller,
     required this.disabled,
     required this.returnResult,
+    this.hasLine = false,
   });
 
   @override
@@ -25,43 +27,9 @@ class SendVerifyCodeComponent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              controller.title,
-              style: const TextStyle(fontSize: 16, height: 1.25),
-            ),
-            Obx(
-              () => CountdownTimer(
-                endTime: controller.endTime.value,
-                onEnd: () {},
-                widgetBuilder: (_, time) {
-                  if (time == null) {
-                    return GestureDetector(
-                      onTap: () {
-                        controller.sendCode();
-                      },
-                      child: Text(
-                        controller.sendCount.value == 0 ? '发送' : '重新发送',
-                        style: const TextStyle(color: AppColor.brand62A2B0),
-                      ),
-                    );
-                  }
-                  return Text(
-                    '${time.sec}秒后重新发送',
-                    style: const TextStyle(color: AppColor.text999999),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-        Text(
-          controller.content,
-          style: const TextStyle(
-              fontSize: 14, height: 1.25, color: AppColor.brand62A2B0),
+        const Text(
+          '谷歌认证',
+          style: TextStyle(fontSize: 16, height: 1.25),
         ),
         const SizedBox(height: 16),
         PinCodeTextField(
@@ -100,7 +68,15 @@ class SendVerifyCodeComponent extends StatelessWidget {
             }
           },
           appContext: context,
-        )
+        ),
+        hasLine
+            ? Container(
+                height: 0.5,
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                decoration:
+                    const BoxDecoration(color: AppColor.backdrop4C6D778B),
+              )
+            : const SizedBox.shrink(),
       ],
     );
   }
