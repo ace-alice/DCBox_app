@@ -1,10 +1,13 @@
-import 'package:dc_box_app/network/api/send_verify_code.dart';
 import 'package:get/get.dart';
 
 import '../../core/device_manager/index.dart';
 import '../../core/env_manager/state.dart';
 import '../../core/lang_manager/index.dart';
+import '../../network/api/login_auth.dart';
+import '../../network/api/send_verify_code.dart';
+import '../../network/api/verify_request.dart';
 import 'controller.dart';
+import 'handlers/index.dart';
 
 class VerifyBinding extends Binding {
   @override
@@ -20,7 +23,24 @@ class VerifyBinding extends Binding {
           envState: Bind.find(),
         ),
       ),
-      Bind.lazyPut(() => VerifyController(sendVerifyCodeHttp: Bind.find())),
+      Bind.lazyPut<VerifyRequestHttp>(
+        () => VerifyRequestHttp(
+          deviceManager: Bind.find(),
+          langManager: Bind.find(),
+          envState: Bind.find(),
+        ),
+      ),
+      Bind.lazyPut<LoginAuthHttp>(
+        () => LoginAuthHttp(
+          deviceManager: Bind.find(),
+          langManager: Bind.find(),
+          envState: Bind.find(),
+        ),
+      ),
+      Bind.lazyPut<LoginHandler>(
+          () => LoginHandler(loginAuthHttp: Bind.find())),
+      Bind.lazyPut(() => VerifyController(
+          sendVerifyCodeHttp: Bind.find(), verifyRequestHttp: Bind.find())),
     ];
   }
 }

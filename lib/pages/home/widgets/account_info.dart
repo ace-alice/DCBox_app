@@ -9,7 +9,7 @@ import '../../../widgets/rotation_animation/view.dart';
 
 Widget accountInfo() {
   UserState userState = Get.put(UserState());
-  UserManager userManager = Get.put(UserManagerImpl());
+  UserManager userManager = Get.find<UserManager>();
   return Container(
     margin: const EdgeInsets.only(top: 12),
     padding: const EdgeInsets.all(16),

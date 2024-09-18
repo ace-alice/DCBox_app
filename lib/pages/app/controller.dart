@@ -28,7 +28,7 @@ class AppController extends GetxController {
     }
     state.bottomActive = true;
     if (index != 0) {
-      if (_userState.token.isEmpty) {
+      if (_userState.token.value.isEmpty) {
         Get.toNamed(AppRoutes.login);
         state.bottomActive = false;
         return;

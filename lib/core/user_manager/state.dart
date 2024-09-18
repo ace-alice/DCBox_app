@@ -1,6 +1,9 @@
-import 'package:dc_box_app/common/storage_key.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
+import '../../common/storage_key.dart';
+import '../../network/models/user_info_model.dart';
+import 'initValue.dart';
 
 class UserState {
   RxString token = ''.obs;
@@ -12,6 +15,8 @@ class UserState {
 
   Rx<TotalBalance> totalBalance =
       TotalBalance(balanceByCNY: 140.0, balanceByUSDT: 20.0).obs;
+
+  Rx<UserInfoModel> userInfo = UserInfoModel.fromJson(initUserInfoValue).obs;
 
   UserState() {
     /// init

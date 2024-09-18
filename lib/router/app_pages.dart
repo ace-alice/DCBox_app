@@ -1,14 +1,15 @@
-import 'package:dc_box_app/pages/register/index.dart';
-import 'package:dc_box_app/pages/verify/index.dart';
 import 'package:get/get.dart';
 
 import '../core/country_manager/setup.dart';
+import '../core/user_manager/index.dart';
 import '../middleware/request_camera_and_photos_permission.dart';
 import '../pages/app/index.dart';
 import '../pages/browser/index.dart';
 import '../pages/login/index.dart';
 import '../pages/qia_qia_service/index.dart';
 import '../pages/qr_code_scan/index.dart';
+import '../pages/register/index.dart';
+import '../pages/verify/index.dart';
 import '../pages/welcome/index.dart';
 import '../widgets/mobile_scanner/binding.dart';
 import 'app_routes.dart';
@@ -46,7 +47,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.verify,
       page: () => const VerifyPage(),
-      bindings: [VerifyBinding()],
+      bindings: [UserManagerBinding(), VerifyBinding()],
       title: 'verify',
       popGesture: false,
     ),
@@ -60,7 +61,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.app,
       page: () => const AppPage(),
-      bindings: [CountryManagerBinding(), AppBinding()],
+      bindings: [UserManagerBinding(), CountryManagerBinding(), AppBinding()],
       title: 'app',
       popGesture: false,
     ),

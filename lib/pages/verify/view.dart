@@ -13,8 +13,8 @@ class VerifyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller =
-        Get.put(VerifyController(sendVerifyCodeHttp: Get.find()));
+    final controller = Get.put(VerifyController(
+        sendVerifyCodeHttp: Get.find(), verifyRequestHttp: Get.find()));
 
     return Scaffold(
       backgroundColor: AppColor.backdrop222222,
@@ -58,7 +58,7 @@ class VerifyPage extends StatelessWidget {
                 : const SizedBox.shrink(),
             const SizedBox(height: 140),
             SubmitButtonComponent(
-              onPressed: () {},
+              onPressed: controller.onPressed,
               loading: controller.loading,
               disabled: controller.disabled,
               text: '确认',

@@ -21,7 +21,11 @@ class HomePage extends StatelessWidget {
         children: [
           bannerCarousel(),
           marquee(state),
-          enterCard(),
+          Obx(() {
+            return userState.token.value.isNotEmpty
+                ? const SizedBox.shrink()
+                : enterCard();
+          }),
           accountInfo(),
           orderVolume(),
           assetDetails(),

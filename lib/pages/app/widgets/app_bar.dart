@@ -1,20 +1,24 @@
-import 'package:dc_box_app/generated/app_image/app_image.dart';
-import 'package:dc_box_app/router/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../core/user_manager/index.dart';
+import '../../../generated/app_image/app_image.dart';
+import '../../../router/app_routes.dart';
 import '../../../utils/clipboard_data.dart';
 import '../controller.dart';
 import '../state.dart';
 
 AppBar appBarWidget(AppController controller, AppState state) {
+  UserState userState = Get.put(UserState());
   return AppBar(
     leading: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed(AppRoutes.login);
+          if (userState.token.value.isEmpty) {
+            Get.toNamed(AppRoutes.login);
+          }
         },
         child: AppImage.common.icUserAvatar(),
       ),
@@ -23,15 +27,29 @@ AppBar appBarWidget(AppController controller, AppState state) {
     iconTheme: const IconThemeData(size: 25),
     title: GestureDetector(
       onTap: () {
-        clipboardData('text');
+        clipboardData(userState.userInfo.value.loginName);
       },
       child: Row(
         children: [
-          const Text('(未登录)'),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: AppImage.common.copy(width: 14, height: 14),
-          )
+          Obx(() {
+            if (userState.userInfo.value.loginName.isNotEmpty) {
+              return Text(userState.userInfo.value.loginName);
+            } else {
+              return const Text('(未登录)');
+            }
+          }),
+          Obx(
+            () {
+              if (userState.token.value.isNotEmpty) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: AppImage.common.copy(width: 14, height: 14),
+                );
+              } else {
+                return const SizedBox.shrink();
+              }
+            },
+          ),
         ],
       ),
     ),
