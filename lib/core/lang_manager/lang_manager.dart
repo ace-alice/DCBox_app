@@ -6,6 +6,8 @@ abstract class LangManager {
   String get lang;
 
   Locale get locale;
+
+  void changeLang(String value);
 }
 
 enum LangType {

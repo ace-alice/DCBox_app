@@ -1,3 +1,4 @@
+import 'package:dc_box_app/core/lang_manager/data/tr_key.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -80,8 +81,8 @@ Widget accountInfo() {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              tradeEnter(
-                  AppImage.home.icScan(width: 16), '扫一扫', AppRoutes.browser),
+              tradeEnter(AppImage.home.icScan(width: 16), TrKey.scan.tr,
+                  AppRoutes.browser),
               tradeEnter(
                   AppImage.home.icDeposit(width: 16), '充币', AppRoutes.browser),
               tradeEnter(
