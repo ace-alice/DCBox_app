@@ -8,6 +8,7 @@ import '../trade/index.dart';
 import 'controller.dart';
 import 'widgets/app_bar.dart';
 import 'widgets/bottom_navigation_bar.dart';
+import 'widgets/notice_bar.dart';
 
 class AppPage extends StatelessWidget {
   const AppPage({super.key});
@@ -21,7 +22,7 @@ class AppPage extends StatelessWidget {
     final state = Bind.find<AppController>().state;
 
     Future.delayed(const Duration(milliseconds: 1), () {
-      // showNoticeBar(context);
+      showNoticeBar(context);
     });
 
     return Scaffold(

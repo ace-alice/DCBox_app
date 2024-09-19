@@ -7,7 +7,8 @@ import '../../../core/notice_bar_manager/index.dart';
 import '../../../generated/app_image/app_image.dart';
 
 showNoticeBar(BuildContext pContext) {
-  NoticeBarManager noticeBarManager = Get.put(NoticeBarManagerImpl());
+  NoticeBarManager noticeBarManager =
+      Get.put<NoticeBarManager>(NoticeBarManagerImpl());
   showModalBottomSheet(
     context: pContext,
     backgroundColor: AppColor.backdrop222222,
