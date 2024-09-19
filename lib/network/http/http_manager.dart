@@ -69,6 +69,9 @@ abstract class HttpManager<T extends AppResponse, K extends BaseResData> {
 
   T getResBodyFromDecodeResponse(dynamic data) {
     final header = HeaderResponse.decode(data['head']);
+    if (header.isTickOut) {
+      throw GkTickOutException.initFrom(header.code.toString());
+    }
     if (header.isError) {
       throw GKpocketException(header, data['body']);
     }
@@ -89,8 +92,8 @@ abstract class HttpManager<T extends AppResponse, K extends BaseResData> {
   Future<T> request(K data) async {
     try {
       Response response;
-      final formData =
-          await BaseFormData(_deviceManager, _langManager).getFormData(data);
+      final formData = await BaseFormData(_deviceManager, _langManager)
+          .getFormData(data, path);
       final params = await getParams();
       Dio dio = await init();
       response = await dio.request(

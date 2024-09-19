@@ -1,3 +1,4 @@
+import 'package:dc_box_app/network/models/user_balance_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -13,8 +14,21 @@ class UserState {
 
   RxBool loading = false.obs;
 
-  Rx<TotalBalance> totalBalance =
-      TotalBalance(balanceByCNY: 140.0, balanceByUSDT: 20.0).obs;
+  Rx<UserBalanceModel> totalBalance = UserBalanceModel.fromJson({}).obs;
+
+  String get balanceByUSDT {
+    if (token.value.isEmpty) {
+      return '--';
+    }
+    return '${totalBalance.value.balanceByUSDT}';
+  }
+
+  String get balanceByCNY {
+    if (token.value.isEmpty) {
+      return '--';
+    }
+    return '≈ ¥ ${totalBalance.value.balanceByCNY}';
+  }
 
   Rx<UserInfoModel> userInfo = UserInfoModel.fromJson(initUserInfoValue).obs;
 
@@ -28,20 +42,5 @@ class UserState {
       tokenExpired.value =
           DateTime.parse(getStorage.read(StorageKey.tokenExpired));
     }
-  }
-}
-
-class TotalBalance {
-  final double balanceByCNY;
-  final double balanceByUSDT;
-
-  TotalBalance({required this.balanceByCNY, required this.balanceByUSDT});
-
-  String get cny {
-    return '≈ ¥ $balanceByCNY';
-  }
-
-  String get usdt {
-    return '$balanceByUSDT';
   }
 }

@@ -1,11 +1,36 @@
-import 'package:dc_box_app/core/currency_list_manager/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../core/currency_list_manager/index.dart';
+import '../../../core/user_manager/index.dart';
+import '../../../network/models/user_balance_model.dart';
 
 Widget assetDetails() {
   CurrencyListState currencyListState = Get.put(CurrencyListState());
+  UserState userState = Get.put(UserState());
+
+  String getBalance(String currency) {
+    if (userState.token.value.isEmpty) {
+      return '--';
+    }
+    if (userState.totalBalance.value.balanceList.isNotEmpty) {
+      BalanceList? listItem =
+          userState.totalBalance.value.balanceList.firstWhere((item) {
+        return item.currency == currency;
+      },
+              orElse: () => const BalanceList(
+                    currency: '',
+                    balance: 0,
+                    exchangeRate: 0,
+                    exchangeCurrency: '',
+                    exchangeBalance: 0,
+                  ));
+      return listItem.balance.toString();
+    }
+    return '--';
+  }
+
   return Container(
     margin: const EdgeInsets.only(top: 12),
     padding: const EdgeInsets.all(15),
@@ -63,7 +88,7 @@ Widget assetDetails() {
                         ),
                       ),
                       Text(
-                        currency.type.toString(),
+                        getBalance(currency.currency),
                         style: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w700),
                       ),

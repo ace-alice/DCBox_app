@@ -85,8 +85,8 @@ abstract class AesHttpManager<T extends AppResponse, K extends BaseResData> {
   ///网络请求
   Future<T> request(K data, String baseUrl) async {
     try {
-      final formData =
-          await BaseFormData(_deviceManager, _langManager).getFormData(data);
+      final formData = await BaseFormData(_deviceManager, _langManager)
+          .getFormData(data, path);
       final params = await getParams();
       Dio dio = await init(baseUrl);
       final response = await dio.request(

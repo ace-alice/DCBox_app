@@ -4,4 +4,8 @@ abstract class UserManager {
   setToken(String? token);
 
   setTokenExpired();
+
+  checkToken();
+
+  initData();
 }

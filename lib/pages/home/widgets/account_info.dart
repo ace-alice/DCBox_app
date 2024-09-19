@@ -48,7 +48,7 @@ Widget accountInfo() {
             ),
             Obx(
               () => Text(
-                userState.totalBalance.value.usdt,
+                userState.balanceByUSDT,
                 style: const TextStyle(
                     color: AppColor.textFFFFFF, fontSize: 35, height: 1.25),
               ),
@@ -58,7 +58,7 @@ Widget accountInfo() {
             ),
             Obx(
               () => Text(
-                userState.totalBalance.value.cny,
+                userState.balanceByCNY,
                 style: const TextStyle(
                     color: AppColor.text9A9AA0, fontSize: 13, height: 1.25),
               ),
