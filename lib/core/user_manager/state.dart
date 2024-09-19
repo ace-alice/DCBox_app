@@ -12,7 +12,9 @@ class UserState {
   Rx<DateTime> tokenExpired =
       DateTime.now().add(const Duration(minutes: 30)).obs;
 
-  RxBool loading = false.obs;
+  RxBool balanceLoading = false.obs;
+
+  RxBool kycLoading = false.obs;
 
   Rx<UserBalanceModel> totalBalance = UserBalanceModel.fromJson({}).obs;
 

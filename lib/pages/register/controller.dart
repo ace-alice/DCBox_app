@@ -12,7 +12,7 @@ class RegisterController extends GetxController {
   submit() {
     if (formKey.currentState?.validate() ?? false) {
       // Form is valid, proceed with form submission
-      AppToast.simple('submit', () {});
+      AppToast.simple('submit');
     }
   }
 

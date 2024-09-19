@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import '../generated/app_image/app_image.dart';
 
 class AppToast {
-  static simple(String text, void Function() fun,
-      [ToastType type = ToastType.none]) {
+  static simple(String text, [ToastType type = ToastType.none]) {
     BotToast.showCustomNotification(
       toastBuilder: (fun) {
         return Row(
@@ -48,6 +47,58 @@ class AppToast {
       align: const Alignment(0, -0.5),
     );
   }
+
+  static popUps({
+    required Widget Function(void Function() cancelFunc) build,
+    bool onlyOne = false,
+    AlignType align = AlignType.center,
+    Duration? duration = const Duration(seconds: 3),
+    bool enableSlideOff = false,
+    alignment = Alignment.center,
+    bool modelClose = false,
+  }) {
+    BotToast.showCustomNotification(
+      toastBuilder: (cancelFunc) {
+        return build(cancelFunc);
+      },
+      onlyOne: onlyOne,
+      duration: duration,
+      enableSlideOff: enableSlideOff,
+      wrapToastAnimation: (controller, cancelFunc, child) {
+        return GestureDetector(
+          onTap: () {
+            if (modelClose) {
+              cancelFunc();
+            }
+          }, // 点击遮罩层关闭通知
+          child: FadeTransition(
+            // 使用淡入动画显示
+            opacity: controller,
+            child: Container(
+              height: double.infinity,
+              width: double.infinity,
+              decoration:
+                  const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.4)),
+              child: Column(
+                children: [
+                  align == AlignType.top
+                      ? const SizedBox.shrink()
+                      : const Expanded(child: SizedBox.shrink()),
+                  GestureDetector(
+                    child: child,
+                    onTap: () {},
+                  ),
+                  align == AlignType.bottom
+                      ? const SizedBox.shrink()
+                      : const Expanded(child: SizedBox.shrink()),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
 
 enum ToastType {
@@ -66,3 +117,5 @@ Widget toastIcon(ToastType type) {
       return AppImage.common.icError(width: 14, height: 14);
   }
 }
+
+enum AlignType { top, center, bottom }

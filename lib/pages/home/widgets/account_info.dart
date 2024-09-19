@@ -33,10 +33,10 @@ Widget accountInfo() {
                   style: TextStyle(color: AppColor.text9A9AA0),
                 ),
                 RotationAnimationComponent(
-                  loading: userState.loading,
+                  loading: userState.balanceLoading,
                   child: IconButton(
                     onPressed: () {
-                      userManager.init();
+                      userManager.getUserBalance();
                     },
                     icon: AppImage.home.iconHomeRefresh(height: 16),
                   ),

@@ -8,4 +8,8 @@ abstract class UserManager {
   checkToken();
 
   initData();
+
+  Future getUserBalance();
+
+  Future getKycStatus();
 }

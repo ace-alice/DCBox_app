@@ -1,3 +1,4 @@
+import 'package:dc_box_app/core/notice_bar_manager/controller.dart';
 import 'package:dc_box_app/core/user_manager/index.dart';
 import 'package:dc_box_app/network/api/get_user_balance.dart';
 import 'package:dc_box_app/network/api/get_user_info.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 import '../device_manager/index.dart';
 import '../env_manager/state.dart';
 import '../lang_manager/index.dart';
+import '../notice_bar_manager/notice_bar_manager.dart';
 
 class UserManagerBinding extends Binding {
   @override
@@ -28,10 +30,14 @@ class UserManagerBinding extends Binding {
           envState: Bind.find(),
         ),
       ),
+      Bind.lazyPut<NoticeBarManager>(
+        () => NoticeBarManagerImpl(),
+      ),
       Bind.lazyPut<UserManager>(
         () => UserManagerImpl(
           getUserInfoHttp: Bind.find(),
           getUserBalanceHttp: Bind.find(),
+          noticeBarManager: Bind.find(),
         ),
       ),
     ];

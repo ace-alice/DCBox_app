@@ -1,7 +1,9 @@
+import 'package:dc_box_app/core/notice_bar_manager/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../core/notice_bar_manager/notice_bar_manager.dart';
 import '../../../core/user_manager/index.dart';
 import '../../../generated/app_image/app_image.dart';
 import '../../../router/app_routes.dart';
@@ -10,7 +12,9 @@ import '../controller.dart';
 import '../state.dart';
 
 AppBar appBarWidget(AppController controller, AppState state) {
-  UserState userState = Get.put(UserState());
+  UserState userState = Get.put<UserState>(UserState());
+  NoticeBarManager noticeBarManager =
+      Get.put<NoticeBarManager>(NoticeBarManagerImpl());
   return AppBar(
     leading: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -18,6 +22,8 @@ AppBar appBarWidget(AppController controller, AppState state) {
         onTap: () {
           if (userState.token.value.isEmpty) {
             Get.toNamed(AppRoutes.login);
+          } else {
+            noticeBarManager.show();
           }
         },
         child: AppImage.common.icUserAvatar(),

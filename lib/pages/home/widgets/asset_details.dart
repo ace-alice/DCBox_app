@@ -17,7 +17,7 @@ Widget assetDetails() {
     if (userState.totalBalance.value.balanceList.isNotEmpty) {
       BalanceList? listItem =
           userState.totalBalance.value.balanceList.firstWhere((item) {
-        return item.currency == currency;
+        return item.exchangeCurrency == currency;
       },
               orElse: () => const BalanceList(
                     currency: '',

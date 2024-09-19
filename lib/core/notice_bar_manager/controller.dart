@@ -1,33 +1,20 @@
-import 'package:flutter/cupertino.dart';
+import 'package:dc_box_app/common/app_toast.dart';
+import 'package:get/get.dart';
 
+import '../../pages/app/widgets/notice_bar.dart';
 import 'notice_bar_manager.dart';
 import 'state.dart';
 
 class NoticeBarManagerImpl implements NoticeBarManager {
-  NoticeBarState state = NoticeBarState();
+  NoticeBarState state = Get.put<NoticeBarState>(NoticeBarState());
 
   @override
-  PageController pageController = PageController();
-
-  @override
-  int get currentIndex => state.currentIndex.value + 1;
-
-  @override
-  int get noticesLength => state.notices.length;
-
-  @override
-  toNextPage(BuildContext context) {
-    if (currentIndex < noticesLength) {
-      pageController.nextPage(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeInOut,
-      );
-      state.currentIndex.value++;
-    } else {
-      Navigator.pop(context);
-    }
+  show() {
+    AppToast.popUps(
+      build: showNoticeBar,
+      // align: const Alignment(0, 1),
+      duration: null,
+      align: AlignType.bottom,
+    );
   }
-
-  @override
-  List<NoticeItem> get notices => state.notices.value;
 }

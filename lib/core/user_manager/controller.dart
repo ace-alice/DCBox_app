@@ -9,6 +9,7 @@ import '../../exception/exception.dart';
 import '../../network/api/get_user_info.dart';
 import '../../network/models/user_balance_model.dart';
 import '../../network/models/user_info_model.dart';
+import '../notice_bar_manager/notice_bar_manager.dart';
 import 'initValue.dart';
 import 'user_manager.dart';
 
@@ -19,37 +20,39 @@ class UserManagerImpl implements UserManager {
 
   final GetUserBalanceHttp _getUserBalanceHttp;
 
-  UserManagerImpl(
-      {required GetUserInfoHttp getUserInfoHttp,
-      required GetUserBalanceHttp getUserBalanceHttp})
-      : _getUserInfoHttp = getUserInfoHttp,
-        _getUserBalanceHttp = getUserBalanceHttp {
+  final NoticeBarManager _noticeBarManager;
+
+  UserManagerImpl({
+    required GetUserInfoHttp getUserInfoHttp,
+    required GetUserBalanceHttp getUserBalanceHttp,
+    required NoticeBarManager noticeBarManager,
+  })  : _getUserInfoHttp = getUserInfoHttp,
+        _getUserBalanceHttp = getUserBalanceHttp,
+        _noticeBarManager = noticeBarManager {
     ever(userState.token, (value) {
       if (value.isNotEmpty) {
         init();
+        _noticeBarManager.show();
       } else {}
     });
   }
 
   @override
   Future init() async {
-    if (userState.loading.value) {
-      return;
-    }
-    userState.loading.value = true;
     try {
       if (userState.token.value.isNotEmpty) {
-        await Future.wait([getUserInfo(), getUserBalance()]);
+        await Future.wait([getUserInfo(), getUserBalance(), getKycStatus()]);
       }
     } catch (e) {
       rethrow;
-    } finally {
-      userState.loading.value = false;
     }
   }
 
   Future getUserInfo() async {
     try {
+      if (userState.token.value.isEmpty) {
+        return;
+      }
       UserInfoResponse response =
           await _getUserInfoHttp.request(UserInfoResData());
       userState.userInfo.value = response.result;
@@ -58,13 +61,38 @@ class UserManagerImpl implements UserManager {
     }
   }
 
+  @override
   Future getUserBalance() async {
     try {
+      if (userState.token.value.isEmpty || userState.balanceLoading.value) {
+        return;
+      }
+      userState.balanceLoading.value = true;
       UserBalanceResponse response =
           await _getUserBalanceHttp.request(UserBalanceResData());
       userState.totalBalance.value = response.result;
     } catch (e) {
       rethrow;
+    } finally {
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        userState.balanceLoading.value = false;
+      });
+    }
+  }
+
+  @override
+  Future getKycStatus() async {
+    try {
+      if (userState.token.value.isEmpty || userState.kycLoading.value) {
+        return;
+      }
+      userState.kycLoading.value = true;
+    } catch (e) {
+      rethrow;
+    } finally {
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        userState.kycLoading.value = false;
+      });
     }
   }
 
@@ -102,6 +130,7 @@ class UserManagerImpl implements UserManager {
       setToken('');
       throw GkTokenExpiredException();
     }
+    setTokenExpired();
     return true;
   }
 
