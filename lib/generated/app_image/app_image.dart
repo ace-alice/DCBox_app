@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final guide = Guide();static final tabs = Tabs();static final home = Home();static final scan = Scan();static final welcome = Welcome();static final banners = Banners();static final common = Common();static final currency = Currency();static final country = Country();}class Guide with FetchImage {
+import 'package:flutter/material.dart';import 'package:get/get.dart';import 'dart:convert';import 'dart:typed_data';import 'image_json.dart';class AppImage {static final guide = Guide();static final tabs = Tabs();static final personal = Personal();static final home = Home();static final scan = Scan();static final welcome = Welcome();static final banners = Banners();static final common = Common();static final currency = Currency();static final country = Country();}class Guide with FetchImage {
 Widget guideCenter3({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('guideCenter3', fit:fit, width:width, height:height,);
 }Image? guideCenter3Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
@@ -66,6 +66,151 @@ return _getWidget('homeSelected', fit:fit, width:width, height:height,);
 return _getImage('homeSelected', fit:fit, width:width, height:height,);
 }Uint8List? homeSelectedImageData() {
 return _getImageData('homeSelected',);
+}}class Personal with FetchImage {
+Widget mineService({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('mineService', fit:fit, width:width, height:height,);
+}Image? mineServiceImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('mineService', fit:fit, width:width, height:height,);
+}Uint8List? mineServiceImageData() {
+return _getImageData('mineService',);
+}Widget iconUndone({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('iconUndone', fit:fit, width:width, height:height,);
+}Image? iconUndoneImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('iconUndone', fit:fit, width:width, height:height,);
+}Uint8List? iconUndoneImageData() {
+return _getImageData('iconUndone',);
+}Widget preventFishingCodeBackground({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('preventFishingCodeBackground', fit:fit, width:width, height:height,);
+}Image? preventFishingCodeBackgroundImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('preventFishingCodeBackground', fit:fit, width:width, height:height,);
+}Uint8List? preventFishingCodeBackgroundImageData() {
+return _getImageData('preventFishingCodeBackground',);
+}Widget icChrome({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icChrome', fit:fit, width:width, height:height,);
+}Image? icChromeImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icChrome', fit:fit, width:width, height:height,);
+}Uint8List? icChromeImageData() {
+return _getImageData('icChrome',);
+}Widget mineList4({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('mineList4', fit:fit, width:width, height:height,);
+}Image? mineList4Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('mineList4', fit:fit, width:width, height:height,);
+}Uint8List? mineList4ImageData() {
+return _getImageData('mineList4',);
+}Widget logout({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('logout', fit:fit, width:width, height:height,);
+}Image? logoutImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('logout', fit:fit, width:width, height:height,);
+}Uint8List? logoutImageData() {
+return _getImageData('logout',);
+}Widget mineList5({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('mineList5', fit:fit, width:width, height:height,);
+}Image? mineList5Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('mineList5', fit:fit, width:width, height:height,);
+}Uint8List? mineList5ImageData() {
+return _getImageData('mineList5',);
+}Widget icUpgrade({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icUpgrade', fit:fit, width:width, height:height,);
+}Image? icUpgradeImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icUpgrade', fit:fit, width:width, height:height,);
+}Uint8List? icUpgradeImageData() {
+return _getImageData('icUpgrade',);
+}Widget icUserOkay({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icUserOkay', fit:fit, width:width, height:height,);
+}Image? icUserOkayImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icUserOkay', fit:fit, width:width, height:height,);
+}Uint8List? icUserOkayImageData() {
+return _getImageData('icUserOkay',);
+}Widget icWaiting({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icWaiting', fit:fit, width:width, height:height,);
+}Image? icWaitingImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icWaiting', fit:fit, width:width, height:height,);
+}Uint8List? icWaitingImageData() {
+return _getImageData('icWaiting',);
+}Widget mineList1({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('mineList1', fit:fit, width:width, height:height,);
+}Image? mineList1Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('mineList1', fit:fit, width:width, height:height,);
+}Uint8List? mineList1ImageData() {
+return _getImageData('mineList1',);
+}Widget account({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('account', fit:fit, width:width, height:height,);
+}Image? accountImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('account', fit:fit, width:width, height:height,);
+}Uint8List? accountImageData() {
+return _getImageData('account',);
+}Widget kyc({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('kyc', fit:fit, width:width, height:height,);
+}Image? kycImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('kyc', fit:fit, width:width, height:height,);
+}Uint8List? kycImageData() {
+return _getImageData('kyc',);
+}Widget iconError({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('iconError', fit:fit, width:width, height:height,);
+}Image? iconErrorImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('iconError', fit:fit, width:width, height:height,);
+}Uint8List? iconErrorImageData() {
+return _getImageData('iconError',);
+}Widget mineList2({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('mineList2', fit:fit, width:width, height:height,);
+}Image? mineList2Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('mineList2', fit:fit, width:width, height:height,);
+}Uint8List? mineList2ImageData() {
+return _getImageData('mineList2',);
+}Widget mineList3({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('mineList3', fit:fit, width:width, height:height,);
+}Image? mineList3Image({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('mineList3', fit:fit, width:width, height:height,);
+}Uint8List? mineList3ImageData() {
+return _getImageData('mineList3',);
+}Widget icClock({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icClock', fit:fit, width:width, height:height,);
+}Image? icClockImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icClock', fit:fit, width:width, height:height,);
+}Uint8List? icClockImageData() {
+return _getImageData('icClock',);
+}Widget icPhone({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icPhone', fit:fit, width:width, height:height,);
+}Image? icPhoneImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icPhone', fit:fit, width:width, height:height,);
+}Uint8List? icPhoneImageData() {
+return _getImageData('icPhone',);
+}Widget logoWhite({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('logoWhite', fit:fit, width:width, height:height,);
+}Image? logoWhiteImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('logoWhite', fit:fit, width:width, height:height,);
+}Uint8List? logoWhiteImageData() {
+return _getImageData('logoWhite',);
+}Widget bank({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('bank', fit:fit, width:width, height:height,);
+}Image? bankImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('bank', fit:fit, width:width, height:height,);
+}Uint8List? bankImageData() {
+return _getImageData('bank',);
+}Widget icWarning({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icWarning', fit:fit, width:width, height:height,);
+}Image? icWarningImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icWarning', fit:fit, width:width, height:height,);
+}Uint8List? icWarningImageData() {
+return _getImageData('icWarning',);
+}Widget icNoRecords({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('icNoRecords', fit:fit, width:width, height:height,);
+}Image? icNoRecordsImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('icNoRecords', fit:fit, width:width, height:height,);
+}Uint8List? icNoRecordsImageData() {
+return _getImageData('icNoRecords',);
+}Widget copy({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('copy', fit:fit, width:width, height:height,);
+}Image? copyImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('copy', fit:fit, width:width, height:height,);
+}Uint8List? copyImageData() {
+return _getImageData('copy',);
+}Widget minePrivate({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getWidget('minePrivate', fit:fit, width:width, height:height,);
+}Image? minePrivateImage({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
+return _getImage('minePrivate', fit:fit, width:width, height:height,);
+}Uint8List? minePrivateImageData() {
+return _getImageData('minePrivate',);
 }}class Home with FetchImage {
 Widget icCustomerService({BoxFit fit = BoxFit.contain,double? width,double? height,}) {
 return _getWidget('icCustomerService', fit:fit, width:width, height:height,);

@@ -6,6 +6,7 @@ import '../middleware/request_camera_and_photos_permission.dart';
 import '../pages/app/index.dart';
 import '../pages/browser/index.dart';
 import '../pages/login/index.dart';
+import '../pages/personal/index.dart';
 import '../pages/qia_qia_service/index.dart';
 import '../pages/qr_code_scan/index.dart';
 import '../pages/register/index.dart';
@@ -56,6 +57,13 @@ class AppPages {
       page: () => const RegisterPage(),
       bindings: [RegisterBinding()],
       title: 'register',
+      popGesture: false,
+    ),
+    GetPage(
+      name: AppRoutes.personal,
+      page: () => const PersonalPage(),
+      bindings: [UserManagerBinding(), PersonalBinding()],
+      title: 'personal',
       popGesture: false,
     ),
     GetPage(

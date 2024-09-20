@@ -63,6 +63,15 @@ class MyApp extends StatelessWidget {
             //預設背景色
             scaffoldBackgroundColor: AppColor.backdrop121212,
             fontFamily: AppFont.pingFangHk,
+            appBarTheme: const AppBarTheme(
+              backgroundColor: AppColor.backdrop222222,
+              iconTheme: IconThemeData(size: 25, color: AppColor.textFFFFFF),
+              titleTextStyle: TextStyle(
+                color: AppColor.textFFFFFF,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ),
           translations: Messages(),
           // 你的翻译资源

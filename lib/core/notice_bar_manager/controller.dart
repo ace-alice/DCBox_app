@@ -3,6 +3,7 @@ import 'package:dc_box_app/network/api/get_bulletins.dart';
 import 'package:get/get.dart';
 
 import '../../pages/app/widgets/notice_bar.dart';
+import '../lang_manager/lang_manager.dart';
 import 'notice_bar_manager.dart';
 import 'state.dart';
 
@@ -11,8 +12,16 @@ class NoticeBarManagerImpl implements NoticeBarManager {
 
   final GetBulletinsHttp _getBulletinsHttp;
 
-  NoticeBarManagerImpl({required GetBulletinsHttp getBulletinsHttp})
-      : _getBulletinsHttp = getBulletinsHttp {
+  final LangManager _langManager;
+
+  NoticeBarManagerImpl({
+    required GetBulletinsHttp getBulletinsHttp,
+    required LangManager langManager,
+  })  : _getBulletinsHttp = getBulletinsHttp,
+        _langManager = langManager {
+    ever(_langManager.langType, (value) {
+      init();
+    });
     Future.delayed(const Duration(seconds: 1), () {
       init();
     });

@@ -24,6 +24,7 @@ AppBar appBarWidget(AppController controller, AppState state) {
             Get.toNamed(AppRoutes.login);
           } else {
             // noticeBarManager.show();
+            Get.toNamed(AppRoutes.personal);
           }
         },
         child: AppImage.common.icUserAvatar(),

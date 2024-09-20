@@ -18,8 +18,8 @@ class NoticeBarManagerBinding extends Binding {
           deviceManager: Bind.find(),
           langManager: Bind.find(),
           envState: Bind.find())),
-      Bind.lazyPut<NoticeBarManager>(
-          () => NoticeBarManagerImpl(getBulletinsHttp: Bind.find())),
+      Bind.lazyPut<NoticeBarManager>(() => NoticeBarManagerImpl(
+          getBulletinsHttp: Bind.find(), langManager: Bind.find())),
     ];
   }
 }
