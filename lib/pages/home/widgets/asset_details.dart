@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../common/tr_key.dart';
 import '../../../core/currency_list_manager/index.dart';
 import '../../../core/user_manager/index.dart';
 import '../../../network/models/user_balance_model.dart';
@@ -42,11 +43,11 @@ Widget assetDetails() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 6),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6),
           child: Text(
-            '资产详情',
-            style: TextStyle(
+            TrKey.assetDetail.tr,
+            style: const TextStyle(
               fontSize: 14,
               height: 1.25,
               color: AppColor.text9A9AA0,

@@ -1,9 +1,9 @@
 import 'package:dc_box_app/common/biz_types.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 
 import '../../common/text_form_field_option.dart';
+import '../../common/tr_key.dart';
 import '../../widgets/select_country_code/controller.dart';
 import '../../widgets/slider_verify/controller.dart';
 
@@ -29,12 +29,12 @@ class LoginState {
   LoginState() {
     ///Initialize variables
     passwordState = TextFormFieldOption(
-      labelText: '密码',
-      hintText: '请输入密码',
+      labelText: TrKey.password.tr,
+      hintText: TrKey.passwordHint.tr,
       keyboardType: TextInputType.visiblePassword,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return '请输入密码';
+          return TrKey.passwordHint.tr;
         }
         return null;
       },
@@ -42,39 +42,39 @@ class LoginState {
     );
 
     phoneState = TextFormFieldOption(
-      labelText: '手机号码',
-      hintText: '请输入手机号码',
+      labelText: TrKey.phoneNumber1.tr,
+      hintText: TrKey.pleaseEnterYourPhoneNumber.tr,
       nextFocusNode: passwordState.focusNode,
       keyboardType: TextInputType.phone,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return '请输入手机号';
+          return TrKey.pleaseEnterYourPhoneNumber.tr;
         }
         // 正则表达式用于验证手机号格式（此处以中国大陆手机号格式为例）
         String pattern = r'^(?:[+0]9)?[0-9]{10,12}$';
         RegExp regex = RegExp(pattern);
         if (!regex.hasMatch(value)) {
-          return '请输入有效的手机号';
+          return TrKey.hintPhoneIncorrect.tr;
         }
         return null;
       },
     );
 
     emailState = TextFormFieldOption(
-      labelText: '邮箱',
-      hintText: '请输入邮箱',
+      labelText: TrKey.eMail.tr,
+      hintText: TrKey.mailHint.tr,
       nextFocusNode: passwordState.focusNode,
       keyboardType: TextInputType.emailAddress,
       initialValue: 'gkhectortest@gmail.com',
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return '请输入邮箱地址';
+          return TrKey.mailHint.tr;
         }
         // 正则表达式用于验证邮箱格式
         String pattern = r'^[^@]+@[^@]+\.[^@]+';
         RegExp regex = RegExp(pattern);
         if (!regex.hasMatch(value)) {
-          return '请输入有效的邮箱地址';
+          return TrKey.pleaseEnterValidEmail.tr;
         }
         return null;
       },

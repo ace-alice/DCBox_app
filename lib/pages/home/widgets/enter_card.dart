@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../common/tr_key.dart';
 
 // AssetImage('assets/images/home/home_remind_login.png')
 Widget enterCard() {
@@ -20,12 +21,12 @@ Widget enterCard() {
       ),
       child: Stack(
         children: [
-          const Positioned(
+          Positioned(
               left: 20,
               top: 25,
               child: Text(
-                '轻松几步，开启首笔交易',
-                style: TextStyle(
+                TrKey.remindLoginDescription.tr,
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               )),
@@ -36,9 +37,10 @@ Widget enterCard() {
               onPressed: () {
                 Get.toNamed(AppRoutes.login);
               },
-              child: const Text(
-                '注册 / 登录 >',
-                style: TextStyle(fontSize: 14, color: AppColor.textFEDF43),
+              child: Text(
+                TrKey.remindLoginText.tr,
+                style:
+                    const TextStyle(fontSize: 14, color: AppColor.textFEDF43),
               ),
             ),
           ),

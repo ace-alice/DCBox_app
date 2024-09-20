@@ -2,6 +2,7 @@ import 'package:dc_box_app/common/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common/tr_key.dart';
 import '../../../core/notice_bar_manager/state.dart';
 import '../../../generated/app_image/app_image.dart';
 
@@ -11,16 +12,20 @@ Widget showNoticeBar(void Function() cancelFunc) {
   PageController pageController = PageController();
 
   toNextPage() {
-    if (state.currentIndex.value + 1 < state.notices.length) {
-      pageController.nextPage(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeInOut,
-      );
+    if (state.currentIndex.value + 1 < state.dialogList.length) {
       state.currentIndex.value++;
     } else {
       cancelFunc();
     }
   }
+
+  ever(state.currentIndex, (value) {
+    pageController.animateToPage(
+      state.currentIndex.value,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeInOut,
+    );
+  });
 
   return Obx(
     () {
@@ -38,7 +43,7 @@ Widget showNoticeBar(void Function() cancelFunc) {
                 child: PageView(
               controller: pageController,
               physics: const NeverScrollableScrollPhysics(),
-              children: state.notices.value.map((notice) {
+              children: state.dialogList.value.map((notice) {
                 return Column(
                   children: [
                     Padding(
@@ -95,9 +100,9 @@ Widget showNoticeBar(void Function() cancelFunc) {
                                 shadowColor: Colors.transparent, // 去掉阴影
                               ),
                               onPressed: toNextPage,
-                              child: const Text(
-                                '我知道了',
-                                style: TextStyle(
+                              child: Text(
+                                TrKey.iKnow.tr,
+                                style: const TextStyle(
                                     fontSize: 14, color: AppColor.textFFFFFF),
                               ),
                             ),
@@ -112,7 +117,7 @@ Widget showNoticeBar(void Function() cancelFunc) {
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 30),
               child: Text(
-                '${state.currentIndex.value + 1}/${state.notices.value.length}',
+                '${state.currentIndex.value + 1}/${state.dialogList.value.length}',
                 style:
                     const TextStyle(fontSize: 13, color: AppColor.text9A9AA0),
               ),

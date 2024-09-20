@@ -1,4 +1,4 @@
-import 'tr_key.dart';
+import '../../../common/tr_key.dart';
 
 const Map<String, String> zh = {
   TrKey.amount: '数量',

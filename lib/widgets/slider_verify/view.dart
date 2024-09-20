@@ -5,6 +5,7 @@ import 'package:dc_box_app/generated/app_image/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/tr_key.dart';
 import '../../network/models/verify_slide_model.dart';
 import '../rotation_animation/view.dart';
 import 'controller.dart';
@@ -90,9 +91,9 @@ class _SliderVerifyWidgetState extends State<SliderVerifyWidget> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
-                                '安全验证',
-                                style: TextStyle(
+                              Text(
+                                TrKey.navTitleSafeVerify.tr,
+                                style: const TextStyle(
                                   fontSize: 14,
                                   color: AppColor.text182140,
                                   height: 1.25,
@@ -161,9 +162,9 @@ class _SliderVerifyWidgetState extends State<SliderVerifyWidget> {
                                   children: [
                                     AppImage.common
                                         .slideBg(width: 298, height: 25),
-                                    const Text(
-                                      '向右拖动滑块完成拼图验证',
-                                      style: TextStyle(
+                                    Text(
+                                      TrKey.dragRightToCompletionCaptcha.tr,
+                                      style: const TextStyle(
                                         color: AppColor.text182140,
                                         fontSize: 14,
                                       ),

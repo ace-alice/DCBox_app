@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
           // 你的翻译资源
           locale: _langManager.locale,
           // 默认语言
-          fallbackLocale: const Locale('en'),
+          fallbackLocale: _langManager.locale,
           // 备用语言
           supportedLocales: const [
             Locale.fromSubtags(languageCode: 'en'),

@@ -1,11 +1,15 @@
 import 'package:dc_box_app/common/app_color.dart';
 import 'package:dc_box_app/generated/app_image/app_image.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
+import '../../../common/tr_key.dart';
+import '../../../core/notice_bar_manager/state.dart';
 import '../../../widgets/custom_marquee/view.dart';
 import '../state.dart';
 
 Widget marquee(HomeState state) {
+  NoticeBarState noticeState = Get.put<NoticeBarState>(NoticeBarState());
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 12),
     child: SizedBox(
@@ -19,17 +23,16 @@ Widget marquee(HomeState state) {
           const SizedBox(
             width: 4,
           ),
-          const Expanded(
+          Expanded(
             flex: 1,
-            child: CustomMarqueeComponent(
-              textStyle: TextStyle(fontSize: 12),
-              texts: [
-                '1不会提供任何银行卡号或者交易地址给用户进行1',
-                '2不会提供任何银行卡号或者交易地址给用户进行2',
-                '3不会提供任何银行卡号或者交易地址给用户进行3',
-                '4不会提供任何银行卡号或者交易地址给用户进行4',
-              ],
-            ),
+            child: Obx(() {
+              return CustomMarqueeComponent(
+                textStyle: const TextStyle(fontSize: 12),
+                texts: noticeState.marqueeList.value
+                    .map((notice) => notice.content)
+                    .toList(),
+              );
+            }),
           ),
           const SizedBox(
             width: 4,
@@ -41,9 +44,9 @@ Widget marquee(HomeState state) {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
-                    '更多',
-                    style: TextStyle(color: AppColor.brand62A2B0),
+                  Text(
+                    TrKey.more.tr,
+                    style: const TextStyle(color: AppColor.brand62A2B0),
                   ),
                   const SizedBox(width: 4),
                   AppImage.home.icMore(height: 14, width: 14)

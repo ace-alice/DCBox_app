@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../common/tr_key.dart';
 import '../../../core/summary_trans_manager/index.dart';
 
 Widget orderVolume() {
@@ -19,9 +20,9 @@ Widget orderVolume() {
         Expanded(
           child: Column(
             children: [
-              const Text(
-                '24H成交量(U)',
-                style: TextStyle(
+              Text(
+                TrKey.turnoverIn24h.tr,
+                style: const TextStyle(
                     color: AppColor.text9A9AA0, fontSize: 14, height: 1.25),
               ),
               const SizedBox(height: 10),
@@ -46,9 +47,9 @@ Widget orderVolume() {
         Expanded(
           child: Column(
             children: [
-              const Text(
-                '24H成单量',
-                style: TextStyle(
+              Text(
+                TrKey.quantityOfOrderIn24h.tr,
+                style: const TextStyle(
                     color: AppColor.text9A9AA0, fontSize: 14, height: 1.25),
               ),
               const SizedBox(height: 10),

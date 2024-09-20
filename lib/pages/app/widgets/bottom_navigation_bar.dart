@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../common/tr_key.dart';
 
 Widget bottomNavigationBarWidget(AppController controller, AppState state) {
   return Obx(() {
@@ -23,19 +24,19 @@ Widget bottomNavigationBarWidget(AppController controller, AppState state) {
           icon: state.pageIndex.value == 0
               ? AppImage.tabs.homeSelected(width: 21, height: 21)
               : AppImage.tabs.home(width: 21, height: 21),
-          label: '首页',
+          label: TrKey.home.tr,
         ),
         BottomNavigationBarItem(
           icon: state.pageIndex.value == 1
               ? AppImage.tabs.transactionSelected(width: 21, height: 21)
               : AppImage.tabs.transaction(width: 21, height: 21),
-          label: '交易',
+          label: TrKey.trade.tr,
         ),
         BottomNavigationBarItem(
           icon: state.pageIndex.value == 2
               ? AppImage.tabs.orderSelected(width: 21, height: 21)
               : AppImage.tabs.order(width: 21, height: 21),
-          label: '订单',
+          label: TrKey.bill.tr,
         ),
       ],
     );

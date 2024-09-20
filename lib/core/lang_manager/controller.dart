@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:dc_box_app/common/app_logger.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -10,11 +9,12 @@ import 'lang_manager.dart';
 class LangManagerImpl implements LangManager {
   final GetStorage _storage = GetStorage();
 
-  LangType _lang = LangType.en;
+  @override
+  Rx<LangType> langType = LangType.en.obs;
 
   @override
   String get lang {
-    switch (_lang) {
+    switch (langType.value) {
       case LangType.en:
         return 'en_US';
       case LangType.zh:
@@ -26,7 +26,7 @@ class LangManagerImpl implements LangManager {
 
   @override
   Locale get locale {
-    return Locale(_lang.name);
+    return Locale(langType.value.name);
   }
 
   @override
@@ -36,13 +36,11 @@ class LangManagerImpl implements LangManager {
       // 获取系统语言
       Locale? locale = Get.deviceLocale;
       if (locale?.languageCode == LangType.zh.name) {
-        _lang = LangType.zh;
-        await _storage.write(StorageKey.lang, _lang.name);
+        langType.value = LangType.zh;
+        await _storage.write(StorageKey.lang, langType.value.name);
       }
     } else {
-      if (lang == LangType.en.name) {
-        _lang = LangType.en;
-      }
+      langType.value = getLangTypeByName(lang);
     }
   }
 
@@ -57,8 +55,9 @@ class LangManagerImpl implements LangManager {
 
   @override
   changeLang(String value) {
+    langType.value = getLangTypeByName(value);
+    _storage.write(StorageKey.lang, langType.value.name);
     Locale selectLang = Locale(value);
     Get.updateLocale(selectLang);
-    logger.w('changeLang=>$value');
   }
 }

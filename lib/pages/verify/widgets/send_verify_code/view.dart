@@ -4,6 +4,7 @@ import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../../../../common/tr_key.dart';
 import 'controller.dart';
 
 class SendVerifyCodeComponent extends StatelessWidget {
@@ -43,13 +44,15 @@ class SendVerifyCodeComponent extends StatelessWidget {
                         controller.sendCode();
                       },
                       child: Text(
-                        controller.sendCount.value == 0 ? '发送' : '重新发送',
+                        controller.sendCount.value == 0
+                            ? TrKey.sendVerificationCode.tr
+                            : TrKey.smsResend.tr,
                         style: const TextStyle(color: AppColor.brand62A2B0),
                       ),
                     );
                   }
                   return Text(
-                    '${time.sec}秒后重新发送',
+                    '${time.sec}${TrKey.secondsLaterResend.tr}',
                     style: const TextStyle(color: AppColor.text999999),
                   );
                 },

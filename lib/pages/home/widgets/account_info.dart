@@ -1,8 +1,8 @@
-import 'package:dc_box_app/core/lang_manager/data/tr_key.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../common/tr_key.dart';
 import '../../../core/user_manager/index.dart';
 import '../../../generated/app_image/app_image.dart';
 import '../../../router/app_routes.dart';
@@ -29,9 +29,9 @@ Widget accountInfo() {
             ),
             Row(
               children: [
-                const Text(
-                  '总资产(USDT)',
-                  style: TextStyle(color: AppColor.text9A9AA0),
+                Text(
+                  '${TrKey.totalAsset.tr} (USDT)',
+                  style: const TextStyle(color: AppColor.text9A9AA0),
                 ),
                 RotationAnimationComponent(
                   loading: userState.balanceLoading,
@@ -83,12 +83,12 @@ Widget accountInfo() {
             children: [
               tradeEnter(AppImage.home.icScan(width: 16), TrKey.scan.tr,
                   AppRoutes.browser),
-              tradeEnter(
-                  AppImage.home.icDeposit(width: 16), '充币', AppRoutes.browser),
-              tradeEnter(
-                  AppImage.home.icWithdraw(width: 16), '提币', AppRoutes.browser),
-              tradeEnter(
-                  AppImage.home.icTransfer(width: 16), '转账', AppRoutes.browser),
+              tradeEnter(AppImage.home.icDeposit(width: 16), TrKey.deposit.tr,
+                  AppRoutes.browser),
+              tradeEnter(AppImage.home.icWithdraw(width: 16), TrKey.withdraw.tr,
+                  AppRoutes.browser),
+              tradeEnter(AppImage.home.icTransfer(width: 16), TrKey.transfer.tr,
+                  AppRoutes.browser),
             ],
           ),
         ),

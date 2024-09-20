@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common/app_color.dart';
+import '../../common/tr_key.dart';
 import 'controller.dart';
 import 'widgets/otp_verify/view.dart';
 import 'widgets/send_verify_code/view.dart';
@@ -19,7 +20,7 @@ class VerifyPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.backdrop222222,
       appBar: AppBar(
-        title: const Text('安全认证'),
+        title: Text(TrKey.navTitleSafeVerify.tr),
         leading: BackButton(
           onPressed: () {
             // 同时可以保持默认的返回行为
@@ -61,7 +62,7 @@ class VerifyPage extends StatelessWidget {
               onPressed: controller.onPressed,
               loading: controller.loading,
               disabled: controller.disabled,
-              text: '确认',
+              text: TrKey.confirm.tr,
             ),
           ],
         ),

@@ -1,7 +1,7 @@
-import 'package:dc_box_app/core/device_manager/controller.dart';
 import 'package:get/get.dart';
 
 import '../../network/api/get_country_list.dart';
+import '../device_manager/controller.dart';
 import '../device_manager/device_manager.dart';
 import '../env_manager/state.dart';
 import '../lang_manager/index.dart';
@@ -20,8 +20,8 @@ class CountryManagerBinding extends Binding {
           deviceManager: Bind.find(),
           langManager: Bind.find(),
           envState: Bind.find())),
-      Bind.lazyPut<CountryManager>(
-          () => CountryManagerImpl(getCountryListHttp: Bind.find())),
+      Bind.lazyPut<CountryManager>(() => CountryManagerImpl(
+          getCountryListHttp: Bind.find(), langManager: Bind.find())),
       Bind.lazyPut<CountryState>(() => CountryState()),
     ];
   }

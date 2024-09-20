@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common/app_color.dart';
+import '../../common/tr_key.dart';
 import '../../network/models/verify_slide_model.dart';
 import '../../router/app_routes.dart';
 import '../../widgets/custom_tabs/view.dart';
@@ -38,7 +39,7 @@ class LoginPage extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 20),
                   child: CustomTabs(
                     height: 140,
-                    tabs: const [Text('Phone'), Text('Email')],
+                    tabs: [Text(TrKey.phone.tr), Text(TrKey.mail.tr)],
                     onTap: controller.tabChange,
                     tabBarViews: [
                       CustomTextFieldComponent(
@@ -68,7 +69,7 @@ class LoginPage extends StatelessWidget {
                     onPressed: () {
                       controller.submit();
                     },
-                    text: '登录',
+                    text: TrKey.login.tr,
                     disabled: state.disabled,
                     loading: state.loading,
                   ),
@@ -76,17 +77,16 @@ class LoginPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text(
-                      '没有账号?',
-                      style: TextStyle(color: AppColor.textFFFFFF),
+                    Text(
+                      TrKey.notAccount.tr,
+                      style: const TextStyle(color: AppColor.textFFFFFF),
                     ),
-                    TextButton(
-                      onPressed: () {
+                    GestureDetector(
+                      onTap: () {
                         Get.toNamed(AppRoutes.register);
                       },
-                      style: ButtonStyle(padding: setPadding()),
-                      child: const Text('去注册',
-                          style: TextStyle(color: AppColor.brand62A2B0)),
+                      child: Text(TrKey.register.tr,
+                          style: const TextStyle(color: AppColor.brand62A2B0)),
                     ),
                     Expanded(
                       child: Container(),
@@ -95,9 +95,10 @@ class LoginPage extends StatelessWidget {
                       onPressed: () {
                         Get.toNamed(AppRoutes.app);
                       },
-                      style: ButtonStyle(padding: setPadding()),
-                      child: const Text('忘记密码?',
-                          style: TextStyle(color: AppColor.brand62A2B0)),
+                      style: ButtonStyle(
+                          padding: setPadding(), minimumSize: setMinSize()),
+                      child: Text(TrKey.forgetPassword.tr,
+                          style: const TextStyle(color: AppColor.brand62A2B0)),
                     ),
                   ],
                 ),
@@ -115,6 +116,12 @@ class LoginPage extends StatelessWidget {
 
 WidgetStateProperty<EdgeInsetsGeometry?> setPadding() {
   return MaterialStateProperty.resolveWith<EdgeInsetsGeometry?>((states) {
-    return const EdgeInsets.symmetric(horizontal: 0);
+    return const EdgeInsets.all(0);
+  });
+}
+
+WidgetStateProperty<Size?> setMinSize() {
+  return MaterialStateProperty.resolveWith<Size?>((states) {
+    return const Size(20, 20);
   });
 }

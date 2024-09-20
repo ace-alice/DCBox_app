@@ -29,10 +29,12 @@ class UserManagerImpl implements UserManager {
   })  : _getUserInfoHttp = getUserInfoHttp,
         _getUserBalanceHttp = getUserBalanceHttp,
         _noticeBarManager = noticeBarManager {
-    ever(userState.token, (value) {
+    ever(userState.token, (value) async {
       if (value.isNotEmpty) {
-        init();
-        _noticeBarManager.show();
+        await init();
+        Future.delayed(const Duration(milliseconds: 1200), () {
+          _noticeBarManager.show();
+        });
       } else {}
     });
   }

@@ -3,6 +3,7 @@ import 'package:dc_box_app/router/app_routes.dart';
 import 'package:get/get.dart';
 
 import '../../../network/api/login_auth.dart';
+import '../controller.dart';
 
 class LoginHandler {
   final LoginAuthHttp _loginAuthHttp;
@@ -25,6 +26,7 @@ class LoginHandler {
         Future.delayed(const Duration(seconds: 1), () {
           Get.toNamed(AppRoutes.app);
           Get.removeRoute(AppRoutes.verify);
+          Get.delete<VerifyController>();
         });
         return true;
       }

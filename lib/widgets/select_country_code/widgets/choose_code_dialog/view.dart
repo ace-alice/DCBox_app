@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/text_form_field_option.dart';
+import '../../../../common/tr_key.dart';
 import '../../../../network/api/get_country_list.dart';
 import '../../../custom_text_field/view.dart';
 import 'controller.dart';
@@ -23,7 +24,7 @@ class ChooseCodeDialogComponent extends StatelessWidget {
         appBar: AppBar(
           iconTheme: const IconThemeData(color: AppColor.textFFFFFF),
           backgroundColor: AppColor.backdrop121212,
-          title: const Text('选择国家和地区'),
+          title: Text(TrKey.selectCountry.tr),
           titleTextStyle:
               const TextStyle(fontSize: 18, color: AppColor.textFFFFFF),
         ),
@@ -37,7 +38,7 @@ class ChooseCodeDialogComponent extends StatelessWidget {
                   child: AppImage.common.search(width: 14),
                 ),
                 textFormFieldOption: TextFormFieldOption(
-                  hintText: '搜索',
+                  hintText: TrKey.search.tr,
                   onChanged: (text) {
                     controller.searchText.value = text;
                   },

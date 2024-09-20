@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/biz_types.dart';
+import '../../../../common/tr_key.dart';
 import '../../../../common/verify_type.dart';
 import '../../../../network/api/send_verify_code.dart';
 import '../../../../network/models/verify_arguments.dart';
@@ -55,13 +56,17 @@ class SendVerifyCodeController extends GetxController {
 
   String get title {
     return verifyArguments.verifyType == VerifyType.phone.index
-        ? '手机认证'
-        : '邮箱认证';
+        ? TrKey.phoneVerify.tr
+        : TrKey.mailVerify.tr;
   }
 
   String get content {
     return verifyArguments.verifyType == VerifyType.phone.index
-        ? '将发送至 +${verifyArguments.countryCode} ${verifyArguments.phone}'
-        : '将发送至 ${verifyArguments.email}';
+        ? TrKey.verificationInputTitle.trParams({
+            'verificationType':
+                '+${verifyArguments.countryCode} ${verifyArguments.phone}'
+          })
+        : TrKey.verificationInputTitle
+            .trParams({'verificationType': '+${verifyArguments.email}'});
   }
 }

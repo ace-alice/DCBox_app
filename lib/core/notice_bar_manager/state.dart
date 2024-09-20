@@ -1,17 +1,14 @@
+import 'package:dc_box_app/network/models/bulletin_item.dart';
 import 'package:get/get.dart';
 
 class NoticeBarState {
   RxInt currentIndex = 0.obs;
-  RxList<NoticeItem> notices = [
-    NoticeItem('这是第一条', '这是第一条'),
-    NoticeItem('这是第二条', '这是第二条'),
-    NoticeItem('这是第三条', '这是第三条')
-  ].obs;
-}
 
-class NoticeItem {
-  final String title;
-  final String content;
+  RxBool loading = false.obs;
 
-  NoticeItem(this.title, this.content);
+  RxList<BulletinItem> marqueeList =
+      [].map((e) => BulletinItem.fromJson(e)).toList().obs;
+
+  RxList<BulletinItem> dialogList =
+      [].map((e) => BulletinItem.fromJson(e)).toList().obs;
 }

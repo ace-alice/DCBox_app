@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../common/app_color.dart';
+import '../../../../common/tr_key.dart';
 import 'controller.dart';
 
 class OtpVerifyComponent extends StatelessWidget {
@@ -27,9 +28,9 @@ class OtpVerifyComponent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          '谷歌认证',
-          style: TextStyle(fontSize: 16, height: 1.25),
+        Text(
+          TrKey.navTitleGoogleVerify.tr,
+          style: const TextStyle(fontSize: 16, height: 1.25),
         ),
         const SizedBox(height: 16),
         PinCodeTextField(

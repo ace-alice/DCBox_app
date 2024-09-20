@@ -1,16 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../common/tr_key.dart';
 
 Widget loginTitle() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      const Padding(
-        padding: EdgeInsets.only(top: 18, bottom: 8),
+      Padding(
+        padding: const EdgeInsets.only(top: 18, bottom: 8),
         child: Text(
-          '登录DCBox',
-          style: TextStyle(fontSize: 24, color: AppColor.brand62A2B0),
+          TrKey.loginTitle.tr,
+          style: const TextStyle(fontSize: 24, color: AppColor.brand62A2B0),
         ),
       ),
       Padding(
@@ -19,14 +21,14 @@ Widget loginTitle() {
           children: [
             Container(
               height: 1,
-              width: 60,
+              width: 40,
               decoration: const BoxDecoration(color: AppColor.brand62A2B0),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Text(
-                '爱不释手的数字币钱包',
-                style: TextStyle(
+                TrKey.loginSubTitle.tr,
+                style: const TextStyle(
                     color: AppColor.brand62A2B0, fontSize: 13, height: 1.25),
               ),
             )

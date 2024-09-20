@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../common/tr_key.dart';
 import '../../../core/user_manager/index.dart';
 import '../../../generated/app_image/app_image.dart';
 import '../../../router/app_routes.dart';
@@ -38,9 +39,9 @@ AppBar appBarWidget(AppController controller, AppState state) {
         children: [
           Obx(() {
             if (userState.userInfo.value.loginName.isNotEmpty) {
-              return Text(userState.userInfo.value.loginName);
+              return Text('(${userState.userInfo.value.loginName})');
             } else {
-              return const Text('(未登录)');
+              return Text('(${TrKey.notLoggedIn.tr})');
             }
           }),
           Obx(

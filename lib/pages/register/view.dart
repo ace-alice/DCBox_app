@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common/app_color.dart';
+import '../../common/tr_key.dart';
 import '../../router/app_routes.dart';
 import '../../widgets/custom_tabs/view.dart';
 import '../../widgets/custom_text_field/view.dart';
@@ -34,9 +35,9 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  '创建账号',
-                  style: TextStyle(
+                Text(
+                  TrKey.createAnAccount.tr,
+                  style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w700,
                       color: AppColor.brand62A2B0),
@@ -48,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   margin: const EdgeInsets.only(bottom: 20),
                   child: CustomTabs(
                     height: 140,
-                    tabs: const [Text('Phone'), Text('Email')],
+                    tabs: [Text(TrKey.phone.tr), Text(TrKey.mail.tr)],
                     onTap: controller.tabChange,
                     tabBarViews: [
                       CustomTextFieldComponent(
@@ -68,24 +69,24 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 SubmitButtonComponent(
                   onPressed: controller.submit,
-                  text: '下一步',
+                  text: TrKey.next.tr,
                   disabled: state.disabled,
                   loading: state.loading,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text(
-                      '注册过?',
-                      style: TextStyle(color: AppColor.textFFFFFF),
+                    Text(
+                      TrKey.registered.tr,
+                      style: const TextStyle(color: AppColor.textFFFFFF),
                     ),
                     TextButton(
                       onPressed: () {
                         Get.toNamed(AppRoutes.login);
                       },
                       style: ButtonStyle(padding: setPadding()),
-                      child: const Text('去登录',
-                          style: TextStyle(color: AppColor.brand62A2B0)),
+                      child: Text(TrKey.toLogIn.tr,
+                          style: const TextStyle(color: AppColor.brand62A2B0)),
                     ),
                     Expanded(
                       child: Container(),
