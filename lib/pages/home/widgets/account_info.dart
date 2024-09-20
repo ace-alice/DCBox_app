@@ -81,14 +81,26 @@ Widget accountInfo() {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              tradeEnter(AppImage.home.icScan(width: 16), TrKey.scan.tr,
-                  AppRoutes.browser),
-              tradeEnter(AppImage.home.icDeposit(width: 16), TrKey.deposit.tr,
-                  AppRoutes.browser),
-              tradeEnter(AppImage.home.icWithdraw(width: 16), TrKey.withdraw.tr,
-                  AppRoutes.browser),
-              tradeEnter(AppImage.home.icTransfer(width: 16), TrKey.transfer.tr,
-                  AppRoutes.browser),
+              tradeEnter(
+                AppImage.home.icScan(width: 38),
+                TrKey.scan.tr,
+                AppRoutes.browser,
+              ),
+              tradeEnter(
+                AppImage.home.icDeposit(width: 38),
+                TrKey.deposit.tr,
+                AppRoutes.browser,
+              ),
+              tradeEnter(
+                AppImage.home.icWithdraw(width: 38),
+                TrKey.withdraw.tr,
+                AppRoutes.browser,
+              ),
+              tradeEnter(
+                AppImage.home.icTransfer(width: 38),
+                TrKey.transfer.tr,
+                AppRoutes.browser,
+              ),
             ],
           ),
         ),
@@ -98,27 +110,27 @@ Widget accountInfo() {
 }
 
 Widget tradeEnter(Widget image, String text, String route) {
-  return SizedBox(
-    width: 70,
-    child: Column(
-      children: [
-        Container(
-          height: 38,
-          width: 38,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(19),
-            color: const Color.fromRGBO(51, 51, 51, 1),
-          ),
-          child: image,
+  return Material(
+    color: Colors.transparent,
+    child: InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(10),
+      child: Ink(
+        width: 70,
+        padding: const EdgeInsets.symmetric(vertical: 4),
+        child: Column(
+          children: [
+            image,
+            const SizedBox(
+              height: 8,
+            ),
+            Text(
+              text,
+              style: const TextStyle(color: Colors.white, fontSize: 15),
+            ),
+          ],
         ),
-        const SizedBox(
-          height: 8,
-        ),
-        Text(
-          text,
-          style: const TextStyle(color: Colors.white, fontSize: 15),
-        ),
-      ],
+      ),
     ),
   );
 }
