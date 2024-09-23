@@ -47,7 +47,7 @@ class TextFormFieldOption {
       validValue.value = false;
     }
     if (initialValue != null) {
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(const Duration(milliseconds: 100), () {
         controller.text = initialValue!;
       });
     }

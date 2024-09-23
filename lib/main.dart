@@ -56,14 +56,20 @@ class MyApp extends StatelessWidget {
                   displayColor: AppColor.textFFFFFF,
                   decoration: TextDecoration.none,
                 ),
-            splashColor: AppColor.brand62A2B0,
             // 设置水波纹颜色
-            highlightColor: AppColor.backdrop91C9D6,
+            splashColor: AppColor.brand62A2B0,
             // 设置点击后高亮颜色
+            highlightColor: AppColor.backdrop91C9D6,
             //主题颜色样本
             primarySwatch: primarySwatchColor,
             //主色，决定导航栏颜色
             primaryColor: AppColor.backdrop121212,
+            buttonTheme: const ButtonThemeData(
+              // 设置水波纹颜色
+              splashColor: AppColor.brand62A2B0,
+              // 设置点击后高亮颜色
+              highlightColor: AppColor.backdrop91C9D6,
+            ),
             //預設背景色
             scaffoldBackgroundColor: AppColor.backdrop121212,
             fontFamily: AppFont.pingFangHk,

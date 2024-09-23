@@ -19,16 +19,16 @@ class HomePage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
       child: Column(
         children: [
-          bannerCarousel(),
-          marquee(state),
+          const BannerCarouselCom(),
+          MarqueeCom(),
           Obx(() {
             return userState.token.value.isNotEmpty
                 ? const SizedBox.shrink()
-                : enterCard();
+                : const EnterCardCom();
           }),
-          accountInfo(),
-          orderVolume(),
-          assetDetails(),
+          AccountInfoCom(),
+          OrderVolumeCom(),
+          AssetDetailsCom(),
         ],
       ),
     );

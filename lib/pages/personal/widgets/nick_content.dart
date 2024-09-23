@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../common/app_color.dart';
 import '../../../core/user_manager/state.dart';
 import '../../../generated/app_image/app_image.dart';
+import 'change_nickname.dart';
 
 class NickContent extends StatelessWidget {
   NickContent({super.key});
@@ -35,10 +36,7 @@ class NickContent extends StatelessWidget {
             onPressed: () {},
             icon: AppImage.common.copy(height: 14),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: AppImage.common.icEdit(height: 14),
-          )
+          const ChangeNicknameWidget(),
         ],
       ),
     );

@@ -1,7 +1,8 @@
-import 'package:dc_box_app/common/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/app_color.dart';
+import '../../common/app_styles.dart';
 import 'controller.dart';
 
 class SubmitButtonComponent extends StatelessWidget {
@@ -27,16 +28,10 @@ class SubmitButtonComponent extends StatelessWidget {
         width: double.infinity,
         height: 40,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              const Color.fromRGBO(98, 162, 176, 1)
-                  .withOpacity(loading != null && loading!.value ? 0.7 : 1),
-              const Color.fromRGBO(145, 201, 214, 1)
-                  .withOpacity(loading != null && loading!.value ? 0.7 : 1)
-            ], // 渐变颜色
-            begin: Alignment.topLeft, // 渐变的起点
-            end: Alignment.bottomRight, // 渐变的终点
-          ),
+          gradient: loading != null && loading!.value
+              ? AppStyles.btnGradient(opacity: 0.7)
+              : AppStyles.btnGradient(opacity: 1),
+
           borderRadius: BorderRadius.circular(20), // 圆角
         ),
         child: ElevatedButton(

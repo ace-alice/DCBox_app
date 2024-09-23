@@ -7,11 +7,9 @@ import '../../../core/user_manager/index.dart';
 import '../../../generated/app_image/app_image.dart';
 import '../../../router/app_routes.dart';
 import '../../../utils/clipboard_data.dart';
-import '../controller.dart';
-import '../state.dart';
 import 'select_language.dart';
 
-AppBar appBarWidget(AppController controller, AppState state) {
+AppBar appBarWidget() {
   UserState userState = Get.put<UserState>(UserState());
   // NoticeBarManager noticeBarManager =
   //     Get.put<NoticeBarManager>(NoticeBarManagerImpl());

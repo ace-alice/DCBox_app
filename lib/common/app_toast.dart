@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../generated/app_image/app_image.dart';
+import 'pop_ups_widget.dart';
 
 class AppToast {
   static simple(String text, [ToastType type = ToastType.none]) {
@@ -49,7 +50,7 @@ class AppToast {
   }
 
   static popUps({
-    required Widget Function(void Function() cancelFunc) build,
+    required PopUpsWidget popUpsWidget,
     bool onlyOne = false,
     AlignType align = AlignType.center,
     Duration? duration = const Duration(seconds: 3),
@@ -59,7 +60,9 @@ class AppToast {
   }) {
     BotToast.showCustomNotification(
       toastBuilder: (cancelFunc) {
-        return build(cancelFunc);
+        return SingleChildScrollView(
+          child: popUpsWidget.build(cancelFunc),
+        );
       },
       onlyOne: onlyOne,
       duration: duration,

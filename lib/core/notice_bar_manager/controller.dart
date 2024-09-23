@@ -59,7 +59,7 @@ class NoticeBarManagerImpl implements NoticeBarManager {
   @override
   show() {
     AppToast.popUps(
-      build: showNoticeBar,
+      popUpsWidget: ShowNoticeBarWidget(),
       // align: const Alignment(0, 1),
       duration: null,
       align: AlignType.bottom,

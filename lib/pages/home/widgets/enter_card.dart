@@ -6,46 +6,50 @@ import 'package:get/get.dart';
 import '../../../common/app_color.dart';
 import '../../../common/tr_key.dart';
 
-// AssetImage('assets/images/home/home_remind_login.png')
-Widget enterCard() {
-  return Container(
-    height: 100,
-    margin: const EdgeInsets.only(bottom: 12),
-    child: DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0), //10像素圆角
-        image: DecorationImage(
-          image: MemoryImage(AppImage.home.homeRemindLoginImageData()!),
-          fit: BoxFit.fill,
+class EnterCardCom extends StatelessWidget {
+  const EnterCardCom({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      margin: const EdgeInsets.only(bottom: 12),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0), //10像素圆角
+          image: DecorationImage(
+            image: MemoryImage(AppImage.home.homeRemindLoginImageData()!),
+            fit: BoxFit.fill,
+          ),
         ),
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-              left: 20,
-              top: 25,
-              child: Text(
-                TrKey.remindLoginDescription.tr,
-                style: const TextStyle(
-                  fontSize: 16,
+        child: Stack(
+          children: [
+            Positioned(
+                left: 20,
+                top: 25,
+                child: Text(
+                  TrKey.remindLoginDescription.tr,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                )),
+            Positioned(
+              left: 8,
+              bottom: 13,
+              child: TextButton(
+                onPressed: () {
+                  Get.toNamed(AppRoutes.login);
+                },
+                child: Text(
+                  TrKey.remindLoginText.tr,
+                  style:
+                      const TextStyle(fontSize: 14, color: AppColor.textFEDF43),
                 ),
-              )),
-          Positioned(
-            left: 8,
-            bottom: 13,
-            child: TextButton(
-              onPressed: () {
-                Get.toNamed(AppRoutes.login);
-              },
-              child: Text(
-                TrKey.remindLoginText.tr,
-                style:
-                    const TextStyle(fontSize: 14, color: AppColor.textFEDF43),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }

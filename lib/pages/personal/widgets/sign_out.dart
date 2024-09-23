@@ -1,3 +1,5 @@
+import 'package:dc_box_app/common/app_toast.dart';
+import 'package:dc_box_app/widgets/common_pop_ups/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +11,9 @@ class SignOut extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        AppToast.popUps(popUpsWidget: SignOutDialog(), duration: null);
+      },
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       child: Ink(
         height: 64,
@@ -36,5 +40,12 @@ class SignOut extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class SignOutDialog extends CommonPopUpsComponent {
+  @override
+  Widget child() {
+    return Text(TrKey.sureToLogout.tr);
   }
 }

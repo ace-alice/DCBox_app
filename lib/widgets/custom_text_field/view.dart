@@ -32,6 +32,15 @@ class CustomTextFieldComponent extends StatelessWidget {
     );
   }
 
+  double get height {
+    return 120 -
+        (textFormFieldOption.validator == null ? 40 : 0) -
+        (textFormFieldOption.labelText == null ||
+                textFormFieldOption.labelText!.isEmpty
+            ? 40
+            : 0);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (textFormFieldOption.initialValue != null) {
@@ -42,7 +51,7 @@ class CustomTextFieldComponent extends StatelessWidget {
     }
     return Obx(() {
       return SizedBox(
-        height: textFormFieldOption.validator == null ? 80 : 120,
+        height: height,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

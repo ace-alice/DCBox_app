@@ -25,7 +25,7 @@ class AppPage extends StatelessWidget {
     });
 
     return Scaffold(
-      appBar: appBarWidget(controller, state),
+      appBar: appBarWidget(),
       body: PageView(
         controller: controller.pageController,
         physics: const NeverScrollableScrollPhysics(),
@@ -46,7 +46,7 @@ class AppPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: bottomNavigationBarWidget(controller, state),
+      bottomNavigationBar: BottomNavigationBarWidget(controller: controller),
     );
   }
 }
