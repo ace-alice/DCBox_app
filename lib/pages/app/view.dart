@@ -20,10 +20,6 @@ class AppPage extends StatelessWidget {
     ));
     final state = Bind.find<AppController>().state;
 
-    Future.delayed(const Duration(milliseconds: 1), () {
-      // showNoticeBar(context);
-    });
-
     return Scaffold(
       appBar: appBarWidget(),
       body: PageView(

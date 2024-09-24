@@ -1,17 +1,20 @@
-import 'package:dc_box_app/router/app_routes.dart';
-import 'package:dc_box_app/widgets/submit_button/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common/app_color.dart';
 import '../../common/tr_key.dart';
+import '../../router/app_routes.dart';
+import '../../widgets/submit_button/view.dart';
 import 'controller.dart';
 import 'widgets/otp_verify/view.dart';
 import 'widgets/send_verify_code/view.dart';
 
-class VerifyPage extends StatelessWidget {
-  const VerifyPage({super.key});
+class VerifyPage extends StatefulWidget {
+  @override
+  State<VerifyPage> createState() => _VerifyPageState();
+}
 
+class _VerifyPageState extends State<VerifyPage> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(VerifyController(
@@ -59,7 +62,9 @@ class VerifyPage extends StatelessWidget {
                 : const SizedBox.shrink(),
             const SizedBox(height: 140),
             SubmitButtonComponent(
-              onPressed: controller.onPressed,
+              onPressed: () {
+                controller.onPressed(context);
+              },
               loading: controller.loading,
               disabled: controller.disabled,
               text: TrKey.confirm.tr,
@@ -68,5 +73,11 @@ class VerifyPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    Get.delete<VerifyController>(force: true);
   }
 }

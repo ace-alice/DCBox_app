@@ -10,7 +10,7 @@ class UserState {
   RxString token = ''.obs;
 
   Rx<DateTime> tokenExpired =
-      DateTime.now().add(const Duration(minutes: 30)).obs;
+      DateTime.now().add(const Duration(minutes: 32)).obs;
 
   RxBool balanceLoading = false.obs;
 

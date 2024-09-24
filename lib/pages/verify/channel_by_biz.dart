@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 
 import 'handlers/index.dart';
 
-channelByBiz(BizType bizType, String? token, String securityId) {
+channelByBiz(BizType bizType, String? token, String securityId) async {
   switch (bizType) {
     case BizType.LOGIN:
       LoginHandler loginHandler = Get.find<LoginHandler>();
-      loginHandler.init(token, securityId);
+      await loginHandler.init(token, securityId);
       return;
     case BizType.REGISTRATION:
       return;

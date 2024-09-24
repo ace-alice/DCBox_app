@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../common/app_color.dart';
 import '../../../core/user_manager/state.dart';
 import '../../../generated/app_image/app_image.dart';
+import '../../../utils/clipboard_data.dart';
 import 'change_nickname.dart';
 
 class NickContent extends StatelessWidget {
@@ -33,7 +34,9 @@ class NickContent extends StatelessWidget {
             style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              clipboardData(userState.userInfo.value.loginName);
+            },
             icon: AppImage.common.copy(height: 14),
           ),
           const ChangeNicknameWidget(),

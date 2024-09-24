@@ -45,51 +45,95 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 40,
                 ),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  child: CustomTabs(
-                    height: 140,
-                    tabs: [Text(TrKey.phone.tr), Text(TrKey.mail.tr)],
-                    onTap: controller.tabChange,
-                    tabBarViews: [
-                      CustomTextFieldComponent(
-                        prefixWidget: SelectCountryCodeComponent(
-                          controller: state.selectCountryCodeController,
+                CustomTabs(
+                  height: 135,
+                  tabs: [Text(TrKey.phone.tr), Text(TrKey.mail.tr)],
+                  onTap: controller.tabChange,
+                  tabBarViews: [
+                    CustomTextFieldComponent(
+                      prefixWidget: SelectCountryCodeComponent(
+                        controller: state.selectCountryCodeController,
+                      ),
+                      textFormFieldOption: state.phoneState,
+                    ),
+                    CustomTextFieldComponent(
+                      textFormFieldOption: state.emailState,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Obx(
+                      () => Container(
+                        height: 14,
+                        width: 14,
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Checkbox(
+                          value: state.isAgree.value,
+                          activeColor: AppColor.brand62A2B0,
+                          onChanged: controller.checkedChange,
                         ),
-                        textFormFieldOption: state.phoneState,
                       ),
-                      CustomTextFieldComponent(
-                        textFormFieldOption: state.emailState,
+                    ),
+                    Expanded(
+                      child: Wrap(
+                        spacing: 8,
+                        children: [
+                          Text(
+                            TrKey.iHaveReadAndAgree.tr,
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoutes.termsOfUse);
+                            },
+                            child: Text(
+                              TrKey.termsOfUse.tr,
+                              style: const TextStyle(
+                                  fontSize: 14, color: AppColor.brand62A2B0),
+                            ),
+                          ),
+                          Text(
+                            TrKey.and.tr,
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoutes.privacyPolicy);
+                            },
+                            child: Text(
+                              TrKey.privacyPolicy.tr,
+                              style: const TextStyle(
+                                  fontSize: 14, color: AppColor.brand62A2B0),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 40,
-                ),
+                const SizedBox(height: 40),
                 SubmitButtonComponent(
                   onPressed: controller.submit,
                   text: TrKey.next.tr,
                   disabled: state.disabled,
                   loading: state.loading,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
                   children: [
                     Text(
                       TrKey.registered.tr,
                       style: const TextStyle(color: AppColor.textFFFFFF),
                     ),
-                    TextButton(
-                      onPressed: () {
+                    GestureDetector(
+                      onTap: () {
                         Get.toNamed(AppRoutes.login);
                       },
-                      style: ButtonStyle(padding: setPadding()),
                       child: Text(TrKey.toLogIn.tr,
                           style: const TextStyle(color: AppColor.brand62A2B0)),
-                    ),
-                    Expanded(
-                      child: Container(),
                     ),
                   ],
                 ),
@@ -114,5 +158,11 @@ class _RegisterPageState extends State<RegisterPage> {
 WidgetStateProperty<EdgeInsetsGeometry?> setPadding() {
   return MaterialStateProperty.resolveWith<EdgeInsetsGeometry?>((states) {
     return const EdgeInsets.symmetric(horizontal: 0);
+  });
+}
+
+WidgetStateProperty<Size?> setMinimumSize() {
+  return MaterialStateProperty.resolveWith<Size?>((states) {
+    return const Size(20, 15);
   });
 }

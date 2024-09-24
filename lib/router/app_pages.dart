@@ -1,3 +1,5 @@
+import 'package:dc_box_app/pages/privacy_policy/view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../core/country_manager/setup.dart';
@@ -10,6 +12,7 @@ import '../pages/personal/index.dart';
 import '../pages/qia_qia_service/index.dart';
 import '../pages/qr_code_scan/index.dart';
 import '../pages/register/index.dart';
+import '../pages/terms_of_use/view.dart';
 import '../pages/verify/index.dart';
 import '../pages/welcome/index.dart';
 import '../widgets/mobile_scanner/binding.dart';
@@ -47,7 +50,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.verify,
-      page: () => const VerifyPage(),
+      page: () => VerifyPage(),
       bindings: [UserManagerBinding(), VerifyBinding()],
       title: 'verify',
       popGesture: false,
@@ -58,6 +61,24 @@ class AppPages {
       bindings: [RegisterBinding()],
       title: 'register',
       popGesture: false,
+    ),
+    GetPage(
+      name: AppRoutes.termsOfUse,
+      page: () => const TermsOfUsePage(),
+      title: 'termsOfUse',
+      popGesture: false,
+      // customTransition: CustomPageTransition(),
+      transitionDuration: const Duration(microseconds: 500),
+      fullscreenDialog: true,
+    ),
+    GetPage(
+      name: AppRoutes.privacyPolicy,
+      page: () => const PrivacyPolicyPage(),
+      title: 'privacyPolicy',
+      popGesture: false,
+      // customTransition: CustomPageTransition(),
+      transitionDuration: const Duration(microseconds: 500),
+      fullscreenDialog: true,
     ),
     GetPage(
       name: AppRoutes.personal,
@@ -109,4 +130,36 @@ class AppPages {
       middlewares: [RequestCameraAndPhotosPermission()],
     ),
   ];
+}
+
+// 自定义过渡动画类
+class CustomPageTransition extends CustomTransition {
+  @override
+  Widget buildTransition(
+      BuildContext context,
+      Curve? curve,
+      Alignment? alignment,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child) {
+    // 定义从左到右的滑动动画
+    var slideTransition = SlideTransition(
+      position: Tween<Offset>(
+        begin: const Offset(-1.0, 0.0), // 页面从左侧进入
+        end: Offset.zero, // 最终停留在中心
+      ).animate(CurvedAnimation(
+        parent: animation,
+        curve: curve ?? Curves.easeInOut, // 使用缓动曲线
+      )),
+      child: child,
+    );
+
+    // 定义淡入淡出的动画
+    var fadeTransition = FadeTransition(
+      opacity: animation,
+      child: slideTransition, // 同时使用滑动和淡入淡出的效果
+    );
+
+    return fadeTransition;
+  }
 }

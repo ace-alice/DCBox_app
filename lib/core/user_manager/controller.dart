@@ -7,6 +7,7 @@ import '../../common/storage_key.dart';
 import '../../core/user_manager/state.dart';
 import '../../exception/exception.dart';
 import '../../network/api/get_user_info.dart';
+import '../../network/api/logout.dart';
 import '../../network/models/user_balance_model.dart';
 import '../../network/models/user_info_model.dart';
 import '../notice_bar_manager/notice_bar_manager.dart';
@@ -22,13 +23,17 @@ class UserManagerImpl implements UserManager {
 
   final NoticeBarManager _noticeBarManager;
 
+  final LogoutHttp _logoutHttp;
+
   UserManagerImpl({
     required GetUserInfoHttp getUserInfoHttp,
     required GetUserBalanceHttp getUserBalanceHttp,
     required NoticeBarManager noticeBarManager,
+    required LogoutHttp logoutHttp,
   })  : _getUserInfoHttp = getUserInfoHttp,
         _getUserBalanceHttp = getUserBalanceHttp,
-        _noticeBarManager = noticeBarManager {
+        _noticeBarManager = noticeBarManager,
+        _logoutHttp = logoutHttp {
     ever(userState.token, (value) async {
       if (value.isNotEmpty) {
         await init();
@@ -140,5 +145,19 @@ class UserManagerImpl implements UserManager {
   initData() {
     userState.userInfo.value = UserInfoModel.fromJson(initUserInfoValue);
     userState.totalBalance.value = UserBalanceModel.fromJson({});
+  }
+
+  @override
+  Future<bool> logout() async {
+    try {
+      LogoutResponse response = await _logoutHttp.request(LogoutResData());
+      if (response.result) {
+        setToken('');
+        initData();
+      }
+      return response.result;
+    } catch (e) {
+      return false;
+    }
   }
 }

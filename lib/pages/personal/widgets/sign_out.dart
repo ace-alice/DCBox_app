@@ -1,11 +1,12 @@
-import 'package:dc_box_app/common/app_toast.dart';
-import 'package:dc_box_app/widgets/common_pop_ups/view.dart';
+import 'package:dc_box_app/core/user_manager/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common/app_color.dart';
+import '../../../common/app_toast.dart';
 import '../../../common/tr_key.dart';
 import '../../../generated/app_image/app_image.dart';
+import '../../../widgets/common_pop_ups/view.dart';
 
 class SignOut extends StatelessWidget {
   @override
@@ -44,6 +45,21 @@ class SignOut extends StatelessWidget {
 }
 
 class SignOutDialog extends CommonPopUpsComponent {
+  UserManager userManager = Get.find<UserManager>();
+
+  @override
+  onConfirm() async {
+    try {
+      bool result = await userManager.logout();
+      if (!result) {
+        return '退出登录失败';
+      }
+    } catch (e) {
+      rethrow;
+    }
+    return null;
+  }
+
   @override
   Widget child() {
     return Text(TrKey.sureToLogout.tr);

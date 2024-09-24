@@ -1,4 +1,5 @@
 import 'package:dc_box_app/common/app_color.dart';
+import 'package:dc_box_app/common/app_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,10 +31,14 @@ abstract class CommonPopUpsComponent implements PopUpsWidget {
   String get tip => TrKey.prompt.tr;
 
   /// 点击确认按钮的回调函数
-  onConfirm() {}
+  Future<String?> onConfirm() async {
+    return null;
+  }
 
   /// 点击关闭按钮的回调函数
-  onClose() {}
+  Future<String?> onClose() async {
+    return null;
+  }
 
   String get closeText => TrKey.cancel.tr;
 
@@ -110,7 +115,11 @@ abstract class CommonPopUpsComponent implements PopUpsWidget {
                                 minimumSize: const Size(100, 40),
                               ),
                               onPressed: () async {
-                                onClose();
+                                String? result = await onClose();
+                                if (result != null && result.isNotEmpty) {
+                                  AppToast.simple(result, ToastType.fail);
+                                  return;
+                                }
                                 cancelFunc();
                               },
                               child: Text(
@@ -142,7 +151,11 @@ abstract class CommonPopUpsComponent implements PopUpsWidget {
                                   maximumSize: const Size(150, 40),
                                 ),
                                 onPressed: () async {
-                                  onConfirm();
+                                  String? result = await onConfirm();
+                                  if (result != null && result.isNotEmpty) {
+                                    AppToast.simple(result, ToastType.fail);
+                                    return;
+                                  }
                                   cancelFunc();
                                 },
                                 child: Text(

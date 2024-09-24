@@ -1,9 +1,8 @@
-import 'package:dc_box_app/core/user_manager/index.dart';
 import 'package:dc_box_app/router/app_routes.dart';
 import 'package:get/get.dart';
 
+import '../../../core/user_manager/index.dart';
 import '../../../network/api/login_auth.dart';
-import '../controller.dart';
 
 class LoginHandler {
   final LoginAuthHttp _loginAuthHttp;
@@ -22,12 +21,8 @@ class LoginHandler {
       LoginAuthResponse response = await _loginAuthHttp
           .request(LoginAuthResData(token: token, securityId: securityId));
       if (response.result) {
-        userManager.setToken(token);
-        Future.delayed(const Duration(seconds: 1), () {
-          Get.toNamed(AppRoutes.app);
-          Get.removeRoute(AppRoutes.verify);
-          Get.delete<VerifyController>();
-        });
+        await userManager.setToken(token);
+        Get.offNamed(AppRoutes.app);
         return true;
       }
     } catch (e) {

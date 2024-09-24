@@ -1,3 +1,4 @@
+import 'package:dc_box_app/network/api/logout.dart';
 import 'package:get/get.dart';
 
 import '../../network/api/get_user_balance.dart';
@@ -30,11 +31,19 @@ class UserManagerBinding extends Binding {
           envState: Bind.find(),
         ),
       ),
+      Bind.lazyPut<LogoutHttp>(
+        () => LogoutHttp(
+          deviceManager: Bind.find(),
+          langManager: Bind.find(),
+          envState: Bind.find(),
+        ),
+      ),
       Bind.lazyPut<UserManager>(
         () => UserManagerImpl(
           getUserInfoHttp: Bind.find(),
           getUserBalanceHttp: Bind.find(),
           noticeBarManager: Bind.find(),
+          logoutHttp: Bind.find(),
         ),
       ),
     ];

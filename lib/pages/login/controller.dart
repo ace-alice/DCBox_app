@@ -35,6 +35,7 @@ class LoginController extends GetxController {
 
   tabChange(int index) {
     state.tabType.value = TabType.values[index];
+    FocusManager.instance.primaryFocus?.unfocus();
   }
 
   Future preLogin(VerifySlideModel result) async {

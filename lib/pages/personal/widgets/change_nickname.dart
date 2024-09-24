@@ -86,5 +86,7 @@ class ChangeNicknameDialog extends CommonPopUpsComponent {
   }
 
   @override
-  onConfirm() {}
+  onConfirm() async {
+    return null;
+  }
 }

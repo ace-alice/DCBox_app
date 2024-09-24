@@ -18,6 +18,11 @@ class RegisterController extends GetxController {
 
   tabChange(int index) {
     state.tabType.value = TabType.values[index];
+    FocusManager.instance.primaryFocus?.unfocus();
+  }
+
+  void checkedChange(bool? value) {
+    state.isAgree.value = value ?? false;
   }
 
   @override

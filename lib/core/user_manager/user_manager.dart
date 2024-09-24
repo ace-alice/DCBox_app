@@ -12,4 +12,6 @@ abstract class UserManager {
   Future getUserBalance();
 
   Future getKycStatus();
+
+  Future<bool> logout();
 }

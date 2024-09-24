@@ -77,19 +77,24 @@ class LoginPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      TrKey.notAccount.tr,
-                      style: const TextStyle(color: AppColor.textFFFFFF),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.register);
-                      },
-                      child: Text(TrKey.register.tr,
-                          style: const TextStyle(color: AppColor.brand62A2B0)),
-                    ),
                     Expanded(
-                      child: Container(),
+                      child: Wrap(
+                        spacing: 4,
+                        children: [
+                          Text(
+                            TrKey.notAccount.tr,
+                            style: const TextStyle(color: AppColor.textFFFFFF),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed(AppRoutes.register);
+                            },
+                            child: Text(TrKey.register.tr,
+                                style: const TextStyle(
+                                    color: AppColor.brand62A2B0)),
+                          ),
+                        ],
+                      ),
                     ),
                     TextButton(
                       onPressed: () {

@@ -31,6 +31,7 @@ class BaseFormData<T extends BaseResData> {
     'security/getVerifyTypes',
     'exchangeCurrency/queryCurrencyList',
     'common/generateSlider',
+    'bulletin/getBulletins',
   ];
 
   Future<String> getFormData(T data, String path) async {

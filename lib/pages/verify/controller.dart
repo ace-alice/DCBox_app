@@ -4,6 +4,7 @@ import 'package:dc_box_app/common/biz_types.dart';
 import 'package:dc_box_app/network/api/send_verify_code.dart';
 import 'package:dc_box_app/network/api/verify_request.dart';
 import 'package:dc_box_app/pages/verify/widgets/otp_verify/controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../common/verify_type.dart';
@@ -54,7 +55,7 @@ class VerifyController extends GetxController {
     return verifyArguments.verifyTypes.contains(VerifyType.otp.index);
   }
 
-  onPressed() async {
+  onPressed(BuildContext context) async {
     try {
       loading.value = true;
       VerifyRequestResponse response = await _verifyRequestHttp.request(

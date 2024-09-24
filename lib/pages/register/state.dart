@@ -21,6 +21,8 @@ class RegisterState {
 
   RxBool disabled = true.obs;
 
+  RxBool isAgree = true.obs;
+
   List<RxBool> parameterValidResult =
       ParameterType.values.map<RxBool>((p) => false.obs).toList();
 
