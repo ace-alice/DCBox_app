@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 
 import '../../common/app_color.dart';
 import '../../common/tr_key.dart';
+import '../../network/models/verify_slide_model.dart';
 import '../../router/app_routes.dart';
 import '../../widgets/custom_tabs/view.dart';
 import '../../widgets/custom_text_field/view.dart';
 import '../../widgets/select_country_code/view.dart';
+import '../../widgets/slider_verify/view.dart';
 import '../../widgets/submit_button/view.dart';
 import 'controller.dart';
 import 'widgets/register_app_bar.dart';
@@ -114,11 +116,19 @@ class _RegisterPageState extends State<RegisterPage> {
                   ],
                 ),
                 const SizedBox(height: 40),
-                SubmitButtonComponent(
-                  onPressed: controller.submit,
-                  text: TrKey.next.tr,
-                  disabled: state.disabled,
-                  loading: state.loading,
+                SliderVerifyWidget(
+                  controller: state.sliderVerifyController,
+                  returnResult: (VerifySlideModel result) {
+                    controller.checkPhoneOrEmail(result);
+                  },
+                  child: SubmitButtonComponent(
+                    onPressed: () {
+                      controller.submit();
+                    },
+                    text: TrKey.next.tr,
+                    disabled: state.disabled,
+                    loading: state.loading,
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Wrap(

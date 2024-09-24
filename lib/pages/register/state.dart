@@ -2,8 +2,10 @@ import 'package:dc_box_app/widgets/select_country_code/controller.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../common/biz_types.dart';
 import '../../common/text_form_field_option.dart';
 import '../../common/tr_key.dart';
+import '../../widgets/slider_verify/controller.dart';
 
 class RegisterState {
   SelectCountryCodeController selectCountryCodeController =
@@ -25,6 +27,9 @@ class RegisterState {
 
   List<RxBool> parameterValidResult =
       ParameterType.values.map<RxBool>((p) => false.obs).toList();
+
+  SliderVerifyController sliderVerifyController =
+      SliderVerifyController(bizType: BizType.REGISTRATION);
 
   RegisterState() {
     phoneState = TextFormFieldOption(

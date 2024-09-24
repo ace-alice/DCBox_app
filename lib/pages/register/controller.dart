@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../common/app_logger.dart';
-import '../../common/app_toast.dart';
+import '../../network/models/verify_slide_model.dart';
 import 'state.dart';
 
 class RegisterController extends GetxController {
@@ -12,9 +11,11 @@ class RegisterController extends GetxController {
   submit() {
     if (formKey.currentState?.validate() ?? false) {
       // Form is valid, proceed with form submission
-      AppToast.simple('submit');
+      state.sliderVerifyController.showDialog();
     }
   }
+
+  Future checkPhoneOrEmail(VerifySlideModel result) async {}
 
   tabChange(int index) {
     state.tabType.value = TabType.values[index];
@@ -28,16 +29,17 @@ class RegisterController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    everAll(state.parameterValidResult, (resultList) {
+    everAll([
+      state.tabType,
+      state.phoneState.validValue,
+      state.emailState.validValue,
+    ], (resultList) {
       if (state.tabType.value == TabType.phone) {
-        state.disabled.value =
-            !state.parameterValidResult[ParameterType.phone.index].value;
+        state.disabled.value = !state.phoneState.validValue.value;
       }
       if (state.tabType.value == TabType.email) {
-        state.disabled.value =
-            !state.parameterValidResult[ParameterType.email.index].value;
+        state.disabled.value = !state.emailState.validValue.value;
       }
-      logger.w('state.disabled=>${state.disabled.value}');
     });
   }
 }
