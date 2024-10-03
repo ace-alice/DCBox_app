@@ -1,4 +1,3 @@
-import 'package:dc_box_app/core/user_manager/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,6 +5,7 @@ import '../../../common/app_color.dart';
 import '../../../common/app_toast.dart';
 import '../../../common/text_form_field_option.dart';
 import '../../../common/tr_key.dart';
+import '../../../core/user_manager/index.dart';
 import '../../../generated/app_image/app_image.dart';
 import '../../../widgets/common_pop_ups/view.dart';
 import '../../../widgets/custom_text_field/view.dart';
@@ -70,14 +70,16 @@ class ChangeNicknameDialog extends CommonPopUpsComponent {
           key: formKey,
           child: Column(
             children: [
-              Overlay(initialEntries: [
-                OverlayEntry(
-                  canSizeOverlay: true,
-                  builder: (context) => CustomTextFieldComponent(
-                    textFormFieldOption: nickNameState,
-                  ),
-                )
-              ]),
+              Overlay(
+                initialEntries: [
+                  OverlayEntry(
+                    canSizeOverlay: true,
+                    builder: (context) => CustomTextFieldComponent(
+                      textFormFieldOption: nickNameState,
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
         ),
@@ -87,6 +89,9 @@ class ChangeNicknameDialog extends CommonPopUpsComponent {
 
   @override
   onConfirm() async {
+    loading.value = true;
+    await Future.delayed(const Duration(seconds: 2));
+    loading.value = false;
     return null;
   }
 }

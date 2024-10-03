@@ -50,12 +50,15 @@ class SignOutDialog extends CommonPopUpsComponent {
   @override
   onConfirm() async {
     try {
+      loading.value = true;
       bool result = await userManager.logout();
       if (!result) {
         return '退出登录失败';
       }
     } catch (e) {
       rethrow;
+    } finally {
+      loading.value = false;
     }
     return null;
   }

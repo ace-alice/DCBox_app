@@ -44,6 +44,8 @@ abstract class CommonPopUpsComponent implements PopUpsWidget {
 
   String get confirmText => TrKey.ok.tr;
 
+  RxBool loading = false.obs;
+
   /// 内容显示区域
   Widget child();
 
@@ -158,9 +160,23 @@ abstract class CommonPopUpsComponent implements PopUpsWidget {
                                   }
                                   cancelFunc();
                                 },
-                                child: Text(
-                                  confirmText,
-                                  style: AppStyles.btnTextStyle(),
+                                child: Obx(
+                                  () {
+                                    if (loading.value) {
+                                      return const SizedBox(
+                                        height: 24,
+                                        width: 24,
+                                        child: CircularProgressIndicator(
+                                          color: Colors.white,
+                                        ),
+                                      );
+                                    } else {
+                                      return Text(
+                                        confirmText,
+                                        style: AppStyles.btnTextStyle(),
+                                      );
+                                    }
+                                  },
                                 ),
                               ),
                             ),

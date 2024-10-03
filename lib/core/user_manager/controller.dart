@@ -37,7 +37,8 @@ class UserManagerImpl implements UserManager {
     ever(userState.token, (value) async {
       if (value.isNotEmpty) {
         await init();
-        Future.delayed(const Duration(milliseconds: 1200), () {
+        await _noticeBarManager.init();
+        Future.delayed(const Duration(milliseconds: 1000), () {
           _noticeBarManager.show();
         });
       } else {}
